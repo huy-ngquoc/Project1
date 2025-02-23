@@ -1,5 +1,7 @@
 #nullable enable
 
+using UnityEngine;
+
 namespace Game;
 public abstract class PlayerGroundedState : PlayerState
 {
@@ -15,6 +17,11 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected sealed override void OnUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.StateMachine?.ChangeState(this.Player.JumpState);
+            return;
+        }
 
         this.OnGroundedUpdate();
     }

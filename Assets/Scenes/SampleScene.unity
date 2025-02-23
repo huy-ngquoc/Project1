@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 430911676}
   - component: {fileID: 430911675}
   - component: {fileID: 430911677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2042,7 +2042,13 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 398080285}
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
+  groundCheck: {fileID: 1325340505}
+  <GroundCheckDistance>k__BackingField: 0.15
+  <WhatIsGround>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
   <MoveSpeed>k__BackingField: 8
+  <JumpForce>k__BackingField: 12
 --- !u!1 &2079006584
 GameObject:
   m_ObjectHideFlags: 0
