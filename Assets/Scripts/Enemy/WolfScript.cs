@@ -1,19 +1,20 @@
 using UnityEngine;
-using System;
+using System; 
+using Game;
 
 namespace Game
 {
-    public class WolfScript:MonoBehaviour
+    public class WolfScript:MonsterScript
     { 
-        [SerializeField] private float speed;
-        private int direction;
+        
+       
         private Rigidbody2D rigidBody2D;
-        private Transform transform;
+        
         private bool isMoving;
-        [SerializeField] private Transform playerTransform;
+        
         private int health;
         private bool isChasing;
-        private Animator animator;
+        
         private bool isDeath; 
         private bool isAttack;
         [SerializeField] private GameObject attackArea; 
@@ -68,41 +69,17 @@ namespace Game
                     transform.position += new Vector3(speed*Time.deltaTime,0,0);
                     direction=180;
                  } 
-                ChangeDirection(direction);
+                ChangeDirection();
                 return;
 
             }
-            if(direction==0) {
-                transform.position += new Vector3(-speed*Time.deltaTime,0,0);
-            }
-            else {
-                if(direction==180) {
-                    transform.position += new Vector3(speed*Time.deltaTime,0,0);
-                }
-            }
+           MonsterMove();
         } 
         private void FixedUpdate() {
             Move();
         }
-        private void OnCollisionEnter2D(Collision2D col) { 
-            if(transform==null) {
-                return;
-            }
-            if(col.gameObject.tag=="Border") {
-                if(direction==0) {
-                    direction=180;
-                } 
-                else {
-                    direction=0;
-                } 
-                ChangeDirection(direction);
-                
-
-            }
-        }
-        public void updateMoving(bool newMoving) {
-            this.isMoving= newMoving;
-        } 
+       
+        
         private void OnTriggerEnter2D(Collider2D col) {
             if(col.gameObject.tag=="Player") {
                 isChasing=true;
@@ -118,11 +95,7 @@ namespace Game
                 StopAttack();
             }
         } 
-        private void ChangeDirection(int direction) {
-            Vector3 newDirection = new Vector3(transform.rotation.x,direction,transform.rotation.z);
-            transform.rotation=Quaternion.Euler(newDirection);
-
-        } 
+        
          private void Attack() {
             if(animator==null) {
                 return;
