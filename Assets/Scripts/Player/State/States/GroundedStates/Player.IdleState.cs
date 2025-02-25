@@ -13,7 +13,7 @@ partial class Player
 
         protected override void OnGroundedEnter()
         {
-            this.Player.SetLinearVelocityX(0);
+            this.Player.SetZeroLinearVelocityX();
         }
 
         protected override void OnGroundedUpdate()

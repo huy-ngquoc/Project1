@@ -30,7 +30,17 @@ public abstract class Entity : MonoBehaviour
     [field: SerializeField]
     public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
-    public virtual void FlipController(float x)
+    public bool IsGroundDetected()
+    {
+        if (this.groundCheck != null)
+        {
+            return Physics2D.Raycast(this.groundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
+        }
+
+        return false;
+    }
+
+    protected void FlipController(float x)
     {
         bool flip = false;
 
@@ -45,18 +55,18 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public virtual void Flip()
+    protected void Flip()
     {
         this.FacingRight = !this.FacingRight;
         this.transform.Rotate(0F, 180F, 0F);
     }
 
-    public bool SetLinearVelocity(float x, float y)
+    protected bool SetLinearVelocity(float x, float y)
     {
         return this.SetLinearVelocity(new Vector2(x, y));
     }
 
-    public bool SetLinearVelocity(Vector2 newLinearVelocity)
+    protected bool SetLinearVelocity(Vector2 newLinearVelocity)
     {
         if (this.Rigidbody2D != null)
         {
@@ -68,9 +78,18 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
-    public bool SetZeroLinearVelocity() => this.SetLinearVelocity(Vector2.zero);
+    protected bool SetZeroLinearVelocity()
+    {
+        if (this.Rigidbody2D != null)
+        {
+            this.Rigidbody2D.linearVelocity = Vector2.zero;
+            return true;
+        }
 
-    public bool SetLinearVelocityX(float newLinearVelocityX)
+        return false;
+    }
+
+    protected bool SetLinearVelocityX(float newLinearVelocityX)
     {
         if (this.Rigidbody2D != null)
         {
@@ -82,7 +101,18 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
-    public bool SetLinearVelocityY(float newLinearVelocityY)
+    protected bool SetZeroLinearVelocityX()
+    {
+        if (this.Rigidbody2D != null)
+        {
+            this.Rigidbody2D.linearVelocityX = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    protected bool SetLinearVelocityY(float newLinearVelocityY)
     {
         if (this.Rigidbody2D != null)
         {
@@ -93,7 +123,9 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
-    public Vector2? GetLinearVelocity()
+    protected bool SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
+
+    protected Vector2? GetLinearVelocity()
     {
         Vector2? result = null;
 
@@ -105,13 +137,13 @@ public abstract class Entity : MonoBehaviour
         return result;
     }
 
-    public Vector2 GetLinearVelocityOrDefault(Vector2 defaultLinearVelocity)
+    protected Vector2 GetLinearVelocityOrDefault(Vector2 defaultLinearVelocity)
         => this.GetLinearVelocity().GetValueOrDefault(defaultLinearVelocity);
 
-    public Vector2 GetLinearVelocityOrZero()
+    protected Vector2 GetLinearVelocityOrZero()
       => this.GetLinearVelocityOrDefault(Vector2.zero);
 
-    public float? GetLinearVelocityX()
+    protected float? GetLinearVelocityX()
     {
         float? result = null;
 
@@ -123,12 +155,12 @@ public abstract class Entity : MonoBehaviour
         return result;
     }
 
-    public float GetLinearVelocityOrDefaultX(float defaultLinearVelocityX)
+    protected float GetLinearVelocityOrDefaultX(float defaultLinearVelocityX)
         => this.GetLinearVelocityX().GetValueOrDefault(defaultLinearVelocityX);
 
-    public float GetLinearVelocityOrZeroX() => this.GetLinearVelocityOrDefaultX(0.0F);
+    protected float GetLinearVelocityOrZeroX() => this.GetLinearVelocityOrDefaultX(0);
 
-    public float? GetLinearVelocityY()
+    protected float? GetLinearVelocityY()
     {
         float? result = null;
 
@@ -140,20 +172,10 @@ public abstract class Entity : MonoBehaviour
         return result;
     }
 
-    public float GetLinearVelocityOrDefaultY(float defaultLinearVelocityY)
+    protected float GetLinearVelocityOrDefaultY(float defaultLinearVelocityY)
        => this.GetLinearVelocityY().GetValueOrDefault(defaultLinearVelocityY);
 
-    public float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0.0F);
-
-    public bool IsGroundDetected()
-    {
-        if (this.groundCheck != null)
-        {
-            return Physics2D.Raycast(this.groundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
-        }
-
-        return false;
-    }
+    protected float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0);
 
     protected void Awake()
     {
