@@ -13,13 +13,13 @@ partial class Player
 
         protected override void OnGroundedUpdate()
         {
-            if (InputX == 0)
+            if (InputX != 0)
             {
-                this.StateMachine?.ChangeState(this.Player.idleState);
+                this.Player.SetLinearVelocityX(InputX * this.Player.MoveSpeed);
             }
             else
             {
-                this.Player.SetLinearVelocityX(InputX * this.Player.MoveSpeed);
+                this.StateMachine?.ChangeState(this.Player.idleState);
             }
         }
     }
