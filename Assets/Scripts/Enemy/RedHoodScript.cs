@@ -6,7 +6,8 @@ namespace Game
     public class RedHoodScript:MonsterScript
     {  
         private bool isMoving; 
-        private bool isSetShootTrigger;
+        private bool isSetShootTrigger; 
+        [SerializeField] private int health;
         [SerializeField] private GameObject arrow;
         private void Start() { 
             transform = GetComponent<Transform>(); 
@@ -16,11 +17,15 @@ namespace Game
 
         } 
         private void Update() {
-            DetectPlayer(); 
+            DetectPlayer();  
+            HandleTakeDamage();
             
 
         }       
-        private void FixedUpdate() {  
+        private void FixedUpdate() {   
+            if(health<=0) {
+                return;
+            }
             
             if(!isMoving) { 
 
@@ -72,7 +77,10 @@ namespace Game
                 
             }
         }
-        private void SpawnArrow() { 
+        private void SpawnArrow() {  
+            if(arrow==null) {
+                return;
+            }
             int arrowDirection;
             if(direction==0) {
                 arrowDirection=180;
@@ -83,6 +91,27 @@ namespace Game
             Vector3 arrowSpawnPosition= new Vector3(transform.position.x, transform.position.y-1,transform.position.z);
             Vector3 arrowSpawnRotation= new Vector3(transform.rotation.x, arrowDirection, transform.rotation.z); 
             Instantiate(arrow, arrowSpawnPosition,Quaternion.Euler(arrowSpawnRotation));
+
+        }
+
+        private void HandleTakeDamage() { 
+
+            if(Input.GetKeyDown(KeyCode.Space)==true) { 
+                TakeDamage(100); 
+                
+            }
+
+        } 
+        private void TakeDamage(int damage) {  
+            if(animator==null) {
+                return;
+            }
+            animator.SetTrigger("TakeDamage"); 
+            health=health-damage;
+            if(health<=0) {
+                animator.SetTrigger("Death"); 
+                isMoving=false;
+            }
 
         }
         public void TriggerShooting() { 
@@ -104,6 +133,13 @@ namespace Game
         } 
         public void StopAttackAnimation() {
             animator.SetTrigger("StopAttack");
+        } 
+        public Transform getPlayerTransform() { 
+            
+            return playerTransform;
+        }
+        public Transform getRedHoodTransform() {
+            return transform;
         }
 
         
