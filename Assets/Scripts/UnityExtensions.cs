@@ -16,7 +16,8 @@ public static class UnityExtension
     }
 
     public static TResult? UnityAccessRef<T, TResult>(this T? obj, System.Func<T, TResult>? func)
-        where T : UnityEngine.Object where TResult : class?
+        where T : UnityEngine.Object
+        where TResult : class?
     {
         if ((obj == null) || (func == null))
         {
@@ -27,7 +28,8 @@ public static class UnityExtension
     }
 
     public static TResult UnityAccessRef<T, TResult>(this T? obj, System.Func<T, TResult>? func, TResult defaultValue)
-    where T : UnityEngine.Object where TResult : class?
+        where T : UnityEngine.Object
+        where TResult : class?
     {
         var result = UnityAccessRef(obj, func);
 
@@ -40,7 +42,8 @@ public static class UnityExtension
     }
 
     public static TResult? UnityAccessVal<T, TResult>(this T? obj, System.Func<T, TResult>? func)
-        where T : UnityEngine.Object where TResult : struct
+        where T : UnityEngine.Object
+        where TResult : struct
     {
         if ((obj == null) || (func == null))
         {
@@ -51,7 +54,8 @@ public static class UnityExtension
     }
 
     public static TResult UnityAccessVal<T, TResult>(this T? obj, System.Func<T, TResult>? func, TResult defaultValue)
-        where T : UnityEngine.Object where TResult : struct
+        where T : UnityEngine.Object
+        where TResult : struct
     {
         var result = UnityAccessVal(obj, func);
 

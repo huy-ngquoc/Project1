@@ -6,39 +6,29 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    [field: SerializeField] public Animator? Animator { get; private set; } = null;
-    [field: SerializeField] public Rigidbody2D? Rigidbody2D { get; private set; } = null;
-    [field: SerializeField] public SpriteRenderer? SpriteRenderer { get; private set; } = null;
+    [field: Header("Collision info")]
+    [field: SerializeField]
+    private Transform? groundCheck = null;
+
+    [field: SerializeField]
+    public Animator? Animator { get; private set; } = null;
+
+    [field: SerializeField]
+    public Rigidbody2D? Rigidbody2D { get; private set; } = null;
+
+    [field: SerializeField]
+    public SpriteRenderer? SpriteRenderer { get; private set; } = null;
 
     public bool FacingRight { get; private set; } = true;
 
-    public sbyte FacingDirection => this.FacingRight ? (sbyte)(1) : (sbyte)(-1);
+    public sbyte FacingDirection => this.FacingRight ? (sbyte)1 : (sbyte)-1;
 
-    [field: Header("Collision info")]
-    [SerializeField] private Transform? groundCheck = null;
-    [field: SerializeField, Range(0.01F, 0.2F)] public float GroundCheckDistance { get; private set; } = 0.1F;
-    [field: SerializeField] public LayerMask WhatIsGround { get; private set; } = new LayerMask();
+    [field: SerializeField]
+    [field: Range(0.01F, 0.2F)]
+    public float GroundCheckDistance { get; private set; } = 0.1F;
 
-    protected void Awake()
-    {
-        this.OnAwake();
-    }
-
-    protected virtual void OnAwake() { }
-
-    protected void Start()
-    {
-        this.OnStart();
-    }
-
-    protected virtual void OnStart() { }
-
-    protected void Update()
-    {
-        this.OnUpdate();
-    }
-
-    protected virtual void OnUpdate() { }
+    [field: SerializeField]
+    public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
     public virtual void FlipController(float x)
     {
@@ -47,7 +37,6 @@ public abstract class Entity : MonoBehaviour
         if (this.GetComponent<Rigidbody2D>() != null)
         {
             flip = this.FacingRight ? (x < 0) : (x > 0);
-
         }
 
         if (flip)
@@ -61,8 +50,6 @@ public abstract class Entity : MonoBehaviour
         this.FacingRight = !this.FacingRight;
         this.transform.Rotate(0F, 180F, 0F);
     }
-
-    #region Velocity
 
     public bool SetLinearVelocity(float x, float y)
     {
@@ -158,8 +145,6 @@ public abstract class Entity : MonoBehaviour
 
     public float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0.0F);
 
-    #endregion
-
     public bool IsGroundDetected()
     {
         if (this.groundCheck != null)
@@ -170,11 +155,52 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
+    protected void Awake()
+    {
+        this.OnAwake();
+    }
+
+    protected virtual void OnAwake()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
+    protected void Start()
+    {
+        this.OnStart();
+    }
+
+    protected virtual void OnStart()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
+    protected void Update()
+    {
+        this.OnUpdate();
+    }
+
+    protected virtual void OnUpdate()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
     protected virtual void OnDrawGizmos()
     {
         if (this.groundCheck != null)
         {
             Gizmos.DrawLine(this.groundCheck.position, new Vector3(this.groundCheck.position.x, this.groundCheck.position.y - this.GroundCheckDistance));
         }
+
+        this.OnDrawGizmozEntity();
+    }
+
+    protected virtual void OnDrawGizmozEntity()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
     }
 }
