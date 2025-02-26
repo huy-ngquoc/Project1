@@ -5,31 +5,33 @@ namespace Game;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public abstract partial class EntityController : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
-    protected bool FacingRight { get; private set; } = true;
-
-    protected int FacingDirection => this.FacingRight ? 1 : -1;
+    public EntityStateMachine? StateMachine { get; protected set; }
 
     [field: Header("Collision info")]
     [field: SerializeField]
-    protected Transform? GroundCheck { get; private set; } = null;
+    public Transform? GroundCheck { get; private set; } = null;
 
     [field: SerializeField]
-    protected Animator? Animator { get; private set; } = null;
+    public Animator? Animator { get; private set; } = null;
 
     [field: SerializeField]
-    protected Rigidbody2D? Rigidbody2D { get; private set; } = null;
+    public Rigidbody2D? Rigidbody2D { get; private set; } = null;
 
     [field: SerializeField]
-    protected SpriteRenderer? SpriteRenderer { get; private set; } = null;
+    public SpriteRenderer? SpriteRenderer { get; private set; } = null;
 
     [field: SerializeField]
-    [field: Range(0.01F, 0.2F)]
-    protected float GroundCheckDistance { get; private set; } = 0.1F;
+    [field: Range(0.01F, 2)]
+    public float GroundCheckDistance { get; private set; } = 0.1F;
 
     [field: SerializeField]
-    protected LayerMask WhatIsGround { get; private set; } = new LayerMask();
+    public LayerMask WhatIsGround { get; private set; } = new LayerMask();
+
+    public bool FacingRight { get; private set; } = true;
+
+    public int FacingDirection => this.FacingRight ? 1 : -1;
 
     public bool IsGroundDetected()
     {
@@ -41,7 +43,7 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected void FlipController(float x)
+    public void FlipController(float x)
     {
         bool flip = false;
 
@@ -56,18 +58,18 @@ public abstract partial class EntityController : MonoBehaviour
         }
     }
 
-    protected void Flip()
+    public void Flip()
     {
         this.FacingRight = !this.FacingRight;
         this.transform.Rotate(0F, 180F, 0F);
     }
 
-    protected bool SetLinearVelocity(float x, float y)
+    public bool SetLinearVelocity(float x, float y)
     {
         return this.SetLinearVelocity(new Vector2(x, y));
     }
 
-    protected bool SetLinearVelocity(Vector2 newLinearVelocity)
+    public bool SetLinearVelocity(Vector2 newLinearVelocity)
     {
         if (this.Rigidbody2D != null)
         {
@@ -79,7 +81,7 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected bool SetZeroLinearVelocity()
+    public bool SetZeroLinearVelocity()
     {
         if (this.Rigidbody2D != null)
         {
@@ -90,7 +92,7 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected bool SetLinearVelocityX(float newLinearVelocityX)
+    public bool SetLinearVelocityX(float newLinearVelocityX)
     {
         if (this.Rigidbody2D != null)
         {
@@ -102,7 +104,7 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected bool SetZeroLinearVelocityX()
+    public bool SetZeroLinearVelocityX()
     {
         if (this.Rigidbody2D != null)
         {
@@ -113,7 +115,7 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected bool SetLinearVelocityY(float newLinearVelocityY)
+    public bool SetLinearVelocityY(float newLinearVelocityY)
     {
         if (this.Rigidbody2D != null)
         {
@@ -124,9 +126,9 @@ public abstract partial class EntityController : MonoBehaviour
         return false;
     }
 
-    protected bool SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
+    public bool SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
 
-    protected Vector2? GetLinearVelocity()
+    public Vector2? GetLinearVelocity()
     {
         Vector2? result = null;
 
@@ -138,13 +140,13 @@ public abstract partial class EntityController : MonoBehaviour
         return result;
     }
 
-    protected Vector2 GetLinearVelocityOrDefault(Vector2 defaultLinearVelocity)
-        => this.GetLinearVelocity().GetValueOrDefault(defaultLinearVelocity);
+    public Vector2 GetLinearVelocityOrDefault(Vector2 defaultLinearVelocity)
+         => this.GetLinearVelocity().GetValueOrDefault(defaultLinearVelocity);
 
-    protected Vector2 GetLinearVelocityOrZero()
-      => this.GetLinearVelocityOrDefault(Vector2.zero);
+    public Vector2 GetLinearVelocityOrZero()
+       => this.GetLinearVelocityOrDefault(Vector2.zero);
 
-    protected float? GetLinearVelocityX()
+    public float? GetLinearVelocityX()
     {
         float? result = null;
 
@@ -156,12 +158,12 @@ public abstract partial class EntityController : MonoBehaviour
         return result;
     }
 
-    protected float GetLinearVelocityOrDefaultX(float defaultLinearVelocityX)
-        => this.GetLinearVelocityX().GetValueOrDefault(defaultLinearVelocityX);
+    public float GetLinearVelocityOrDefaultX(float defaultLinearVelocityX)
+         => this.GetLinearVelocityX().GetValueOrDefault(defaultLinearVelocityX);
 
-    protected float GetLinearVelocityOrZeroX() => this.GetLinearVelocityOrDefaultX(0);
+    public float GetLinearVelocityOrZeroX() => this.GetLinearVelocityOrDefaultX(0);
 
-    protected float? GetLinearVelocityY()
+    public float? GetLinearVelocityY()
     {
         float? result = null;
 
@@ -173,10 +175,10 @@ public abstract partial class EntityController : MonoBehaviour
         return result;
     }
 
-    protected float GetLinearVelocityOrDefaultY(float defaultLinearVelocityY)
-       => this.GetLinearVelocityY().GetValueOrDefault(defaultLinearVelocityY);
+    public float GetLinearVelocityOrDefaultY(float defaultLinearVelocityY)
+        => this.GetLinearVelocityY().GetValueOrDefault(defaultLinearVelocityY);
 
-    protected float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0);
+    public float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0);
 
     protected void Awake()
     {
@@ -202,6 +204,8 @@ public abstract partial class EntityController : MonoBehaviour
 
     protected void Update()
     {
+        this.StateMachine?.UpdateState();
+
         this.OnEntityControllerUpdate();
     }
 

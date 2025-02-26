@@ -2,7 +2,7 @@
 
 namespace Game;
 
-public abstract partial class EnemyController : EntityController
+public abstract class EnemyController : EntityController
 {
     protected sealed override void OnEntityControllerAwake()
     {

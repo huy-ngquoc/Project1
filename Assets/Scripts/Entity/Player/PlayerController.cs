@@ -4,10 +4,8 @@ namespace Game
 {
     using UnityEngine;
 
-    public sealed partial class PlayerController : EntityController
+    public sealed class PlayerController : EntityController
     {
-        private PlayerStateMachine? stateMachine = null;
-
         [field: Header("Move info")]
 
         [field: SerializeField]
@@ -20,12 +18,7 @@ namespace Game
 
         protected override void OnEntityControllerAwake()
         {
-            this.stateMachine = new PlayerStateMachine(this);
-        }
-
-        protected override void OnEntityControllerUpdate()
-        {
-            this.stateMachine?.UpdateState();
+            this.StateMachine = new PlayerStateMachine(this);
         }
     }
 }
