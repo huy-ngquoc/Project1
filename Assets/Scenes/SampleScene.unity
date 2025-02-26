@@ -829,6 +829,7 @@ GameObject:
   - component: {fileID: 508366254}
   - component: {fileID: 508366256}
   - component: {fileID: 508366255}
+  - component: {fileID: 508366257}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -917,6 +918,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &508366257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508366253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270ae4f17d09e7e47a01ac1a6d4fe8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 1492418257}
+  <Animator>k__BackingField: {fileID: 130571046}
+  <Rigidbody2D>k__BackingField: {fileID: 508366256}
+  <SpriteRenderer>k__BackingField: {fileID: 130571045}
+  <GroundCheckDistance>k__BackingField: 0.1
+  <WhatIsGround>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,10 +2060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1143c53be90a454ba58972c968377c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheck: {fileID: 1325340505}
   <Animator>k__BackingField: {fileID: 398080285}
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
-  groundCheck: {fileID: 1325340505}
   <GroundCheckDistance>k__BackingField: 0.15
   <WhatIsGround>k__BackingField:
     serializedVersion: 2

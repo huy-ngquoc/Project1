@@ -4,6 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public abstract partial class EntityController : MonoBehaviour
 {
     [field: Header("Collision info")]
@@ -210,17 +211,17 @@ public abstract partial class EntityController : MonoBehaviour
         // The derived classes can decide if they override this method
     }
 
-    protected virtual void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
         if (this.groundCheck != null)
         {
             Gizmos.DrawLine(this.groundCheck.position, new Vector3(this.groundCheck.position.x, this.groundCheck.position.y - this.GroundCheckDistance));
         }
 
-        this.OnEntityControllerDrawGizmoz();
+        this.OnEntityControllerDrawGizmos();
     }
 
-    protected virtual void OnEntityControllerDrawGizmoz()
+    protected virtual void OnEntityControllerDrawGizmos()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method

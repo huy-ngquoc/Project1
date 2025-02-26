@@ -4,11 +4,11 @@ namespace Game;
 
 partial class EnemyController : EntityController
 {
-    protected partial class EnemyStateMachine : EntityStateMachine
+    protected abstract partial class EnemyStateMachine : EntityStateMachine
     {
         private readonly EnemyController enemyController;
 
-        public EnemyStateMachine(EnemyController enemyController)
+        protected EnemyStateMachine(EnemyController enemyController)
             : base(enemyController)
         {
             this.enemyController = enemyController;

@@ -14,6 +14,8 @@ partial class SkeletonController
         {
             this.skeletonController = skeletonController;
             this.skeletonIdleState = new SkeletonIdleState(this, "Idle");
+
+            this.ChangeState(this.skeletonIdleState);
         }
     }
 }
