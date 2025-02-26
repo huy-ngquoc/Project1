@@ -7,35 +7,35 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public abstract partial class EntityController : MonoBehaviour
 {
+    protected bool FacingRight { get; private set; } = true;
+
+    protected int FacingDirection => this.FacingRight ? 1 : -1;
+
     [field: Header("Collision info")]
     [field: SerializeField]
-    private Transform? groundCheck = null;
+    protected Transform? GroundCheck { get; private set; } = null;
 
     [field: SerializeField]
-    public Animator? Animator { get; private set; } = null;
+    protected Animator? Animator { get; private set; } = null;
 
     [field: SerializeField]
-    public Rigidbody2D? Rigidbody2D { get; private set; } = null;
+    protected Rigidbody2D? Rigidbody2D { get; private set; } = null;
 
     [field: SerializeField]
-    public SpriteRenderer? SpriteRenderer { get; private set; } = null;
-
-    public bool FacingRight { get; private set; } = true;
-
-    public sbyte FacingDirection => this.FacingRight ? (sbyte)1 : (sbyte)-1;
+    protected SpriteRenderer? SpriteRenderer { get; private set; } = null;
 
     [field: SerializeField]
     [field: Range(0.01F, 0.2F)]
-    public float GroundCheckDistance { get; private set; } = 0.1F;
+    protected float GroundCheckDistance { get; private set; } = 0.1F;
 
     [field: SerializeField]
-    public LayerMask WhatIsGround { get; private set; } = new LayerMask();
+    protected LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
     public bool IsGroundDetected()
     {
-        if (this.groundCheck != null)
+        if (this.GroundCheck != null)
         {
-            return Physics2D.Raycast(this.groundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
+            return Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
         }
 
         return false;
@@ -213,9 +213,9 @@ public abstract partial class EntityController : MonoBehaviour
 
     protected void OnDrawGizmos()
     {
-        if (this.groundCheck != null)
+        if (this.GroundCheck != null)
         {
-            Gizmos.DrawLine(this.groundCheck.position, new Vector3(this.groundCheck.position.x, this.groundCheck.position.y - this.GroundCheckDistance));
+            Gizmos.DrawLine(this.GroundCheck.position, new Vector3(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
         }
 
         this.OnEntityControllerDrawGizmos();
