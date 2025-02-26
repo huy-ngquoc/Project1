@@ -17,10 +17,10 @@ partial class PlayerController
 
             protected sealed override void OnPlayerStateEnter()
             {
-                this.OnGroundedEnter();
+                this.OnPlayerGroundedStateEnter();
             }
 
-            protected virtual void OnGroundedEnter()
+            protected virtual void OnPlayerGroundedStateEnter()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method
@@ -34,10 +34,10 @@ partial class PlayerController
                     return;
                 }
 
-                this.OnGroundedUpdate();
+                this.OnPlayerGroundedStateUpdate();
             }
 
-            protected virtual void OnGroundedUpdate()
+            protected virtual void OnPlayerGroundedStateUpdate()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method
@@ -45,10 +45,10 @@ partial class PlayerController
 
             protected sealed override void OnPlayerStateExit()
             {
-                this.OnGroundedExit();
+                this.OnPlayerGroundedStateExit();
             }
 
-            protected virtual void OnGroundedExit()
+            protected virtual void OnPlayerGroundedStateExit()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method

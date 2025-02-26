@@ -13,7 +13,7 @@ partial class PlayerController
             {
             }
 
-            protected override void OnGroundedUpdate()
+            protected override void OnPlayerGroundedStateUpdate()
             {
                 if (InputX != 0)
                 {

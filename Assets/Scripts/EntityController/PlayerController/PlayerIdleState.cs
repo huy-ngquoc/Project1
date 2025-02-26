@@ -13,12 +13,12 @@ partial class PlayerController
             {
             }
 
-            protected override void OnGroundedEnter()
+            protected override void OnPlayerGroundedStateEnter()
             {
                 this.PlayerController.SetZeroLinearVelocityX();
             }
 
-            protected override void OnGroundedUpdate()
+            protected override void OnPlayerGroundedStateUpdate()
             {
                 if (InputX != 0)
                 {

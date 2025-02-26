@@ -60,12 +60,12 @@ partial class PlayerController
 
             protected PlayerController PlayerController => this.PlayerStateMachine.playerController;
 
-            protected override void OnEntityStateEnter()
+            protected sealed override void OnEntityStateEnter()
             {
                 this.OnPlayerStateEnter();
             }
 
-            protected override void OnEntityStateUpdate()
+            protected sealed override void OnEntityStateUpdate()
             {
                 if (this.PlayerController.Animator != null)
                 {
@@ -75,7 +75,7 @@ partial class PlayerController
                 this.OnPlayerStateUpdate();
             }
 
-            protected override void OnEntityStateExit()
+            protected sealed override void OnEntityStateExit()
             {
                 this.OnPlayerStateExit();
             }
