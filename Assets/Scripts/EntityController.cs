@@ -4,7 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
     [field: Header("Collision info")]
     [field: SerializeField]
