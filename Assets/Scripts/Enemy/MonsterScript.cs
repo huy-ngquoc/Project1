@@ -9,7 +9,7 @@ namespace Game
         protected Transform transform;  
         protected Animator animator;
         [SerializeField] protected Transform playerTransform;
-        protected  void ChangeDirection( ) { 
+        protected  void ChangeDirection() { 
             Vector3 newDirection = new Vector3(transform.position.x,direction, transform.rotation.z);
             transform.rotation=Quaternion.Euler(newDirection);
 
