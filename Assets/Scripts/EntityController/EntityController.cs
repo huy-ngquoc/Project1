@@ -4,7 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class EntityController : MonoBehaviour
+public abstract partial class EntityController : MonoBehaviour
 {
     [field: Header("Collision info")]
     [field: SerializeField]
@@ -179,10 +179,10 @@ public abstract class EntityController : MonoBehaviour
 
     protected void Awake()
     {
-        this.OnAwake();
+        this.OnEntityControllerAwake();
     }
 
-    protected virtual void OnAwake()
+    protected virtual void OnEntityControllerAwake()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method
@@ -190,10 +190,10 @@ public abstract class EntityController : MonoBehaviour
 
     protected void Start()
     {
-        this.OnStart();
+        this.OnEntityControllerStart();
     }
 
-    protected virtual void OnStart()
+    protected virtual void OnEntityControllerStart()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method
@@ -201,10 +201,10 @@ public abstract class EntityController : MonoBehaviour
 
     protected void Update()
     {
-        this.OnUpdate();
+        this.OnEntityControllerUpdate();
     }
 
-    protected virtual void OnUpdate()
+    protected virtual void OnEntityControllerUpdate()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method
@@ -217,10 +217,10 @@ public abstract class EntityController : MonoBehaviour
             Gizmos.DrawLine(this.groundCheck.position, new Vector3(this.groundCheck.position.x, this.groundCheck.position.y - this.GroundCheckDistance));
         }
 
-        this.OnDrawGizmozEntity();
+        this.OnEntityControllerDrawGizmoz();
     }
 
-    protected virtual void OnDrawGizmozEntity()
+    protected virtual void OnEntityControllerDrawGizmoz()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method

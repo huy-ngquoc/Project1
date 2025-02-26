@@ -13,13 +13,13 @@ partial class PlayerController
             {
             }
 
-            protected override void OnUpdate()
+            protected override void OnPlayerStateUpdate()
             {
-                this.Player.SetLinearVelocityX(this.Player.MoveSpeed * 0.8F * InputX);
+                this.PlayerController.SetLinearVelocityX(this.PlayerController.MoveSpeed * 0.8F * InputX);
 
-                if (this.Player.IsGroundDetected())
+                if (this.PlayerController.IsGroundDetected())
                 {
-                    this.StateMachine?.ChangeState(this.StateMachine.idleState);
+                    this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.idleState);
                 }
             }
         }

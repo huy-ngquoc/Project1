@@ -18,12 +18,12 @@ namespace Game
         [field: Range(1, 40)]
         public float JumpForce { get; private set; } = 12;
 
-        protected override void OnAwake()
+        protected override void OnEntityControllerAwake()
         {
             this.stateMachine = new PlayerStateMachine(this);
         }
 
-        protected override void OnUpdate()
+        protected override void OnEntityControllerUpdate()
         {
             this.stateMachine?.UpdateState();
         }

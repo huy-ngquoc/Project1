@@ -13,17 +13,17 @@ partial class PlayerController
             {
             }
 
-            protected override void OnEnter()
+            protected override void OnPlayerStateEnter()
             {
-                this.Player.SetLinearVelocityY(this.Player.JumpForce);
+                this.PlayerController.SetLinearVelocityY(this.PlayerController.JumpForce);
             }
 
-            protected override void OnUpdate()
+            protected override void OnPlayerStateUpdate()
             {
-                var linearVelocityY = this.Player.GetLinearVelocityOrZeroY();
+                var linearVelocityY = this.PlayerController.GetLinearVelocityOrZeroY();
                 if (linearVelocityY <= 0)
                 {
-                    this.StateMachine?.ChangeState(this.StateMachine.fallState);
+                    this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.fallState);
                 }
             }
         }

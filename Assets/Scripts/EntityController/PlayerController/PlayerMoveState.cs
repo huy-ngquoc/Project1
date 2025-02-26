@@ -17,11 +17,11 @@ partial class PlayerController
             {
                 if (InputX != 0)
                 {
-                    this.Player.SetLinearVelocityX(InputX * this.Player.MoveSpeed);
+                    this.PlayerController.SetLinearVelocityX(InputX * this.PlayerController.MoveSpeed);
                 }
                 else
                 {
-                    this.StateMachine?.ChangeState(this.StateMachine.idleState);
+                    this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.idleState);
                 }
             }
         }

@@ -15,7 +15,7 @@ partial class PlayerController
             {
             }
 
-            protected sealed override void OnEnter()
+            protected sealed override void OnPlayerStateEnter()
             {
                 this.OnGroundedEnter();
             }
@@ -26,11 +26,11 @@ partial class PlayerController
                 // The derived classes can decide if they override this method
             }
 
-            protected sealed override void OnUpdate()
+            protected sealed override void OnPlayerStateUpdate()
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    this.StateMachine?.ChangeState(this.StateMachine.jumpState);
+                    this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.jumpState);
                     return;
                 }
 
@@ -43,7 +43,7 @@ partial class PlayerController
                 // The derived classes can decide if they override this method
             }
 
-            protected sealed override void OnExit()
+            protected sealed override void OnPlayerStateExit()
             {
                 this.OnGroundedExit();
             }

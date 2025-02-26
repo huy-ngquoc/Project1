@@ -3,18 +3,17 @@
 namespace Game;
 
 using Input = UnityEngine.Input;
-using Time = UnityEngine.Time;
 
 partial class PlayerController
 {
     partial class PlayerStateMachine
     {
-        private abstract class PlayerState
+        private abstract class PlayerState : EntityState
         {
             protected PlayerState(PlayerStateMachine stateMachine, string animationBoolName)
+                : base(stateMachine, animationBoolName)
             {
-                this.StateMachine = stateMachine;
-                this.AnimationBoolName = animationBoolName;
+                this.PlayerStateMachine = stateMachine;
             }
 
             public static sbyte InputY
@@ -57,74 +56,43 @@ partial class PlayerController
                 }
             }
 
-            public string AnimationBoolName { get; }
+            protected PlayerStateMachine PlayerStateMachine { get; }
 
-            public float StateTimer { get; protected set; } = 0;
+            protected PlayerController PlayerController => this.PlayerStateMachine.playerController;
 
-            public bool TriggerCalled { get; private set; } = false;
-
-            protected PlayerStateMachine StateMachine { get; }
-
-            protected PlayerController Player => this.StateMachine.player;
-
-            public void Enter()
+            protected override void OnEntityStateEnter()
             {
-                this.TriggerCalled = false;
-                if (this.Player.Animator != null)
-                {
-                    this.Player.Animator.SetBool(this.AnimationBoolName, true);
-                }
-
-                this.OnEnter();
+                this.OnPlayerStateEnter();
             }
 
-            public void Update()
+            protected override void OnEntityStateUpdate()
             {
-                if (this.StateTimer > Time.deltaTime)
+                if (this.PlayerController.Animator != null)
                 {
-                    this.StateTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    this.StateTimer = 0;
+                    this.PlayerController.Animator.SetFloat("VelocityY", this.PlayerController.Rigidbody2D.UnityAccessVal(r => r.linearVelocityY, 0));
                 }
 
-                if (this.Player.Animator != null)
-                {
-                    this.Player.Animator.SetFloat("VelocityY", this.Player.Rigidbody2D.UnityAccessVal(r => r.linearVelocityY, 0));
-                }
-
-                this.OnUpdate();
+                this.OnPlayerStateUpdate();
             }
 
-            public void Exit()
+            protected override void OnEntityStateExit()
             {
-                if (this.Player.Animator != null)
-                {
-                    this.Player.Animator.SetBool(this.AnimationBoolName, false);
-                }
-
-                this.OnExit();
+                this.OnPlayerStateExit();
             }
 
-            public void AnimationFinishTrigger()
-            {
-                this.TriggerCalled = true;
-            }
-
-            protected virtual void OnEnter()
+            protected virtual void OnPlayerStateEnter()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method
             }
 
-            protected virtual void OnUpdate()
+            protected virtual void OnPlayerStateUpdate()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method
             }
 
-            protected virtual void OnExit()
+            protected virtual void OnPlayerStateExit()
             {
                 // Leave this method blank
                 // The derived classes can decide if they override this method
