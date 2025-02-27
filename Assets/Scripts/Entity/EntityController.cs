@@ -6,23 +6,38 @@ using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
+[RequireComponent(typeof(EntityStateMachine))]
 public abstract class EntityController : MonoBehaviour
 {
     [field: SerializeField]
+    [field: ReadOnlyInInspector]
     public EntityStateMachine? EntityStateMachine { get; private set; } = null;
 
-    [field: Header("Collision info")]
     [field: SerializeField]
-    public Transform? GroundCheck { get; private set; } = null;
-
-    [field: SerializeField]
-    public Animator? Animator { get; private set; } = null;
-
-    [field: SerializeField]
+    [field: ReadOnlyInInspector]
     public Rigidbody2D? Rigidbody2D { get; private set; } = null;
 
+    [field: Header("Animation info")]
+
     [field: SerializeField]
+    public string AnimatorChildObjectName { get; private set; } = "Animator";
+
+    [field: SerializeField]
+    [field: ReadOnlyInInspector]
     public SpriteRenderer? SpriteRenderer { get; private set; } = null;
+
+    [field: SerializeField]
+    [field: ReadOnlyInInspector]
+    public Animator? Animator { get; private set; } = null;
+
+    [field: Header("Collision info")]
+
+    [field: SerializeField]
+    public string GroundCheckChildObjectName { get; private set; } = "GroundCheck";
+
+    [field: SerializeField]
+    [field: ReadOnlyInInspector]
+    public Transform? GroundCheck { get; private set; } = null;
 
     [field: SerializeField]
     [field: Range(0.01F, 2)]
@@ -210,6 +225,25 @@ public abstract class EntityController : MonoBehaviour
     }
 
     protected virtual void OnEntityControllerUpdate()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
+    protected void OnValidate()
+    {
+        this.EntityStateMachine = this.ResolveComponentInChildren<EntityStateMachine>();
+        this.Rigidbody2D = this.ResolveComponent<Rigidbody2D>();
+        this.SpriteRenderer = this.ResolveComponentInChildren<SpriteRenderer>(this.AnimatorChildObjectName);
+        this.Animator = this.ResolveComponentInChildren<Animator>(this.AnimatorChildObjectName);
+        this.GroundCheck = this.ResolveComponentInChildren<Transform>(this.GroundCheckChildObjectName);
+
+        Debug.AssertFormat(this.WhatIsGround != new LayerMask(), $"Ground is nothing for Game Object `{this.gameObject.name}`?");
+
+        this.OnEntityControllerValidate();
+    }
+
+    protected virtual void OnEntityControllerValidate()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method

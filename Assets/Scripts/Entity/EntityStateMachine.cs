@@ -11,7 +11,8 @@ public abstract class EntityStateMachine : MonoBehaviour
     private EntityState? stateToChangeTo = null;
 
     [field: SerializeField]
-    public EntityController? EntityController { get; protected set; } = null;
+    [field: ReadOnlyInInspector]
+    public EntityController? EntityController { get; private set; } = null;
 
     public void SetStateToChangeTo(EntityState newState)
     {
@@ -30,8 +31,20 @@ public abstract class EntityStateMachine : MonoBehaviour
 
     public void AnimationFinishTrigger() => this.currentState?.AnimationFinishTrigger();
 
+    protected void Awake()
+    {
+        QuickLog.AssertIfUnityObjectNull(this, this.EntityController);
+    }
+
     protected void Start()
     {
+        Debug.Assert(
+            this.stateToChangeTo != null,
+            $"Game Object `{this.gameObject.name}` doesn't have a state to switch from null on `Start()` function! " +
+            "Ensure that the sealed class has switched the current state to a state before the `Start()` function is called!");
+
+        this.currentState = this.stateToChangeTo;
+        this.stateToChangeTo = null;
         this.currentState?.Enter();
     }
 
@@ -49,5 +62,18 @@ public abstract class EntityStateMachine : MonoBehaviour
             // TODO: should we update state right after changing?
             // this.currentState.Update();
         }
+    }
+
+    protected void OnValidate()
+    {
+        this.EntityController = this.ResolveComponentInChildren<EntityController>();
+
+        this.OnEntityStateMachineValidate();
+    }
+
+    protected virtual void OnEntityStateMachineValidate()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
     }
 }

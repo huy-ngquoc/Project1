@@ -2,6 +2,9 @@
 
 namespace Game;
 
+using UnityEngine;
+
+[RequireComponent(typeof(EnemyStateMachine))]
 public abstract class EnemyController : EntityController
 {
     protected sealed override void OnEntityControllerAwake()
@@ -32,6 +35,17 @@ public abstract class EnemyController : EntityController
     }
 
     protected virtual void OnEnemyControllerUpdate()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
+    protected sealed override void OnEntityControllerValidate()
+    {
+        this.OnEnemyControllerValidate();
+    }
+
+    protected virtual void OnEnemyControllerValidate()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method

@@ -1,17 +1,23 @@
 #nullable enable
 
-namespace Game;
-
-public sealed partial class SkeletonStateMachine : EnemyStateMachine
+namespace Game
 {
-    public SkeletonStateMachine()
+    public sealed class SkeletonStateMachine : EnemyStateMachine
     {
-        this.SkeletonIdleState = new SkeletonIdleState(this, "Idle");
+        public SkeletonStateMachine()
+        {
+            this.SkeletonIdleState = new SkeletonIdleState(this, "Idle");
 
-        this.SetStateToChangeTo(this.SkeletonIdleState);
+            this.SetStateToChangeTo(this.SkeletonIdleState);
+        }
+
+        public SkeletonController? SkeletonController { get; private set; }
+
+        public SkeletonIdleState SkeletonIdleState { get; }
+
+        protected override void OnEnemyStateMachineValidate()
+        {
+            this.SkeletonController = (SkeletonController?)this.EnemyController;
+        }
     }
-
-    public SkeletonController? SkeletonController => this.EnemyController as SkeletonController;
-
-    public SkeletonIdleState SkeletonIdleState { get; }
 }

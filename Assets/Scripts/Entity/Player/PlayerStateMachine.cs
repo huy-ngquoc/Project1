@@ -2,7 +2,9 @@
 
 namespace Game
 {
+    using UnityEngine;
 
+    [RequireComponent(typeof(PlayerController))]
     public sealed class PlayerStateMachine : EntityStateMachine
     {
         public PlayerStateMachine()
@@ -15,7 +17,7 @@ namespace Game
             this.SetStateToChangeTo(this.IdleState);
         }
 
-        public PlayerController? PlayerController => this.EntityController as PlayerController;
+        public PlayerController? PlayerController { get; private set; }
 
         public PlayerIdleState IdleState { get; }
 
@@ -24,5 +26,10 @@ namespace Game
         public PlayerJumpState JumpState { get; }
 
         public PlayerFallState FallState { get; }
+
+        protected override void OnEntityStateMachineValidate()
+        {
+            this.PlayerController = (PlayerController?)this.EntityController;
+        }
     }
 }
