@@ -11,15 +11,22 @@ public sealed class PlayerJumpState : PlayerState
 
     protected override void OnPlayerStateEnter()
     {
-        this.PlayerController.SetLinearVelocityY(this.PlayerController.JumpForce);
+        this.PlayerInputHandler.UnityAccess(p => p.CancelJumpInputAction());
+
+        var playerController = this.PlayerController;
+        if (playerController != null)
+        {
+            playerController.SetLinearVelocityY(playerController.JumpForce);
+        }
     }
 
     protected override void OnPlayerStateUpdate()
     {
-        var linearVelocityY = this.PlayerController.GetLinearVelocityOrZeroY();
+        var playerStateMachine = this.PlayerStateMachine;
+        var linearVelocityY = this.PlayerController.UnityAccessVal(p => p.GetLinearVelocityOrZeroY(), 0);
         if (linearVelocityY <= 0)
         {
-            this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.FallState);
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
         }
     }
 }

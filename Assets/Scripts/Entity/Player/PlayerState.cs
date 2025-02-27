@@ -1,9 +1,6 @@
 #nullable enable
 
 namespace Game;
-
-using Input = UnityEngine.Input;
-
 public abstract class PlayerState : EntityState
 {
     protected PlayerState(PlayerStateMachine stateMachine, string animationBoolName)
@@ -12,49 +9,13 @@ public abstract class PlayerState : EntityState
         this.PlayerStateMachine = stateMachine;
     }
 
-    public static sbyte InputY
-    {
-        get
-        {
-            var inputY = Input.GetAxisRaw("Vertical");
-            if (inputY > 0)
-            {
-                return 1;
-            }
-            else if (inputY < 0)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-    }
-
-    public static sbyte InputX
-    {
-        get
-        {
-            var inputX = Input.GetAxisRaw("Horizontal");
-            if (inputX > 0)
-            {
-                return 1;
-            }
-            else if (inputX < 0)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-    }
+    public UnityEngine.Vector2 MoveInput => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInput, UnityEngine.Vector2.zero);
 
     protected PlayerStateMachine PlayerStateMachine { get; }
 
-    protected PlayerController PlayerController => this.PlayerStateMachine.PlayerController;
+    protected PlayerController? PlayerController => this.PlayerStateMachine.PlayerController;
+
+    protected PlayerInputHandler? PlayerInputHandler => this.PlayerController.UnityAccessRef(p => p.InputHandler);
 
     protected sealed override void OnEntityStateEnter()
     {
@@ -63,9 +24,11 @@ public abstract class PlayerState : EntityState
 
     protected sealed override void OnEntityStateUpdate()
     {
-        if (this.PlayerController.Animator != null)
+        var animator = this.PlayerController.UnityAccessRef(p => p.Animator);
+        if (animator != null)
         {
-            this.PlayerController.Animator.SetFloat("VelocityY", this.PlayerController.Rigidbody2D.UnityAccessVal(r => r.linearVelocityY, 0));
+            var velocityY = this.PlayerController.UnityAccessRef(p => p.Rigidbody2D).UnityAccessVal(r => r.linearVelocityY, 0);
+            animator.SetFloat("VelocityY", velocityY);
         }
 
         this.OnPlayerStateUpdate();

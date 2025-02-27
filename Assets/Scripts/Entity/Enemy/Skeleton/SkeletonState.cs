@@ -12,7 +12,7 @@ public abstract class SkeletonState : EnemyState
 
     protected SkeletonStateMachine SkeletonStateMachine { get; }
 
-    protected SkeletonController SkeletonController => this.SkeletonStateMachine.SkeletonController;
+    protected SkeletonController? SkeletonController => this.SkeletonStateMachine.SkeletonController;
 
     protected sealed override void OnEnemyStateEnter()
     {

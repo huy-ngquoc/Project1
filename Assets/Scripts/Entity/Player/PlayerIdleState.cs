@@ -11,14 +11,15 @@ public sealed class PlayerIdleState : PlayerGroundedState
 
     protected override void OnPlayerGroundedStateEnter()
     {
-        this.PlayerController.SetZeroLinearVelocityX();
+        this.PlayerController.UnityAccess(p => p.SetZeroLinearVelocityX());
     }
 
     protected override void OnPlayerGroundedStateUpdate()
     {
-        if (InputX != 0)
+        var playerStateMachine = this.PlayerStateMachine;
+        if ((System.Math.Abs(this.MoveInput.x) > 0) && (playerStateMachine != null))
         {
-            this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.MoveState);
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.MoveState);
         }
     }
 }

@@ -4,6 +4,7 @@ namespace Game
 {
     using UnityEngine;
 
+    [RequireComponent(typeof(PlayerInputHandler))]
     public sealed class PlayerController : EntityController
     {
         [field: Header("Move info")]
@@ -16,9 +17,8 @@ namespace Game
         [field: Range(1, 40)]
         public float JumpForce { get; private set; } = 12;
 
-        protected override void OnEntityControllerAwake()
-        {
-            this.StateMachine = new PlayerStateMachine(this);
-        }
+        [field: Header("Input handler")]
+        [field: SerializeField]
+        public PlayerInputHandler? InputHandler { get; private set; }
     }
 }

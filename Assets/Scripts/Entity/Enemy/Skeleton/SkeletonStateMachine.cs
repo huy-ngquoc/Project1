@@ -4,16 +4,14 @@ namespace Game;
 
 public sealed partial class SkeletonStateMachine : EnemyStateMachine
 {
-    public SkeletonStateMachine(SkeletonController skeletonController)
-        : base(skeletonController)
+    public SkeletonStateMachine()
     {
-        this.SkeletonController = skeletonController;
         this.SkeletonIdleState = new SkeletonIdleState(this, "Idle");
 
-        this.ChangeState(this.SkeletonIdleState);
+        this.SetStateToChangeTo(this.SkeletonIdleState);
     }
 
-    public SkeletonController SkeletonController { get; }
+    public SkeletonController? SkeletonController => this.EnemyController as SkeletonController;
 
     public SkeletonIdleState SkeletonIdleState { get; }
 }

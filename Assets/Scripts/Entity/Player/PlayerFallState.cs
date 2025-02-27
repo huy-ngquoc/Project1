@@ -11,11 +11,16 @@ public sealed class PlayerFallState : PlayerState
 
     protected override void OnPlayerStateUpdate()
     {
-        this.PlayerController.SetLinearVelocityX(this.PlayerController.MoveSpeed * 0.8F * InputX);
-
-        if (this.PlayerController.IsGroundDetected())
+        var playerController = this.PlayerController;
+        if (playerController != null)
         {
-            this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.IdleState);
+            playerController.UnityAccess(p => p.SetLinearVelocityX(playerController.MoveSpeed * 0.8F * this.MoveInput.x));
+
+            var playerStateMachine = this.PlayerStateMachine;
+            if (playerController.IsGroundDetected() && (playerStateMachine != null))
+            {
+                playerStateMachine.SetStateToChangeTo(playerStateMachine.IdleState);
+            }
         }
     }
 }

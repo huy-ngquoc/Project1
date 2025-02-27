@@ -1,9 +1,6 @@
 #nullable enable
 
 namespace Game;
-
-using UnityEngine;
-
 public abstract class PlayerGroundedState : PlayerState
 {
     protected PlayerGroundedState(PlayerStateMachine stateMachine, string animationBoolName)
@@ -24,9 +21,9 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected sealed override void OnPlayerStateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (this.PlayerInputHandler.UnityAccessVal(p => p.JumpPressed, false))
         {
-            this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.JumpState);
+            this.PlayerStateMachine.UnityAccess(p => p.SetStateToChangeTo(p.JumpState));
             return;
         }
 

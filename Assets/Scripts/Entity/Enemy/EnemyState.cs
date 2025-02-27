@@ -12,7 +12,7 @@ public abstract class EnemyState : EntityState
 
     protected EnemyStateMachine EnemyStateMachine { get; }
 
-    protected EnemyController EnemyController => this.EnemyStateMachine.EnemyController;
+    protected EnemyController? EnemyController => this.EnemyStateMachine.EnemyController;
 
     protected sealed override void OnEntityStateEnter()
     {

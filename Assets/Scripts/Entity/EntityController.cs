@@ -2,12 +2,14 @@
 
 namespace Game;
 
+using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public abstract class EntityController : MonoBehaviour
 {
-    public EntityStateMachine? StateMachine { get; protected set; }
+    [field: SerializeField]
+    public EntityStateMachine? EntityStateMachine { get; private set; } = null;
 
     [field: Header("Collision info")]
     [field: SerializeField]
@@ -204,8 +206,6 @@ public abstract class EntityController : MonoBehaviour
 
     protected void Update()
     {
-        this.StateMachine?.UpdateState();
-
         this.OnEntityControllerUpdate();
     }
 

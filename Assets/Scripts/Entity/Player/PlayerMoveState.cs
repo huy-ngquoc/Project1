@@ -11,13 +11,16 @@ public sealed class PlayerMoveState : PlayerGroundedState
 
     protected override void OnPlayerGroundedStateUpdate()
     {
-        if (InputX != 0)
+        var playerController = this.PlayerController;
+        var moveInputX = this.MoveInput.x;
+        if ((System.Math.Abs(moveInputX) > 0) && (playerController != null))
         {
-            this.PlayerController.SetLinearVelocityX(InputX * this.PlayerController.MoveSpeed);
+            playerController.SetLinearVelocityX(moveInputX * playerController.MoveSpeed);
         }
         else
         {
-            this.PlayerStateMachine?.ChangeState(this.PlayerStateMachine.IdleState);
+            var playerStateMachine = this.PlayerStateMachine;
+            playerStateMachine.UnityAccess(p => p.SetStateToChangeTo(p.IdleState));
         }
     }
 }

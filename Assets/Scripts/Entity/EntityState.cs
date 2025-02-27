@@ -20,13 +20,13 @@ public abstract class EntityState
 
     protected EntityStateMachine EntityStateMachine { get; }
 
-    protected EntityController EntityController => this.EntityStateMachine.EntityController;
+    protected EntityController? EntityController => this.EntityStateMachine.EntityController;
 
     public void Enter()
     {
         this.TriggerCalled = false;
 
-        var animator = this.EntityController.Animator;
+        var animator = this.EntityController.UnityAccessRef(e => e.Animator);
         if (animator != null)
         {
             animator.SetBool(this.AnimationBoolName, true);
@@ -51,7 +51,7 @@ public abstract class EntityState
 
     public void Exit()
     {
-        var animator = this.EntityController.Animator;
+        var animator = this.EntityController.UnityAccessRef(e => e.Animator);
         if (animator != null)
         {
             animator.SetBool(this.AnimationBoolName, false);
