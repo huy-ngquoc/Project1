@@ -4,7 +4,7 @@ namespace Game
 {
     public class DettectZone : MonoBehaviour
     {
-       [SerializeField] protected WolfScript monsterScript; 
+       [SerializeField] protected MonsterScript monsterScript; 
        protected virtual void OnTriggerEnter2D(Collider2D col) { 
             if(col.gameObject.tag=="Player") {
                 monsterScript.SetState(State.chase); 

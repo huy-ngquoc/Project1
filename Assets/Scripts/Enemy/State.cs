@@ -9,6 +9,7 @@ namespace Game
         move=1,
         chase=2, 
         attack1=3, 
+        attack2=4,
         takeDamage=10,
         death=11
 
