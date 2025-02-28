@@ -40,15 +40,18 @@ public sealed class ResolveComponentDrawer : PropertyDrawer
 
     private void ResolveComponentLogic(SerializedProperty property)
     {
+        var targetObject = property.serializedObject.targetObject;
+
         // Only works with fields that their type is Object (Component, GameObject, ScriptableObject, ...)
         if (property.propertyType != SerializedPropertyType.ObjectReference)
         {
+            Debug.LogError($"`{nameof(ResolveComponentAttribute)}` is not valid for field `{this.fieldInfo.FieldType}` in Object `{targetObject.name}`!");
             return;
         }
 
-        var targetObject = property.serializedObject.targetObject;
         if (targetObject is not MonoBehaviour monoBehaviour)
         {
+            Debug.LogError($"`{nameof(ResolveComponentAttribute)}` is not valid for field `{this.fieldInfo.FieldType}` in Object `{targetObject.name}`!");
             return;
         }
 
