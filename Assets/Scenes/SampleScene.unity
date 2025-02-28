@@ -933,10 +933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityStateMachine>k__BackingField: {fileID: 508366258}
   <Rigidbody2D>k__BackingField: {fileID: 508366256}
-  <AnimatorChildObjectName>k__BackingField: Animator
   <SpriteRenderer>k__BackingField: {fileID: 130571045}
   <Animator>k__BackingField: {fileID: 130571046}
-  <GroundCheckChildObjectName>k__BackingField: GroundCheck
   <GroundCheck>k__BackingField: {fileID: 1492418257}
   <GroundCheckDistance>k__BackingField: 1
   <WhatIsGround>k__BackingField:
@@ -2081,10 +2079,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityStateMachine>k__BackingField: {fileID: 2026100020}
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
-  <AnimatorChildObjectName>k__BackingField: Animator
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
   <Animator>k__BackingField: {fileID: 398080285}
-  <GroundCheckChildObjectName>k__BackingField: GroundCheck
   <GroundCheck>k__BackingField: {fileID: 1325340505}
   <GroundCheckDistance>k__BackingField: 0.15
   <WhatIsGround>k__BackingField:

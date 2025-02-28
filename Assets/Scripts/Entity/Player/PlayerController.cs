@@ -19,13 +19,8 @@ namespace Game
 
         [field: Header("Input handler")]
 
-        [field: SerializeField]
-        [field: ReadOnlyInInspector]
+        [field: SerializeReference]
+        [field: ResolveComponentInChildren]
         public PlayerInputHandler? InputHandler { get; private set; }
-
-        protected override void OnEntityControllerValidate()
-        {
-            this.InputHandler = this.ResolveComponentInChildren<PlayerInputHandler>();
-        }
     }
 }
