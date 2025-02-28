@@ -38,6 +38,7 @@ public abstract class EntityController : MonoBehaviour
     public float GroundCheckDistance { get; private set; } = 0.1F;
 
     [field: SerializeField]
+    [field: LayerMaskIsNothingOrEverythingWarning]
     public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
     public bool FacingRight { get; private set; } = true;
@@ -226,8 +227,6 @@ public abstract class EntityController : MonoBehaviour
 
     protected void OnValidate()
     {
-        Debug.AssertFormat(this.WhatIsGround != new LayerMask(), $"Ground is nothing for Game Object `{this.gameObject.name}`?");
-
         this.OnEntityControllerValidate();
     }
 
