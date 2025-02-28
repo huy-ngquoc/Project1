@@ -6,14 +6,16 @@ namespace Game
     public class RedHoodScript:MonsterScript
     {  
         private bool isMoving; 
-        private bool isSetShootTrigger; 
+        private bool isSetShootTrigger;  
+        private int redHoodState;
         [SerializeField] private int health;
         [SerializeField] private GameObject arrow;
         private void Start() { 
             transform = GetComponent<Transform>(); 
             animator=GetComponent<Animator>(); 
             isMoving=true; 
-            isSetShootTrigger=false;
+            isSetShootTrigger=false; 
+            redHoodState=0;//1 hit //2 shoot
 
         } 
         private void Update() {
@@ -140,6 +142,9 @@ namespace Game
         }
         public Transform getRedHoodTransform() {
             return transform;
+        } 
+        private void BackToPreviousState() {
+
         }
 
         
