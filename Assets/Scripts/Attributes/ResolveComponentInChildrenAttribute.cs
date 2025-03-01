@@ -9,13 +9,15 @@ using UnityEngine;
 /// Automatically assigns a component to the field, similar to `GetComponentInChildren()`.
 /// If no matching component is found or multiple components of the field's type exist on the GameObject or its children,
 /// the field remains null and an error is logged.
-///
 /// Optionally, specify a non-blank `targetChildName` to restrict the search to a specific child GameObject by name.
-///
 /// Additionally, set `includeInactive` to `true` to include inactive GameObjects to the search (default is `false`).
-///
-/// The field is displayed as read-only in the Inspector if it's serialized by Unity.
 /// </summary>
+/// <remarks>
+/// The field must be serialized by Unity for this attribute to work,
+/// as it only verifies and updates the field in the Inspector via its custom drawer
+/// when the GameObject or Unity hierarchy changes.
+/// The field is displayed as read-only in the Inspector.
+/// </remarks>
 [AttributeUsage(AttributeTargets.Field)]
 public sealed class ResolveComponentInChildrenAttribute : PropertyAttribute
 {
@@ -23,6 +25,9 @@ public sealed class ResolveComponentInChildrenAttribute : PropertyAttribute
     /// Initializes a new instance of the <see cref="ResolveComponentInChildrenAttribute"/> class
     /// to automatically assign a component from the GameObject or any of its children, excluding inactive ones by default.
     /// </summary>
+    /// <remarks>
+    /// The field must be serialized by Unity for this attribute to work.
+    /// </remarks>
     public ResolveComponentInChildrenAttribute()
     {
     }
@@ -32,6 +37,9 @@ public sealed class ResolveComponentInChildrenAttribute : PropertyAttribute
     /// to automatically assign a component from the GameObject or any of its children, excluding inactive ones by default.
     /// Restricts the search to specific GameObjects by name.
     /// </summary>
+    /// <remarks>
+    /// The field must be serialized by Unity for this attribute to work.
+    /// </remarks>
     /// <param name="targetChildName">The name of the GameObject or its children to search within. Leave blank to search all.</param>
     public ResolveComponentInChildrenAttribute(string targetChildName)
     {
@@ -43,6 +51,9 @@ public sealed class ResolveComponentInChildrenAttribute : PropertyAttribute
     /// to automatically assign a component from the GameObject or any of its children.
     /// Specifies whether to include inactive GameObjects in the search.
     /// </summary>
+    /// <remarks>
+    /// The field must be serialized by Unity for this attribute to work.
+    /// </remarks>
     /// <param name="isIncludingInactive">If `true`, includes inactive GameObjects in the search. If `false`, ignores them.</param>
     public ResolveComponentInChildrenAttribute(bool isIncludingInactive)
     {
@@ -54,6 +65,9 @@ public sealed class ResolveComponentInChildrenAttribute : PropertyAttribute
     /// to automatically assign a component from the GameObject or any of its children.
     /// Allows restricting the search to specific GameObjects by name and specifying whether to include inactive GameObjects.
     /// </summary>
+    /// <remarks>
+    /// The field must be serialized by Unity for this attribute to work.
+    /// </remarks>
     /// <param name="targetChildName"> The name of the GameObject or its children to search within. Leave blank to search all.</param>
     /// <param name="isIncludingInactive"> If `true`, includes inactive GameObjects in the search. If `false`, ignores them.</param>
     public ResolveComponentInChildrenAttribute(string targetChildName, bool isIncludingInactive)

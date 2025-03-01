@@ -7,9 +7,6 @@ namespace Game;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Custom Property Drawer to handle auto-assignment in the Unity Editor.
-/// </summary>
 [CustomPropertyDrawer(typeof(ResolveComponentAttribute))]
 public sealed class ResolveComponentDrawer : PropertyDrawer
 {
