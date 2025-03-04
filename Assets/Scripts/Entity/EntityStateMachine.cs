@@ -10,9 +10,7 @@ public abstract class EntityStateMachine : MonoBehaviour
     private EntityState? currentState = null;
     private EntityState? stateToChangeTo = null;
 
-    [field: SerializeField]
-    [field: ReadOnlyInInspector]
-    public EntityController? EntityController { get; private set; } = null;
+    public abstract EntityController? EntityController { get; }
 
     public void SetStateToChangeTo(EntityState newState)
     {
@@ -62,18 +60,5 @@ public abstract class EntityStateMachine : MonoBehaviour
             // TODO: should we update state right after changing?
             // this.currentState.Update();
         }
-    }
-
-    protected void OnValidate()
-    {
-        this.EntityController = this.ResolveComponentInChildren<EntityController>();
-
-        this.OnEntityStateMachineValidate();
-    }
-
-    protected virtual void OnEntityStateMachineValidate()
-    {
-        // Leave this method blank
-        // The derived classes can decide if they override this method
     }
 }

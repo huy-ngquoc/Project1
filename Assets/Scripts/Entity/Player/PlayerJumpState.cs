@@ -4,10 +4,14 @@ namespace Game;
 
 public sealed class PlayerJumpState : PlayerState
 {
-    public PlayerJumpState(PlayerStateMachine stateMachine, string animationBoolName)
-        : base(stateMachine, animationBoolName)
+    public PlayerJumpState(PlayerStateMachine playerStateMachine)
     {
+        this.PlayerStateMachine = playerStateMachine;
     }
+
+    public override string AnimationBoolName => AnimationBoolNameConstants.Jump;
+
+    protected override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerStateEnter()
     {

@@ -4,10 +4,14 @@ namespace Game;
 
 public sealed class PlayerIdleState : PlayerGroundedState
 {
-    public PlayerIdleState(PlayerStateMachine stateMachine, string animationBoolName)
-        : base(stateMachine, animationBoolName)
+    public PlayerIdleState(PlayerStateMachine playerStateMachine)
     {
+        this.PlayerStateMachine = playerStateMachine;
     }
+
+    public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
+
+    protected override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerGroundedStateEnter()
     {

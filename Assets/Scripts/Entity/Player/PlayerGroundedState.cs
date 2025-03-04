@@ -1,13 +1,9 @@
 #nullable enable
 
 namespace Game;
+
 public abstract class PlayerGroundedState : PlayerState
 {
-    protected PlayerGroundedState(PlayerStateMachine stateMachine, string animationBoolName)
-        : base(stateMachine, animationBoolName)
-    {
-    }
-
     protected sealed override void OnPlayerStateEnter()
     {
         this.OnPlayerGroundedStateEnter();

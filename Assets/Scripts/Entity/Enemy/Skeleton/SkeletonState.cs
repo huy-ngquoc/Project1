@@ -4,13 +4,9 @@ namespace Game;
 
 public abstract class SkeletonState : EnemyState
 {
-    protected SkeletonState(SkeletonStateMachine skeletonStateMachine, string animationBoolName)
-        : base(skeletonStateMachine, animationBoolName)
-    {
-        this.SkeletonStateMachine = skeletonStateMachine;
-    }
+    protected abstract SkeletonStateMachine SkeletonStateMachine { get; }
 
-    protected SkeletonStateMachine SkeletonStateMachine { get; }
+    protected sealed override EnemyStateMachine EnemyStateMachine => this.SkeletonStateMachine;
 
     protected SkeletonController? SkeletonController => this.SkeletonStateMachine.SkeletonController;
 

@@ -9,15 +9,13 @@ namespace Game
     {
         public PlayerStateMachine()
         {
-            this.IdleState = new PlayerIdleState(this, "Idle");
-            this.MoveState = new PlayerMoveState(this, "Move");
-            this.JumpState = new PlayerJumpState(this, "Jump");
-            this.FallState = new PlayerFallState(this, "Jump");
+            this.IdleState = new PlayerIdleState(this);
+            this.MoveState = new PlayerMoveState(this);
+            this.JumpState = new PlayerJumpState(this);
+            this.FallState = new PlayerFallState(this);
 
             this.SetStateToChangeTo(this.IdleState);
         }
-
-        public PlayerController? PlayerController { get; private set; }
 
         public PlayerIdleState IdleState { get; }
 
@@ -27,9 +25,10 @@ namespace Game
 
         public PlayerFallState FallState { get; }
 
-        protected override void OnEntityStateMachineValidate()
-        {
-            this.PlayerController = (PlayerController?)this.EntityController;
-        }
+        [field: SerializeReference]
+        [field: ResolveComponentInChildren]
+        public PlayerController? PlayerController { get; private set; } = null;
+
+        public sealed override EntityController? EntityController => this.PlayerController;
     }
 }

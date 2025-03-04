@@ -4,13 +4,9 @@ namespace Game;
 
 public abstract class EnemyState : EntityState
 {
-    protected EnemyState(EnemyStateMachine enemyStateMachine, string animationBoolName)
-        : base(enemyStateMachine, animationBoolName)
-    {
-        this.EnemyStateMachine = enemyStateMachine;
-    }
+    protected abstract EnemyStateMachine EnemyStateMachine { get; }
 
-    protected EnemyStateMachine EnemyStateMachine { get; }
+    protected sealed override EntityStateMachine EntityStateMachine => this.EnemyStateMachine;
 
     protected EnemyController? EnemyController => this.EnemyStateMachine.EnemyController;
 

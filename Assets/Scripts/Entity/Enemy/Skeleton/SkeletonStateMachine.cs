@@ -2,22 +2,23 @@
 
 namespace Game
 {
+    using UnityEngine;
+
     public sealed class SkeletonStateMachine : EnemyStateMachine
     {
         public SkeletonStateMachine()
         {
-            this.SkeletonIdleState = new SkeletonIdleState(this, "Idle");
+            this.SkeletonIdleState = new SkeletonIdleState(this);
 
             this.SetStateToChangeTo(this.SkeletonIdleState);
         }
 
-        public SkeletonController? SkeletonController { get; private set; }
-
         public SkeletonIdleState SkeletonIdleState { get; }
 
-        protected override void OnEnemyStateMachineValidate()
-        {
-            this.SkeletonController = (SkeletonController?)this.EnemyController;
-        }
+        [field: SerializeReference]
+        [field: ResolveComponentInChildren]
+        public SkeletonController? SkeletonController { get; private set; } = null;
+
+        public sealed override EnemyController? EnemyController => this.SkeletonController;
     }
 }

@@ -4,10 +4,14 @@ namespace Game;
 
 public sealed class PlayerFallState : PlayerState
 {
-    public PlayerFallState(PlayerStateMachine stateMachine, string animationBoolName)
-        : base(stateMachine, animationBoolName)
+    public PlayerFallState(PlayerStateMachine playerStateMachine)
     {
+        this.PlayerStateMachine = playerStateMachine;
     }
+
+    public override string AnimationBoolName => AnimationBoolNameConstants.Fall;
+
+    protected override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerStateUpdate()
     {

@@ -4,11 +4,6 @@ namespace Game;
 
 public abstract class SkeletonGroundedState : SkeletonState
 {
-    protected SkeletonGroundedState(SkeletonStateMachine skeletonStateMachine, string animationBoolName)
-        : base(skeletonStateMachine, animationBoolName)
-    {
-    }
-
     protected sealed override void OnSkeletonStateEnter()
     {
         this.OnSkeletonGroundedStateEnter();

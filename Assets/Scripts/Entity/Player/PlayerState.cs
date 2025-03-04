@@ -3,15 +3,11 @@
 namespace Game;
 public abstract class PlayerState : EntityState
 {
-    protected PlayerState(PlayerStateMachine stateMachine, string animationBoolName)
-        : base(stateMachine, animationBoolName)
-    {
-        this.PlayerStateMachine = stateMachine;
-    }
-
     public UnityEngine.Vector2 MoveInput => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInput, UnityEngine.Vector2.zero);
 
-    protected PlayerStateMachine PlayerStateMachine { get; }
+    protected abstract PlayerStateMachine PlayerStateMachine { get; }
+
+    protected sealed override EntityStateMachine EntityStateMachine => this.PlayerStateMachine;
 
     protected PlayerController? PlayerController => this.PlayerStateMachine.PlayerController;
 

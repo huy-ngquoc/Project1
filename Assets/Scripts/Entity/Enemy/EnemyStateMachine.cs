@@ -4,18 +4,7 @@ namespace Game;
 
 public abstract class EnemyStateMachine : EntityStateMachine
 {
-    public EnemyController? EnemyController { get; private set; }
+    public abstract EnemyController? EnemyController { get; }
 
-    protected sealed override void OnEntityStateMachineValidate()
-    {
-        this.EnemyController = (EnemyController?)this.EntityController;
-
-        this.OnEnemyStateMachineValidate();
-    }
-
-    protected virtual void OnEnemyStateMachineValidate()
-    {
-        // Leave this method blank
-        // The derived classes can decide if they override this method
-    }
+    public sealed override EntityController? EntityController => this.EnemyController;
 }
