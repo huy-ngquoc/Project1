@@ -11,7 +11,7 @@ public sealed class SkeletonIdleState : SkeletonGroundedState
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
 
-    protected override SkeletonStateMachine SkeletonStateMachine { get; }
+    public override SkeletonStateMachine SkeletonStateMachine { get; }
 
     protected override void OnSkeletonGroundedStateEnter()
     {
@@ -22,7 +22,7 @@ public sealed class SkeletonIdleState : SkeletonGroundedState
     {
         if (this.StateTimer <= 0)
         {
-            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.SkeletonMoveState);
+            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.MoveState);
         }
     }
 }

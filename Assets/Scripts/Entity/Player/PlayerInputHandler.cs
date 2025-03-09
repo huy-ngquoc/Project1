@@ -4,10 +4,9 @@ namespace Game
 {
     using UnityEngine;
 
-    [DisallowMultipleComponent]
     public sealed class PlayerInputHandler : MonoBehaviour, System.IDisposable
     {
-        private InputSystemAction? inputSystemAction = null;
+        private InputSystemAction inputSystemAction = null!;
 
         public Vector2 MoveInput { get; private set; } = Vector2.zero;
 
@@ -94,7 +93,7 @@ namespace Game
 
         private void OnDestroy()
         {
-            this.inputSystemAction?.Disable();
+            this.inputSystemAction?.Dispose();
         }
     }
 }

@@ -4,11 +4,11 @@ namespace Game;
 
 public abstract class SkeletonState : EnemyState
 {
-    protected abstract SkeletonStateMachine SkeletonStateMachine { get; }
+    public abstract SkeletonStateMachine SkeletonStateMachine { get; }
 
-    protected sealed override EnemyStateMachine EnemyStateMachine => this.SkeletonStateMachine;
+    public sealed override EnemyStateMachine EnemyStateMachine => this.SkeletonStateMachine;
 
-    protected SkeletonController? SkeletonController => this.SkeletonStateMachine.SkeletonController;
+    public SkeletonController SkeletonController => this.SkeletonStateMachine.SkeletonController;
 
     protected sealed override void OnEnemyStateEnter()
     {

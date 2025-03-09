@@ -12,24 +12,19 @@ public abstract class EntityState
 
     public bool TriggerCalled { get; protected set; } = false;
 
-    public int FacingDirection => this.EntityController.UnityAccessVal(p => p.FacingDirection, 0);
+    public abstract EntityStateMachine EntityStateMachine { get; }
 
-    public bool IsGroundDetected => this.EntityController.UnityAccessVal(p => p.IsGroundDetected, false);
-
-    public bool IsWallDetected => this.EntityController.UnityAccessVal(p => p.IsWallDetected, false);
-
-    protected abstract EntityStateMachine EntityStateMachine { get; }
-
-    protected EntityController? EntityController => this.EntityStateMachine.EntityController;
+    public EntityController EntityController => this.EntityStateMachine.EntityController;
 
     public void Enter()
     {
         this.TriggerCalled = false;
 
-        var animator = this.EntityController.UnityAccessRef(e => e.Animator);
-        if (animator != null)
+        var animator = this.EntityController.Animator;
+        var animationBoolName = this.AnimationBoolName;
+        if (!string.IsNullOrWhiteSpace(animationBoolName))
         {
-            animator.SetBool(this.AnimationBoolName, true);
+            animator.SetBool(animationBoolName, true);
         }
 
         this.OnEntityStateEnter();
@@ -51,10 +46,11 @@ public abstract class EntityState
 
     public void Exit()
     {
-        var animator = this.EntityController.UnityAccessRef(e => e.Animator);
-        if (animator != null)
+        var animator = this.EntityController.Animator;
+        var animationBoolName = this.AnimationBoolName;
+        if (!string.IsNullOrWhiteSpace(animationBoolName))
         {
-            animator.SetBool(this.AnimationBoolName, false);
+            animator.SetBool(animationBoolName, false);
         }
 
         this.OnEntityStateExit();

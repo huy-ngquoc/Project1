@@ -4,25 +4,26 @@ namespace Game
 {
     using UnityEngine;
 
+    [RequireComponent(typeof(SkeletonController))]
     public sealed class SkeletonStateMachine : EnemyStateMachine
     {
         public SkeletonStateMachine()
         {
-            this.SkeletonIdleState = new SkeletonIdleState(this);
-            this.SkeletonMoveState = new SkeletonMoveState(this);
-
-            this.SetStateToChangeTo(this.SkeletonIdleState);
+            this.IdleState = new SkeletonIdleState(this);
+            this.MoveState = new SkeletonMoveState(this);
         }
 
         [field: Header("Controller")]
         [field: SerializeReference]
-        [field: ResolveComponentInChildren]
-        public SkeletonController? SkeletonController { get; private set; } = null;
+        [field: ResolveComponent]
+        public SkeletonController SkeletonController { get; private set; } = null!;
 
-        public SkeletonIdleState SkeletonIdleState { get; }
+        public sealed override EnemyController EnemyController => this.SkeletonController;
 
-        public SkeletonMoveState SkeletonMoveState { get; }
+        public sealed override EntityState InitialState => this.IdleState;
 
-        public sealed override EnemyController? EnemyController => this.SkeletonController;
+        public SkeletonIdleState IdleState { get; }
+
+        public SkeletonMoveState MoveState { get; }
     }
 }

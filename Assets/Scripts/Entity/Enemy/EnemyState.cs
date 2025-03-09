@@ -4,11 +4,11 @@ namespace Game;
 
 public abstract class EnemyState : EntityState
 {
-    protected abstract EnemyStateMachine EnemyStateMachine { get; }
+    public abstract EnemyStateMachine EnemyStateMachine { get; }
 
-    protected sealed override EntityStateMachine EntityStateMachine => this.EnemyStateMachine;
+    public sealed override EntityStateMachine EntityStateMachine => this.EnemyStateMachine;
 
-    protected EnemyController? EnemyController => this.EnemyStateMachine.EnemyController;
+    public EnemyController EnemyController => this.EnemyStateMachine.EnemyController;
 
     protected sealed override void OnEntityStateEnter()
     {

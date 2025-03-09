@@ -6,32 +6,28 @@ using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(EntityStateMachine))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class EntityController : MonoBehaviour
 {
     [field: SerializeReference]
-    [field: ResolveComponentInChildren]
-    public EntityStateMachine? EntityStateMachine { get; private set; } = null;
-
-    [field: SerializeReference]
     [field: ResolveComponent]
-    public Rigidbody2D? Rigidbody2D { get; private set; } = null;
+    public Rigidbody2D Rigidbody2D { get; private set; } = null!;
 
     [field: Header("Animation info")]
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("Animator")]
-    public SpriteRenderer? SpriteRenderer { get; private set; } = null;
+    public SpriteRenderer SpriteRenderer { get; private set; } = null!;
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("Animator")]
-    public Animator? Animator { get; private set; } = null;
+    public Animator Animator { get; private set; } = null!;
 
     [field: Header("Collision info")]
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("GroundCheck")]
-    public Transform? GroundCheck { get; private set; } = null;
+    public Transform GroundCheck { get; private set; } = null!;
 
     [field: SerializeField]
     [field: Range(0.01F, 2)]
@@ -41,9 +37,11 @@ public abstract class EntityController : MonoBehaviour
     [field: LayerMaskIsNothingOrEverythingWarning]
     public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
+    public bool IsGroundDetected => Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
+
     [field: SerializeReference]
     [field: ResolveComponentInChildren("WallCheck")]
-    public Transform? WallCheck { get; private set; } = null;
+    public Transform WallCheck { get; private set; } = null!;
 
     [field: SerializeField]
     [field: Range(0.01F, 2)]
@@ -52,6 +50,8 @@ public abstract class EntityController : MonoBehaviour
     [field: SerializeField]
     [field: LayerMaskIsNothingOrEverythingWarning]
     public LayerMask WhatIsWall { get; private set; } = new LayerMask();
+
+    public bool IsWallDetected => Physics2D.Raycast(this.WallCheck.position, Vector2.right * this.FacingDirection, this.WallCheckDistance, this.WhatIsWall);
 
     [field: Header("Move info")]
 
@@ -65,41 +65,11 @@ public abstract class EntityController : MonoBehaviour
 
     public int FacingDirection => this.FacingRight ? 1 : -1;
 
-    public bool IsGroundDetected
-    {
-        get
-        {
-            if (this.GroundCheck != null)
-            {
-                return Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
-            }
-
-            return false;
-        }
-    }
-
-    public bool IsWallDetected
-    {
-        get
-        {
-            if (this.WallCheck != null)
-            {
-                return Physics2D.Raycast(this.WallCheck.position, Vector2.right * this.FacingDirection, this.WallCheckDistance, this.WhatIsWall);
-            }
-
-            return false;
-        }
-    }
+    public abstract EntityStateMachine EntityStateMachine { get; }
 
     public void FlipController(float x)
     {
-        bool flip = false;
-
-        if (this.GetComponent<Rigidbody2D>() != null)
-        {
-            flip = this.FacingRight ? (x < 0) : (x > 0);
-        }
-
+        bool flip = this.FacingRight ? (x < 0) : (x > 0);
         if (flip)
         {
             this.Flip();
@@ -112,121 +82,41 @@ public abstract class EntityController : MonoBehaviour
         this.transform.Rotate(0F, 180F, 0F);
     }
 
-    public bool SetLinearVelocity(float x, float y)
+    public void SetLinearVelocity(float x, float y)
     {
-        return this.SetLinearVelocity(new Vector2(x, y));
+        this.SetLinearVelocity(new Vector2(x, y));
     }
 
-    public bool SetLinearVelocity(Vector2 newLinearVelocity)
+    public void SetLinearVelocity(Vector2 newLinearVelocity)
     {
-        if (this.Rigidbody2D != null)
-        {
-            this.Rigidbody2D.linearVelocity = newLinearVelocity;
-            this.FlipController(newLinearVelocity.x);
-            return true;
-        }
-
-        return false;
+        this.Rigidbody2D.linearVelocity = newLinearVelocity;
+        this.FlipController(newLinearVelocity.x);
     }
 
-    public bool SetZeroLinearVelocity()
+    public void SetZeroLinearVelocity()
     {
-        if (this.Rigidbody2D != null)
-        {
-            this.Rigidbody2D.linearVelocity = Vector2.zero;
-            return true;
-        }
-
-        return false;
+        this.Rigidbody2D.linearVelocity = Vector2.zero;
     }
 
-    public bool SetLinearVelocityX(float newLinearVelocityX)
+    public void SetLinearVelocityX(float newLinearVelocityX)
     {
-        if (this.Rigidbody2D != null)
-        {
-            this.Rigidbody2D.linearVelocityX = newLinearVelocityX;
-            this.FlipController(newLinearVelocityX);
-            return true;
-        }
-
-        return false;
+        this.Rigidbody2D.linearVelocityX = newLinearVelocityX;
+        this.FlipController(newLinearVelocityX);
     }
 
-    public bool SetZeroLinearVelocityX()
+    public void SetZeroLinearVelocityX()
     {
-        if (this.Rigidbody2D != null)
-        {
-            this.Rigidbody2D.linearVelocityX = 0;
-            return true;
-        }
-
-        return false;
+        this.Rigidbody2D.linearVelocityX = 0;
     }
 
-    public bool SetLinearVelocityY(float newLinearVelocityY)
+    public void SetLinearVelocityY(float newLinearVelocityY)
     {
-        if (this.Rigidbody2D != null)
-        {
-            this.Rigidbody2D.linearVelocityY = newLinearVelocityY;
-            return true;
-        }
-
-        return false;
+        this.Rigidbody2D.linearVelocityY = newLinearVelocityY;
     }
 
-    public bool SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
+    public void SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
 
-    public Vector2? GetLinearVelocity()
-    {
-        Vector2? result = null;
-
-        if (this.Rigidbody2D != null)
-        {
-            result = this.Rigidbody2D.linearVelocity;
-        }
-
-        return result;
-    }
-
-    public Vector2 GetLinearVelocityOrDefault(Vector2 defaultLinearVelocity)
-         => this.GetLinearVelocity().GetValueOrDefault(defaultLinearVelocity);
-
-    public Vector2 GetLinearVelocityOrZero()
-       => this.GetLinearVelocityOrDefault(Vector2.zero);
-
-    public float? GetLinearVelocityX()
-    {
-        float? result = null;
-
-        if (this.Rigidbody2D != null)
-        {
-            result = this.Rigidbody2D.linearVelocityX;
-        }
-
-        return result;
-    }
-
-    public float GetLinearVelocityOrDefaultX(float defaultLinearVelocityX)
-         => this.GetLinearVelocityX().GetValueOrDefault(defaultLinearVelocityX);
-
-    public float GetLinearVelocityOrZeroX() => this.GetLinearVelocityOrDefaultX(0);
-
-    public float? GetLinearVelocityY()
-    {
-        float? result = null;
-
-        if (this.Rigidbody2D != null)
-        {
-            result = this.Rigidbody2D.linearVelocityY;
-        }
-
-        return result;
-    }
-
-    public float GetLinearVelocityOrDefaultY(float defaultLinearVelocityY)
-        => this.GetLinearVelocityY().GetValueOrDefault(defaultLinearVelocityY);
-
-    public float GetLinearVelocityOrZeroY() => this.GetLinearVelocityOrDefaultY(0);
+    public Vector2 GetLinearVelocity() => this.Rigidbody2D.linearVelocity;
 
     protected void Awake()
     {
@@ -257,6 +147,17 @@ public abstract class EntityController : MonoBehaviour
         this.OnEntityControllerUpdate();
     }
 
+    protected void OnDestroy()
+    {
+        this.OnEntityControllerDestroy();
+    }
+
+    protected virtual void OnEntityControllerDestroy()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
     protected virtual void OnEntityControllerUpdate()
     {
         // Leave this method blank
@@ -276,15 +177,8 @@ public abstract class EntityController : MonoBehaviour
 
     protected void OnDrawGizmos()
     {
-        if (this.GroundCheck != null)
-        {
-            Gizmos.DrawLine(this.GroundCheck.position, new Vector2(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
-        }
-
-        if (this.WallCheck != null)
-        {
-            Gizmos.DrawLine(this.WallCheck.position, new Vector2(this.WallCheck.position.x + (this.WallCheckDistance * this.FacingDirection), this.WallCheck.position.y));
-        }
+        Gizmos.DrawLine(this.GroundCheck.position, new Vector2(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
+        Gizmos.DrawLine(this.WallCheck.position, new Vector2(this.WallCheck.position.x + (this.WallCheckDistance * this.FacingDirection), this.WallCheck.position.y));
 
         this.OnEntityControllerDrawGizmos();
     }

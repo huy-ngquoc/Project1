@@ -18,9 +18,17 @@ public abstract class PlayerGroundedState : PlayerState
     protected sealed override void OnPlayerStateUpdate()
     {
         var playerStateMachine = this.PlayerStateMachine;
-        if (this.JumpPressed)
+
+        if (this.PlayerInputHandler.JumpPressed)
         {
             playerStateMachine.SetStateToChangeTo(playerStateMachine.JumpState);
+            return;
+        }
+
+        if (!this.PlayerController.IsGroundDetected)
+        {
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
+            return;
         }
 
         this.OnPlayerGroundedStateUpdate();

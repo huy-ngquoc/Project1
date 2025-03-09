@@ -11,26 +11,27 @@ public sealed class PlayerJumpState : PlayerState
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Jump;
 
-    protected override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerStateEnter()
     {
-        this.CancelJumpInputAction();
+        this.PlayerInputHandler.CancelJumpInputAction();
 
         var playerController = this.PlayerController;
-        if (playerController != null)
-        {
-            playerController.SetLinearVelocityY(playerController.JumpForce);
-        }
+        playerController.SetLinearVelocityY(playerController.JumpForce);
     }
 
     protected override void OnPlayerStateUpdate()
     {
         var playerStateMachine = this.PlayerStateMachine;
-        var linearVelocityY = this.PlayerController.UnityAccessVal(p => p.GetLinearVelocityOrZeroY(), 0);
+        var playerController = this.PlayerController;
+        var linearVelocityY = playerController.GetLinearVelocity().y;
+
         if (linearVelocityY <= 0)
         {
             playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
         }
+
+        playerController.SetLinearVelocityX(playerController.MoveSpeed * 0.8F * this.PlayerInputHandler.MoveInputX);
     }
 }

@@ -11,31 +11,27 @@ public sealed class PlayerMoveState : PlayerGroundedState
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Move;
 
-    protected override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerGroundedStateEnter()
     {
-        this.PlayerController.UnityAccess(p => p.SetLinearVelocityX(this.MoveInputInt.x * p.MoveSpeed));
+        var playerController = this.PlayerController;
+        playerController.SetLinearVelocityX(this.PlayerInputHandler.MoveInputX * playerController.MoveSpeed);
     }
 
     protected override void OnPlayerGroundedStateUpdate()
     {
         var playerStateMachine = this.PlayerStateMachine;
         var playerController = this.PlayerController;
-        var moveInputX = this.MoveInputXInt;
+        var moveInputXInt = this.PlayerInputHandler.MoveInputXInt;
 
-        if (!this.IsGroundDetected)
-        {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
-        }
-        if ((System.Math.Abs(moveInputX) > 0) && (playerController != null)
-            && ((moveInputX != playerController.FacingDirection) || (!playerController.IsWallDetected)))
-        {
-            playerController.SetLinearVelocityX(moveInputX * playerController.MoveSpeed);
-        }
-        else
+        if ((moveInputXInt == 0)
+            || ((moveInputXInt == playerController.FacingDirection) && playerController.IsWallDetected))
         {
             playerStateMachine.SetStateToChangeTo(playerStateMachine.IdleState);
+            return;
         }
+
+        playerController.SetLinearVelocityX(moveInputXInt * playerController.MoveSpeed);
     }
 }

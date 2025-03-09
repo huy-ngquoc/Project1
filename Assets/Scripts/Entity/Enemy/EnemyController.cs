@@ -1,12 +1,12 @@
 #nullable enable
 
 namespace Game;
-
-using UnityEngine;
-
-[RequireComponent(typeof(EnemyStateMachine))]
 public abstract class EnemyController : EntityController
 {
+    public abstract EnemyStateMachine EnemyStateMachine { get; }
+
+    public sealed override EntityStateMachine EntityStateMachine => this.EnemyStateMachine;
+
     protected sealed override void OnEntityControllerAwake()
     {
         this.OnEnemyControllerAwake();
@@ -35,6 +35,17 @@ public abstract class EnemyController : EntityController
     }
 
     protected virtual void OnEnemyControllerUpdate()
+    {
+        // Leave this method blank
+        // The derived classes can decide if they override this method
+    }
+
+    protected sealed override void OnEntityControllerDestroy()
+    {
+        this.OnEnemyControllerDestroy();
+    }
+
+    protected virtual void OnEnemyControllerDestroy()
     {
         // Leave this method blank
         // The derived classes can decide if they override this method

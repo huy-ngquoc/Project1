@@ -4,22 +4,23 @@ namespace Game;
 
 using UnityEngine;
 
-[DisallowMultipleComponent]
 public abstract class EntityStateMachine : MonoBehaviour
 {
-    private EntityState? currentState = null;
+    private EntityState currentState = null!;
     private EntityState? stateToChangeTo = null;
 
-    public abstract EntityController? EntityController { get; }
+    public abstract EntityController EntityController { get; }
 
-    public void SetStateToChangeTo(EntityState newState)
-    {
-        this.stateToChangeTo = newState;
-    }
+    public abstract EntityState InitialState { get; }
 
     public bool HasStateToChangeTo()
     {
         return this.stateToChangeTo != null;
+    }
+
+    public void SetStateToChangeTo(EntityState newState)
+    {
+        this.stateToChangeTo = newState;
     }
 
     public void CancelChangingState()
@@ -31,28 +32,17 @@ public abstract class EntityStateMachine : MonoBehaviour
 
     protected void Awake()
     {
-        QuickLog.AssertIfUnityObjectNull(this, this.EntityController);
-    }
-
-    protected void Start()
-    {
-        Debug.Assert(
-            this.stateToChangeTo != null,
-            $"Game Object `{this.gameObject.name}` doesn't have a state to switch from null on `Start()` function! " +
-            "Ensure that the sealed class has switched the current state to a state before the `Start()` function is called!");
-
-        this.currentState = this.stateToChangeTo;
-        this.stateToChangeTo = null;
-        this.currentState?.Enter();
+        this.currentState = this.InitialState;
+        this.currentState.Enter();
     }
 
     protected void Update()
     {
-        this.currentState?.Update();
+        this.currentState.Update();
 
         while (this.stateToChangeTo != null)
         {
-            this.currentState?.Exit();
+            this.currentState.Exit();
             this.currentState = this.stateToChangeTo;
             this.stateToChangeTo = null;
             this.currentState.Enter();

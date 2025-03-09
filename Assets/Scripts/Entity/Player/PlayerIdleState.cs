@@ -11,29 +11,23 @@ public sealed class PlayerIdleState : PlayerGroundedState
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
 
-    protected override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerStateMachine PlayerStateMachine { get; }
 
     protected override void OnPlayerGroundedStateEnter()
     {
-        this.PlayerController.UnityAccess(p => p.SetZeroLinearVelocityX());
+        this.PlayerController.SetZeroLinearVelocity();
     }
 
     protected override void OnPlayerGroundedStateUpdate()
     {
         var playerStateMachine = this.PlayerStateMachine;
-        var moveInputIntX = this.MoveInputXInt;
+        var playerController = this.PlayerController;
+        var moveInputXInt = this.PlayerInputHandler.MoveInputXInt;
 
-        if (!this.IsGroundDetected)
-        {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
-        }
-        else if ((moveInputIntX != 0) && ((moveInputIntX != this.FacingDirection) || (!this.IsWallDetected)))
+        if ((moveInputXInt != 0)
+            && ((moveInputXInt != playerController.FacingDirection) || (!playerController.IsWallDetected)))
         {
             playerStateMachine.SetStateToChangeTo(playerStateMachine.MoveState);
-        }
-        else
-        {
-            // State stay remain...
         }
     }
 }

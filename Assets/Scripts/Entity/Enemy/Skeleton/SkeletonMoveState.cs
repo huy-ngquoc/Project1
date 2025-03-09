@@ -11,22 +11,19 @@ public sealed class SkeletonMoveState : SkeletonGroundedState
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Move;
 
-    protected override SkeletonStateMachine SkeletonStateMachine { get; }
+    public override SkeletonStateMachine SkeletonStateMachine { get; }
 
     protected override void OnSkeletonGroundedStateUpdate()
     {
         var controller = this.SkeletonController;
-        if (controller == null)
+
+        if ((!controller.IsGroundDetected) || controller.IsWallDetected)
         {
-            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.SkeletonIdleState);
+            controller.Flip();
+            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.IdleState);
             return;
         }
 
         controller.SetLinearVelocityX(controller.MoveSpeed * controller.FacingDirection);
-        if ((!controller.IsGroundDetected) || controller.IsWallDetected)
-        {
-            controller.Flip();
-            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.SkeletonIdleState);
-        }
     }
 }

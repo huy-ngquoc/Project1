@@ -4,23 +4,13 @@ namespace Game;
 
 public abstract class PlayerState : EntityState
 {
-    public UnityEngine.Vector2Int MoveInputInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputInt, UnityEngine.Vector2Int.zero);
+    public abstract PlayerStateMachine PlayerStateMachine { get; }
 
-    public int MoveInputXInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputXInt, 0);
+    public sealed override EntityStateMachine EntityStateMachine => this.PlayerStateMachine;
 
-    public int MoveInputYInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputYInt, 0);
+    public PlayerController PlayerController => this.PlayerStateMachine.PlayerController;
 
-    public bool JumpPressed => this.PlayerInputHandler.UnityAccessVal(p => p.JumpPressed, false);
-
-    protected abstract PlayerStateMachine PlayerStateMachine { get; }
-
-    protected sealed override EntityStateMachine EntityStateMachine => this.PlayerStateMachine;
-
-    protected PlayerController? PlayerController => this.PlayerStateMachine.PlayerController;
-
-    protected PlayerInputHandler? PlayerInputHandler => this.PlayerController.UnityAccessRef(p => p.InputHandler);
-
-    public void CancelJumpInputAction() => this.PlayerInputHandler.UnityAccess(p => p.CancelJumpInputAction());
+    public PlayerInputHandler PlayerInputHandler => this.PlayerController.InputHandler;
 
     protected sealed override void OnEntityStateEnter()
     {
@@ -29,12 +19,9 @@ public abstract class PlayerState : EntityState
 
     protected sealed override void OnEntityStateUpdate()
     {
-        var animator = this.PlayerController.UnityAccessRef(p => p.Animator);
-        if (animator != null)
-        {
-            var velocityY = this.PlayerController.UnityAccessRef(p => p.Rigidbody2D).UnityAccessVal(r => r.linearVelocityY, 0);
-            animator.SetFloat("VelocityY", velocityY);
-        }
+        var animator = this.PlayerController.Animator;
+        var velocityY = this.PlayerController.Rigidbody2D.UnityAccessVal(r => r.linearVelocityY, 0);
+        animator.SetFloat("VelocityY", velocityY);
 
         this.OnPlayerStateUpdate();
     }
