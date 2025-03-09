@@ -1,9 +1,16 @@
 #nullable enable
 
 namespace Game;
+
 public abstract class PlayerState : EntityState
 {
-    public UnityEngine.Vector2 MoveInput => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInput, UnityEngine.Vector2.zero);
+    public UnityEngine.Vector2Int MoveInputInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputInt, UnityEngine.Vector2Int.zero);
+
+    public int MoveInputXInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputXInt, 0);
+
+    public int MoveInputYInt => this.PlayerInputHandler.UnityAccessVal(p => p.MoveInputYInt, 0);
+
+    public bool JumpPressed => this.PlayerInputHandler.UnityAccessVal(p => p.JumpPressed, false);
 
     protected abstract PlayerStateMachine PlayerStateMachine { get; }
 
@@ -12,6 +19,8 @@ public abstract class PlayerState : EntityState
     protected PlayerController? PlayerController => this.PlayerStateMachine.PlayerController;
 
     protected PlayerInputHandler? PlayerInputHandler => this.PlayerController.UnityAccessRef(p => p.InputHandler);
+
+    public void CancelJumpInputAction() => this.PlayerInputHandler.UnityAccess(p => p.CancelJumpInputAction());
 
     protected sealed override void OnEntityStateEnter()
     {

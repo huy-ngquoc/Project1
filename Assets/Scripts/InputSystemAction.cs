@@ -116,7 +116,7 @@ namespace Game
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""e11d12d1-75a6-42f5-8b4f-3e1ea3380678"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

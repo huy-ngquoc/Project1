@@ -17,10 +17,10 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected sealed override void OnPlayerStateUpdate()
     {
-        if (this.PlayerInputHandler.UnityAccessVal(p => p.JumpPressed, false) &&
-            this.PlayerStateMachine.UnityAccess(p => p.SetStateToChangeTo(p.JumpState)))
+        var playerStateMachine = this.PlayerStateMachine;
+        if (this.JumpPressed)
         {
-            return;
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.JumpState);
         }
 
         this.OnPlayerGroundedStateUpdate();

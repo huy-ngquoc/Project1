@@ -41,6 +41,18 @@ public abstract class EntityController : MonoBehaviour
     [field: LayerMaskIsNothingOrEverythingWarning]
     public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
+    [field: SerializeReference]
+    [field: ResolveComponentInChildren("WallCheck")]
+    public Transform? WallCheck { get; private set; } = null;
+
+    [field: SerializeField]
+    [field: Range(0.01F, 2)]
+    public float WallCheckDistance { get; private set; } = 0.1F;
+
+    [field: SerializeField]
+    [field: LayerMaskIsNothingOrEverythingWarning]
+    public LayerMask WhatIsWall { get; private set; } = new LayerMask();
+
     [field: Header("Move info")]
 
     [field: SerializeField]
@@ -53,14 +65,30 @@ public abstract class EntityController : MonoBehaviour
 
     public int FacingDirection => this.FacingRight ? 1 : -1;
 
-    public bool IsGroundDetected()
+    public bool IsGroundDetected
     {
-        if (this.GroundCheck != null)
+        get
         {
-            return Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
-        }
+            if (this.GroundCheck != null)
+            {
+                return Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
+            }
 
-        return false;
+            return false;
+        }
+    }
+
+    public bool IsWallDetected
+    {
+        get
+        {
+            if (this.WallCheck != null)
+            {
+                return Physics2D.Raycast(this.WallCheck.position, Vector2.right * this.FacingDirection, this.WallCheckDistance, this.WhatIsWall);
+            }
+
+            return false;
+        }
     }
 
     public void FlipController(float x)
@@ -250,7 +278,12 @@ public abstract class EntityController : MonoBehaviour
     {
         if (this.GroundCheck != null)
         {
-            Gizmos.DrawLine(this.GroundCheck.position, new Vector3(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
+            Gizmos.DrawLine(this.GroundCheck.position, new Vector2(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
+        }
+
+        if (this.WallCheck != null)
+        {
+            Gizmos.DrawLine(this.WallCheck.position, new Vector2(this.WallCheck.position.x + (this.WallCheckDistance * this.FacingDirection), this.WallCheck.position.y));
         }
 
         this.OnEntityControllerDrawGizmos();

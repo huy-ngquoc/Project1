@@ -13,18 +13,29 @@ public sealed class PlayerMoveState : PlayerGroundedState
 
     protected override PlayerStateMachine PlayerStateMachine { get; }
 
+    protected override void OnPlayerGroundedStateEnter()
+    {
+        this.PlayerController.UnityAccess(p => p.SetLinearVelocityX(this.MoveInputInt.x * p.MoveSpeed));
+    }
+
     protected override void OnPlayerGroundedStateUpdate()
     {
+        var playerStateMachine = this.PlayerStateMachine;
         var playerController = this.PlayerController;
-        var moveInputX = this.MoveInput.x;
-        if ((System.Math.Abs(moveInputX) > 0) && (playerController != null))
+        var moveInputX = this.MoveInputXInt;
+
+        if (!this.IsGroundDetected)
+        {
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
+        }
+        if ((System.Math.Abs(moveInputX) > 0) && (playerController != null)
+            && ((moveInputX != playerController.FacingDirection) || (!playerController.IsWallDetected)))
         {
             playerController.SetLinearVelocityX(moveInputX * playerController.MoveSpeed);
         }
         else
         {
-            var playerStateMachine = this.PlayerStateMachine;
-            playerStateMachine.UnityAccess(p => p.SetStateToChangeTo(p.IdleState));
+            playerStateMachine.SetStateToChangeTo(playerStateMachine.IdleState);
         }
     }
 }

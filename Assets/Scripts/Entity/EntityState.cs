@@ -12,6 +12,12 @@ public abstract class EntityState
 
     public bool TriggerCalled { get; protected set; } = false;
 
+    public int FacingDirection => this.EntityController.UnityAccessVal(p => p.FacingDirection, 0);
+
+    public bool IsGroundDetected => this.EntityController.UnityAccessVal(p => p.IsGroundDetected, false);
+
+    public bool IsWallDetected => this.EntityController.UnityAccessVal(p => p.IsWallDetected, false);
+
     protected abstract EntityStateMachine EntityStateMachine { get; }
 
     protected EntityController? EntityController => this.EntityStateMachine.EntityController;

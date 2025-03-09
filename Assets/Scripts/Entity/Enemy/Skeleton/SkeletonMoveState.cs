@@ -23,7 +23,7 @@ public sealed class SkeletonMoveState : SkeletonGroundedState
         }
 
         controller.SetLinearVelocityX(controller.MoveSpeed * controller.FacingDirection);
-        if (!controller.IsGroundDetected())
+        if ((!controller.IsGroundDetected) || controller.IsWallDetected)
         {
             controller.Flip();
             this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.SkeletonIdleState);

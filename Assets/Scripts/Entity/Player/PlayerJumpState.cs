@@ -15,7 +15,7 @@ public sealed class PlayerJumpState : PlayerState
 
     protected override void OnPlayerStateEnter()
     {
-        this.PlayerInputHandler.UnityAccess(p => p.CancelJumpInputAction());
+        this.CancelJumpInputAction();
 
         var playerController = this.PlayerController;
         if (playerController != null)
