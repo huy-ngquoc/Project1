@@ -940,6 +940,7 @@ MonoBehaviour:
   <WhatIsGround>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
+  <InitMoveSpeed>k__BackingField: 1.5
 --- !u!114 &508366258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a3782b7ec03a34198e33796ae7b16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EntityController>k__BackingField: {fileID: 508366257}
+  <IdleTime>k__BackingField: 2
+  <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,8 +2088,8 @@ MonoBehaviour:
   <WhatIsGround>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
-  <MoveSpeed>k__BackingField: 8
-  <JumpForce>k__BackingField: 12
+  <InitMoveSpeed>k__BackingField: 8
+  <JumpForce>k__BackingField: 15
   <InputHandler>k__BackingField: {fileID: 2026100019}
 --- !u!114 &2026100019
 MonoBehaviour:
@@ -2113,7 +2115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed89547f170571459271e114cbb38d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EntityController>k__BackingField: {fileID: 2026100018}
+  <PlayerController>k__BackingField: {fileID: 2026100018}
 --- !u!1 &2079006584
 GameObject:
   m_ObjectHideFlags: 0

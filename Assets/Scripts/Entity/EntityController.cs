@@ -41,6 +41,14 @@ public abstract class EntityController : MonoBehaviour
     [field: LayerMaskIsNothingOrEverythingWarning]
     public LayerMask WhatIsGround { get; private set; } = new LayerMask();
 
+    [field: Header("Move info")]
+
+    [field: SerializeField]
+    [field: Range(0.5F, 30.0F)]
+    public float InitMoveSpeed { get; private set; } = 8.0F;
+
+    public float MoveSpeed { get; private set; } = 8.0F;
+
     public bool FacingRight { get; private set; } = true;
 
     public int FacingDirection => this.FacingRight ? 1 : -1;
@@ -194,6 +202,8 @@ public abstract class EntityController : MonoBehaviour
 
     protected void Awake()
     {
+        this.MoveSpeed = this.InitMoveSpeed;
+
         this.OnEntityControllerAwake();
     }
 
