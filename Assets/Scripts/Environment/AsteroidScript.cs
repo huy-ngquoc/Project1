@@ -14,7 +14,7 @@ namespace Game
         
         protected void Start() {
             this.transform=GetComponent<Transform>();
-            speed=0.1f;
+            speed=0.5f;
             System.Random rand = new System.Random();
             int targetX= rand.Next(-27,33);
             targetTransform = new Vector3(targetX,-4,0);
