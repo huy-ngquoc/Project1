@@ -22,7 +22,7 @@ namespace Game
             currentState= new MovingState(this); 
             previouState= new MovingState(this);
             transform=this.GetComponent<Transform>();
-            moveSpeed=2; 
+             
         }
 
         protected void Update() {
@@ -106,6 +106,10 @@ namespace Game
             else {
                 this.ChangeState(new DamageState(this));
             }
+        }
+       
+        public void SetPosition(Vector3 position) {
+            this.transform.position=position;
         }
     }
 }
