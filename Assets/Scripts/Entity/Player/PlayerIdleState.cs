@@ -4,14 +4,14 @@ namespace Game;
 
 public sealed class PlayerIdleState : PlayerGroundedState
 {
-    public PlayerIdleState(PlayerStateMachine playerStateMachine)
+    public PlayerIdleState(PlayerGroundedStateMachine playerGroundedStateMachine)
     {
-        this.PlayerStateMachine = playerStateMachine;
+        this.PlayerGroundedStateMachine = playerGroundedStateMachine;
     }
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
 
-    public override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerGroundedStateMachine PlayerGroundedStateMachine { get; }
 
     protected override void OnPlayerGroundedStateEnter()
     {
@@ -20,14 +20,14 @@ public sealed class PlayerIdleState : PlayerGroundedState
 
     protected override void OnPlayerGroundedStateUpdate()
     {
-        var playerStateMachine = this.PlayerStateMachine;
+        var playerGroundedStateController = this.PlayerGroundedStateMachine;
         var playerController = this.PlayerController;
         var moveInputXInt = this.PlayerInputHandler.MoveInputXInt;
 
         if ((moveInputXInt != 0)
             && ((moveInputXInt != playerController.FacingDirection) || (!playerController.IsWallDetected)))
         {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.MoveState);
+            playerGroundedStateController.SetStateToChangeTo(playerGroundedStateController.MoveState);
         }
     }
 }

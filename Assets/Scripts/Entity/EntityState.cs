@@ -4,22 +4,18 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class EntityState
+public abstract class EntityState : IEntityState
 {
     public abstract string AnimationBoolName { get; }
 
     public float StateTimer { get; protected set; } = 0;
 
-    public bool TriggerCalled { get; protected set; } = false;
+    public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
-    public abstract EntityStateMachine EntityStateMachine { get; }
-
-    public EntityController EntityController => this.EntityStateMachine.EntityController;
+    public EntityController EntityController => this.EntityGeneralStateMachine.EntityController;
 
     public void Enter()
     {
-        this.TriggerCalled = false;
-
         var animator = this.EntityController.Animator;
         var animationBoolName = this.AnimationBoolName;
         if (!string.IsNullOrWhiteSpace(animationBoolName))
@@ -55,8 +51,6 @@ public abstract class EntityState
 
         this.OnEntityStateExit();
     }
-
-    public void AnimationFinishTrigger() => this.TriggerCalled = true;
 
     protected virtual void OnEntityStateEnter()
     {

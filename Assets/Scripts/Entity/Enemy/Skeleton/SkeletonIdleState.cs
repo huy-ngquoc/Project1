@@ -4,25 +4,25 @@ namespace Game;
 
 public sealed class SkeletonIdleState : SkeletonGroundedState
 {
-    public SkeletonIdleState(SkeletonStateMachine skeletonStateMachine)
+    public SkeletonIdleState(SkeletonGroundedStateMachine skeletonGroundedStateMachine)
     {
-        this.SkeletonStateMachine = skeletonStateMachine;
+        this.SkeletonGroundedStateMachine = skeletonGroundedStateMachine;
     }
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
 
-    public override SkeletonStateMachine SkeletonStateMachine { get; }
+    public override SkeletonGroundedStateMachine SkeletonGroundedStateMachine { get; }
 
     protected override void OnSkeletonGroundedStateEnter()
     {
-        this.StateTimer = this.SkeletonStateMachine.IdleTime;
+        this.StateTimer = this.SkeletonGeneralStateMachine.IdleTime;
     }
 
     protected override void OnSkeletonGroundedStateUpdate()
     {
         if (this.StateTimer <= 0)
         {
-            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.MoveState);
+            this.SkeletonGeneralStateMachine.SetStateToChangeTo(this.SkeletonGroundedStateMachine.MoveState);
         }
     }
 }

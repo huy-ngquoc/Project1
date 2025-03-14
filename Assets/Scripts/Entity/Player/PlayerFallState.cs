@@ -4,23 +4,23 @@ namespace Game;
 
 public sealed class PlayerFallState : PlayerState
 {
-    public PlayerFallState(PlayerStateMachine playerStateMachine)
+    public PlayerFallState(PlayerGeneralStateMachine playerGeneralStateMachine)
     {
-        this.PlayerStateMachine = playerStateMachine;
+        this.PlayerGeneralStateMachine = playerGeneralStateMachine;
     }
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Fall;
 
-    public override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerGeneralStateMachine PlayerGeneralStateMachine { get; }
 
     protected override void OnPlayerStateUpdate()
     {
-        var playerStateMachine = this.PlayerStateMachine;
+        var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
         var playerController = this.PlayerController;
 
         if (playerController.IsGroundDetected)
         {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.IdleState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.GroundedState);
             return;
         }
 

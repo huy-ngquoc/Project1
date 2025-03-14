@@ -4,14 +4,14 @@ namespace Game;
 
 public sealed class PlayerJumpState : PlayerState
 {
-    public PlayerJumpState(PlayerStateMachine playerStateMachine)
+    public PlayerJumpState(PlayerGeneralStateMachine playerGeneralStateMachine)
     {
-        this.PlayerStateMachine = playerStateMachine;
+        this.PlayerGeneralStateMachine = playerGeneralStateMachine;
     }
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Jump;
 
-    public override PlayerStateMachine PlayerStateMachine { get; }
+    public override PlayerGeneralStateMachine PlayerGeneralStateMachine { get; }
 
     protected override void OnPlayerStateEnter()
     {
@@ -23,13 +23,14 @@ public sealed class PlayerJumpState : PlayerState
 
     protected override void OnPlayerStateUpdate()
     {
-        var playerStateMachine = this.PlayerStateMachine;
+        var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
         var playerController = this.PlayerController;
         var linearVelocityY = playerController.GetLinearVelocity().y;
 
         if (linearVelocityY <= 0)
         {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.FallState);
+            return;
         }
 
         playerController.SetLinearVelocityX(playerController.MoveSpeed * 0.8F * this.PlayerInputHandler.MoveInputX);

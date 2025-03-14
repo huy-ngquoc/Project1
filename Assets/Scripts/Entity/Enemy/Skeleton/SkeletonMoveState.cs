@@ -4,14 +4,14 @@ namespace Game;
 
 public sealed class SkeletonMoveState : SkeletonGroundedState
 {
-    public SkeletonMoveState(SkeletonStateMachine skeletonStateMachine)
+    public SkeletonMoveState(SkeletonGroundedStateMachine skeletonGroundedStateMachine)
     {
-        this.SkeletonStateMachine = skeletonStateMachine;
+        this.SkeletonGroundedStateMachine = skeletonGroundedStateMachine;
     }
 
     public override string AnimationBoolName => AnimationBoolNameConstants.Move;
 
-    public override SkeletonStateMachine SkeletonStateMachine { get; }
+    public override SkeletonGroundedStateMachine SkeletonGroundedStateMachine { get; }
 
     protected override void OnSkeletonGroundedStateUpdate()
     {
@@ -20,7 +20,7 @@ public sealed class SkeletonMoveState : SkeletonGroundedState
         if ((!controller.IsGroundDetected) || controller.IsWallDetected)
         {
             controller.Flip();
-            this.SkeletonStateMachine.SetStateToChangeTo(this.SkeletonStateMachine.IdleState);
+            this.SkeletonGeneralStateMachine.SetStateToChangeTo(this.SkeletonGroundedStateMachine.IdleState);
             return;
         }
 

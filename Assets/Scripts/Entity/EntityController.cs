@@ -65,7 +65,7 @@ public abstract class EntityController : MonoBehaviour
 
     public int FacingDirection => this.FacingRight ? 1 : -1;
 
-    public abstract EntityStateMachine EntityStateMachine { get; }
+    public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
     public void FlipController(float x)
     {

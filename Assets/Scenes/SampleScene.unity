@@ -1056,8 +1056,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   <InitMoveSpeed>k__BackingField: 1.5
-  <IdleTime>k__BackingField: 2
-  <SkeletonStateMachine>k__BackingField: {fileID: 508366258}
+  <SkeletonGeneralStateMachine>k__BackingField: {fileID: 508366258}
 --- !u!114 &508366258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1070,6 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a3782b7ec03a34198e33796ae7b16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IdleTime>k__BackingField: 2
   <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!1 &519420028
 GameObject:
@@ -2273,7 +2273,7 @@ MonoBehaviour:
     m_Bits: 8
   <InitMoveSpeed>k__BackingField: 8
   <JumpForce>k__BackingField: 15
-  <PlayerStateMachine>k__BackingField: {fileID: 2026100020}
+  <PlayerGeneralStateMachine>k__BackingField: {fileID: 2026100020}
   <InputHandler>k__BackingField: {fileID: 2026100019}
 --- !u!114 &2026100019
 MonoBehaviour:

@@ -4,7 +4,7 @@ namespace Game
 {
     using UnityEngine;
 
-    [RequireComponent(typeof(PlayerStateMachine), typeof(PlayerInputHandler))]
+    [RequireComponent(typeof(PlayerGeneralStateMachine), typeof(PlayerInputHandler))]
     public sealed class PlayerController : EntityController
     {
         [field: Header("Jump info")]
@@ -15,9 +15,9 @@ namespace Game
         [field: Header("State machine")]
         [field: SerializeReference]
         [field: ResolveComponent]
-        public PlayerStateMachine PlayerStateMachine { get; private set; } = null!;
+        public PlayerGeneralStateMachine PlayerGeneralStateMachine { get; private set; } = null!;
 
-        public override EntityStateMachine EntityStateMachine => this.PlayerStateMachine;
+        public override EntityGeneralStateMachine EntityGeneralStateMachine => this.PlayerGeneralStateMachine;
 
         [field: Header("Input handler")]
         [field: SerializeReference]

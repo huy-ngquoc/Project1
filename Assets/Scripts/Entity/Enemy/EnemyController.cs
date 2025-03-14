@@ -1,11 +1,12 @@
 #nullable enable
 
 namespace Game;
+
 public abstract class EnemyController : EntityController
 {
-    public abstract EnemyStateMachine EnemyStateMachine { get; }
+    public abstract EnemyGeneralStateMachine EnemyGeneralStateMachine { get; }
 
-    public sealed override EntityStateMachine EntityStateMachine => this.EnemyStateMachine;
+    public sealed override EntityGeneralStateMachine EntityGeneralStateMachine => this.EnemyGeneralStateMachine;
 
     protected sealed override void OnEntityControllerAwake()
     {

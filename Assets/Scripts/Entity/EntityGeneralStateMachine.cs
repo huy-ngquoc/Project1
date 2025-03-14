@@ -4,21 +4,26 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class EntityStateMachine : MonoBehaviour
+[DisallowMultipleComponent]
+public abstract class EntityGeneralStateMachine : MonoBehaviour
 {
-    private EntityState currentState = null!;
-    private EntityState? stateToChangeTo = null;
+    private IEntityState currentState = null!;
+    private IEntityState? stateToChangeTo = null;
+
+    public float StateMachineTimer { get; protected set; } = 0;
+
+    public bool TriggerCalled { get; protected set; } = false;
 
     public abstract EntityController EntityController { get; }
 
-    public abstract EntityState InitialState { get; }
+    public abstract IEntityState InitialState { get; }
 
     public bool HasStateToChangeTo()
     {
         return this.stateToChangeTo != null;
     }
 
-    public void SetStateToChangeTo(EntityState newState)
+    public void SetStateToChangeTo(IEntityState newState)
     {
         this.stateToChangeTo = newState;
     }
@@ -28,16 +33,27 @@ public abstract class EntityStateMachine : MonoBehaviour
         this.stateToChangeTo = null;
     }
 
-    public void AnimationFinishTrigger() => this.currentState?.AnimationFinishTrigger();
+    public void AnimationFinishTrigger() => this.TriggerCalled = true;
 
     protected void Awake()
     {
+        this.TriggerCalled = false;
         this.currentState = this.InitialState;
         this.currentState.Enter();
     }
 
     protected void Update()
     {
+        var deltaTime = UnityEngine.Time.deltaTime;
+        if (this.StateMachineTimer > deltaTime)
+        {
+            this.StateMachineTimer -= this.StateMachineTimer;
+        }
+        else
+        {
+            this.StateMachineTimer = 0;
+        }
+
         this.currentState.Update();
 
         while (this.stateToChangeTo != null)

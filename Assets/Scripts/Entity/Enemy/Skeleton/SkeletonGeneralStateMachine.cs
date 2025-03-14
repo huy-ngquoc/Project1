@@ -5,12 +5,11 @@ namespace Game
     using UnityEngine;
 
     [RequireComponent(typeof(SkeletonController))]
-    public sealed class SkeletonStateMachine : EnemyStateMachine
+    public sealed class SkeletonGeneralStateMachine : EnemyGeneralStateMachine
     {
-        public SkeletonStateMachine()
+        public SkeletonGeneralStateMachine()
         {
-            this.IdleState = new SkeletonIdleState(this);
-            this.MoveState = new SkeletonMoveState(this);
+            this.GroundedState = new SkeletonGroundedStateMachine(this);
         }
 
         [field: Header("Controller")]
@@ -20,10 +19,8 @@ namespace Game
 
         public sealed override EnemyController EnemyController => this.SkeletonController;
 
-        public sealed override EntityState InitialState => this.IdleState;
+        public sealed override IEntityState InitialState => this.GroundedState;
 
-        public SkeletonIdleState IdleState { get; }
-
-        public SkeletonMoveState MoveState { get; }
+        public SkeletonGroundedStateMachine GroundedState { get; }
     }
 }

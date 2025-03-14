@@ -5,12 +5,11 @@ namespace Game
     using UnityEngine;
 
     [RequireComponent(typeof(PlayerController))]
-    public sealed class PlayerStateMachine : EntityStateMachine
+    public sealed class PlayerGeneralStateMachine : EntityGeneralStateMachine
     {
-        public PlayerStateMachine()
+        public PlayerGeneralStateMachine()
         {
-            this.IdleState = new PlayerIdleState(this);
-            this.MoveState = new PlayerMoveState(this);
+            this.GroundedState = new PlayerGroundedStateMachine(this);
             this.JumpState = new PlayerJumpState(this);
             this.FallState = new PlayerFallState(this);
         }
@@ -22,11 +21,9 @@ namespace Game
 
         public sealed override EntityController EntityController => this.PlayerController;
 
-        public sealed override EntityState InitialState => this.IdleState;
+        public sealed override IEntityState InitialState => this.GroundedState;
 
-        public PlayerIdleState IdleState { get; }
-
-        public PlayerMoveState MoveState { get; }
+        public PlayerGroundedStateMachine GroundedState { get; }
 
         public PlayerJumpState JumpState { get; }
 

@@ -4,6 +4,10 @@ namespace Game;
 
 public abstract class SkeletonGroundedState : SkeletonState
 {
+    public abstract SkeletonGroundedStateMachine SkeletonGroundedStateMachine { get; }
+
+    public sealed override SkeletonGeneralStateMachine SkeletonGeneralStateMachine => this.SkeletonGroundedStateMachine.SkeletonGeneralStateMachine;
+
     protected sealed override void OnSkeletonStateEnter()
     {
         this.OnSkeletonGroundedStateEnter();

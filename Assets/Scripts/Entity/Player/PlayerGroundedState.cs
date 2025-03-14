@@ -4,6 +4,10 @@ namespace Game;
 
 public abstract class PlayerGroundedState : PlayerState
 {
+    public abstract PlayerGroundedStateMachine PlayerGroundedStateMachine { get; }
+
+    public sealed override PlayerGeneralStateMachine PlayerGeneralStateMachine => this.PlayerGroundedStateMachine.PlayerGeneralStateMachine;
+
     protected sealed override void OnPlayerStateEnter()
     {
         this.OnPlayerGroundedStateEnter();
@@ -17,17 +21,17 @@ public abstract class PlayerGroundedState : PlayerState
 
     protected sealed override void OnPlayerStateUpdate()
     {
-        var playerStateMachine = this.PlayerStateMachine;
+        var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
 
         if (this.PlayerInputHandler.JumpPressed)
         {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.JumpState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.JumpState);
             return;
         }
 
         if (!this.PlayerController.IsGroundDetected)
         {
-            playerStateMachine.SetStateToChangeTo(playerStateMachine.FallState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.FallState);
             return;
         }
 

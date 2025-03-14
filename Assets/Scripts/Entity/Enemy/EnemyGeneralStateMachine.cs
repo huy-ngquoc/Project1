@@ -4,7 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract partial class EnemyStateMachine : EntityStateMachine
+public abstract partial class EnemyGeneralStateMachine : EntityGeneralStateMachine
 {
     [field: Header("Idle State")]
     [field: SerializeField]

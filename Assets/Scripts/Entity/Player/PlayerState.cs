@@ -4,11 +4,11 @@ namespace Game;
 
 public abstract class PlayerState : EntityState
 {
-    public abstract PlayerStateMachine PlayerStateMachine { get; }
+    public abstract PlayerGeneralStateMachine PlayerGeneralStateMachine { get; }
 
-    public sealed override EntityStateMachine EntityStateMachine => this.PlayerStateMachine;
+    public sealed override EntityGeneralStateMachine EntityGeneralStateMachine => this.PlayerGeneralStateMachine;
 
-    public PlayerController PlayerController => this.PlayerStateMachine.PlayerController;
+    public PlayerController PlayerController => this.PlayerGeneralStateMachine.PlayerController;
 
     public PlayerInputHandler PlayerInputHandler => this.PlayerController.InputHandler;
 
@@ -20,7 +20,7 @@ public abstract class PlayerState : EntityState
     protected sealed override void OnEntityStateUpdate()
     {
         var animator = this.PlayerController.Animator;
-        var velocityY = this.PlayerController.Rigidbody2D.UnityAccessVal(r => r.linearVelocityY, 0);
+        var velocityY = this.PlayerController.Rigidbody2D.linearVelocityY;
         animator.SetFloat("VelocityY", velocityY);
 
         this.OnPlayerStateUpdate();
