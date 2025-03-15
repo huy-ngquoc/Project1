@@ -2313,6 +2313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed89547f170571459271e114cbb38d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PrimaryAttackComboWindow>k__BackingField: 2
   <PlayerController>k__BackingField: {fileID: 2026100018}
 --- !u!1 &2079006584
 GameObject:

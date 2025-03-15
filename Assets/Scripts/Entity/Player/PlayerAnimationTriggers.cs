@@ -10,7 +10,7 @@ namespace Game
     {
         [field: Header("Controller")]
         [field: SerializeField]
-        [field: ResolveComponentInParent("Player")]
+        [field: ResolveComponentInParent]
         public PlayerController PlayerController { get; private set; } = null!;
 
         private void AnimationFinishTrigger() => this.PlayerController.AnimationFinishTrigger();
