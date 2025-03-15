@@ -12,7 +12,13 @@ namespace Game
             this.GroundedState = new PlayerGroundedStateMachine(this);
             this.JumpState = new PlayerJumpState(this);
             this.FallState = new PlayerFallState(this);
+            this.PrimaryAttackState = new PlayerPrimaryAttackStateMachine(this);
         }
+
+        [field: Header("Primary attack state")]
+        [field: SerializeField]
+        [field: Range(0.5F, 5.0F)]
+        public float PrimaryAttackComboWindow { get; private set; } = 2;
 
         [field: Header("Controller")]
         [field: SerializeReference]
@@ -28,5 +34,7 @@ namespace Game
         public PlayerJumpState JumpState { get; }
 
         public PlayerFallState FallState { get; }
+
+        public PlayerPrimaryAttackStateMachine PrimaryAttackState { get; }
     }
 }

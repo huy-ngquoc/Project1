@@ -9,7 +9,7 @@ public sealed class SkeletonMoveState : SkeletonGroundedState
         this.SkeletonGroundedStateMachine = skeletonGroundedStateMachine;
     }
 
-    public override string AnimationBoolName => AnimationBoolNameConstants.Move;
+    public override string AnimationBoolName => AnimationNameConstants.Bool.Move;
 
     public override SkeletonGroundedStateMachine SkeletonGroundedStateMachine { get; }
 

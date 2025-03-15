@@ -9,4 +9,6 @@ public interface IEntityState
     void Update();
 
     void Exit();
+
+    void AnimationFinishTrigger();
 }

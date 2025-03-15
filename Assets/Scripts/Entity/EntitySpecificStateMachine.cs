@@ -2,14 +2,12 @@
 
 namespace Game;
 
-public abstract class EntitySpecificStateMachine : IEntityStateMachine
+public abstract class EntitySpecificStateMachine : IEntityState
 {
     private IEntityState currentState = null!;
     private IEntityState? stateToChangeTo = null;
 
     public float StateMachineTimer { get; protected set; } = 0;
-
-    public bool TriggerCalled { get; protected set; } = false;
 
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
@@ -32,12 +30,11 @@ public abstract class EntitySpecificStateMachine : IEntityStateMachine
         this.stateToChangeTo = null;
     }
 
-    public void AnimationFinishTrigger() => this.TriggerCalled = true;
+    public void AnimationFinishTrigger() => this.currentState.AnimationFinishTrigger();
 
     public void Enter()
     {
         this.currentState = this.InitialState;
-        this.TriggerCalled = false;
         this.currentState.Enter();
     }
 
@@ -60,7 +57,6 @@ public abstract class EntitySpecificStateMachine : IEntityStateMachine
             this.currentState.Exit();
             this.currentState = this.stateToChangeTo;
             this.stateToChangeTo = null;
-            this.TriggerCalled = false;
             this.currentState.Enter();
 
             // TODO: should we update state right after changing?

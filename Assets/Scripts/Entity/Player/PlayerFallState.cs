@@ -9,7 +9,7 @@ public sealed class PlayerFallState : PlayerState
         this.PlayerGeneralStateMachine = playerGeneralStateMachine;
     }
 
-    public override string AnimationBoolName => AnimationBoolNameConstants.Fall;
+    public override string AnimationBoolName => AnimationNameConstants.Bool.Fall;
 
     public override PlayerGeneralStateMachine PlayerGeneralStateMachine { get; }
 

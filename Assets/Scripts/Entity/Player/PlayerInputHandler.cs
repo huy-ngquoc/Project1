@@ -60,7 +60,11 @@ namespace Game
 
         public bool JumpPressed { get; private set; } = false;
 
+        public bool PrimaryAttackPressed { get; private set; } = false;
+
         public void CancelJumpInputAction() => this.JumpPressed = false;
+
+        public void CancelPrimaryAttackInputAction() => this.PrimaryAttackPressed = false;
 
         public void Dispose()
         {
@@ -78,22 +82,25 @@ namespace Game
             playerActions.Jump.performed += context => this.JumpPressed = true;
             playerActions.Jump.canceled += context => this.JumpPressed = false;
 
+            playerActions.PrimaryAttack.performed += context => this.PrimaryAttackPressed = true;
+            playerActions.PrimaryAttack.canceled += context => this.PrimaryAttackPressed = false;
+
             this.inputSystemAction.Enable();
         }
 
         private void OnEnable()
         {
-            this.inputSystemAction?.Enable();
+            this.inputSystemAction!.Enable();
         }
 
         private void OnDisable()
         {
-            this.inputSystemAction?.Disable();
+            this.inputSystemAction!.Disable();
         }
 
         private void OnDestroy()
         {
-            this.inputSystemAction?.Dispose();
+            this.inputSystemAction!.Dispose();
         }
     }
 }

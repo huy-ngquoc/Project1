@@ -21,7 +21,7 @@ public abstract class PlayerState : EntityState
     {
         var animator = this.PlayerController.Animator;
         var velocityY = this.PlayerController.Rigidbody2D.linearVelocityY;
-        animator.SetFloat("VelocityY", velocityY);
+        animator.SetFloat(AnimationNameConstants.Float.VelocityY, velocityY);
 
         this.OnPlayerStateUpdate();
     }

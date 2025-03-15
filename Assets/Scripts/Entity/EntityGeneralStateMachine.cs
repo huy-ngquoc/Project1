@@ -12,8 +12,6 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
 
     public float StateMachineTimer { get; protected set; } = 0;
 
-    public bool TriggerCalled { get; protected set; } = false;
-
     public abstract EntityController EntityController { get; }
 
     public abstract IEntityState InitialState { get; }
@@ -33,11 +31,10 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
         this.stateToChangeTo = null;
     }
 
-    public void AnimationFinishTrigger() => this.TriggerCalled = true;
+    public void AnimationFinishTrigger() => this.currentState.AnimationFinishTrigger();
 
     protected void Awake()
     {
-        this.TriggerCalled = false;
         this.currentState = this.InitialState;
         this.currentState.Enter();
     }

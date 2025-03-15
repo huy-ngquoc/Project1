@@ -67,6 +67,8 @@ public abstract class EntityController : MonoBehaviour
 
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
+    public void AnimationFinishTrigger() => this.EntityGeneralStateMachine.AnimationFinishTrigger();
+
     public void FlipController(float x)
     {
         bool flip = this.FacingRight ? (x < 0) : (x > 0);

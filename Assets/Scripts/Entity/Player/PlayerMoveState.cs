@@ -9,7 +9,7 @@ public sealed class PlayerMoveState : PlayerGroundedState
         this.PlayerGroundedStateMachine = playerGroundedStateController;
     }
 
-    public override string AnimationBoolName => AnimationBoolNameConstants.Move;
+    public override string AnimationBoolName => AnimationNameConstants.Bool.Move;
 
     public override PlayerGroundedStateMachine PlayerGroundedStateMachine { get; }
 

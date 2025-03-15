@@ -9,7 +9,7 @@ public sealed class PlayerIdleState : PlayerGroundedState
         this.PlayerGroundedStateMachine = playerGroundedStateMachine;
     }
 
-    public override string AnimationBoolName => AnimationBoolNameConstants.Idle;
+    public override string AnimationBoolName => AnimationNameConstants.Bool.Idle;
 
     public override PlayerGroundedStateMachine PlayerGroundedStateMachine { get; }
 

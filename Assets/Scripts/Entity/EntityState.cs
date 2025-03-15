@@ -10,12 +10,18 @@ public abstract class EntityState : IEntityState
 
     public float StateTimer { get; protected set; } = 0;
 
+    public bool TriggerCalled { get; protected set; } = false;
+
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
     public EntityController EntityController => this.EntityGeneralStateMachine.EntityController;
 
+    public void AnimationFinishTrigger() => this.TriggerCalled = true;
+
     public void Enter()
     {
+        this.TriggerCalled = false;
+
         var animator = this.EntityController.Animator;
         var animationBoolName = this.AnimationBoolName;
         if (!string.IsNullOrWhiteSpace(animationBoolName))

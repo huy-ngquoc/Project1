@@ -23,15 +23,21 @@ public abstract class PlayerGroundedState : PlayerState
     {
         var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
 
+        if (!this.PlayerController.IsGroundDetected)
+        {
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.FallState);
+            return;
+        }
+
         if (this.PlayerInputHandler.JumpPressed)
         {
             playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.JumpState);
             return;
         }
 
-        if (!this.PlayerController.IsGroundDetected)
+        if (this.PlayerInputHandler.PrimaryAttackPressed)
         {
-            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.FallState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.PrimaryAttackState);
             return;
         }
 
