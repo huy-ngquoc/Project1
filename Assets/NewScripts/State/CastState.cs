@@ -13,7 +13,6 @@ namespace Game
         }
         public void Enter() {
             this.enemyStateManager.GetAnimator().SetTrigger("Cast"); 
-
             this.enemyStateManager.Invoke("Teleport",0.8f);
         } 
         public void Execute() {
