@@ -6,11 +6,11 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Automatically assigns a component to the field, similar to `GetComponentInChildren()`.
+/// Automatically assigns a component of the GameObject's children to the field, similar to `GetComponentInChildren()`.
 /// If no matching component is found or multiple components of the field's type exist on the GameObject or its children,
 /// the field remains null and an error is logged.
 /// Optionally, specify a non-blank `targetChildName` to restrict the search to a specific child GameObject by name.
-/// Additionally, set `includeInactive` to `true` to include inactive GameObjects to the search (default is `false`).
+/// Additionally, set `isIncludingInactive` to `true` to include inactive GameObjects to the search (default is `false`).
 /// </summary>
 /// <remarks>
 /// The field must be serialized by Unity for this attribute to work,
