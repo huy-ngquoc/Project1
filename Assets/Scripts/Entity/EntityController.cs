@@ -13,7 +13,7 @@ public abstract class EntityController : MonoBehaviour
     [field: ResolveComponent]
     public Rigidbody2D Rigidbody2D { get; private set; } = null!;
 
-    [field: Header("Animation info")]
+    [field: Header("Entity Animation info")]
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("Animator")]
@@ -23,7 +23,19 @@ public abstract class EntityController : MonoBehaviour
     [field: ResolveComponentInChildren("Animator")]
     public Animator Animator { get; private set; } = null!;
 
-    [field: Header("Collision info")]
+    [field: Header("Entity Collision info")]
+
+    [field: SerializeReference]
+    [field: ResolveComponentInChildren("AttackCheck")]
+    public Transform AttackCheck { get; private set; } = null!;
+
+    [field: SerializeField]
+    [field: Range(0.1F, 2.0F)]
+    public float AttackCheckRadius { get; private set; } = 0.8F;
+
+    [field: SerializeField]
+    [field: LayerMaskIsNothingOrEverythingWarning]
+    public LayerMask AttackTargetLayerMask { get; private set; } = new LayerMask();
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("GroundCheck")]
@@ -35,9 +47,9 @@ public abstract class EntityController : MonoBehaviour
 
     [field: SerializeField]
     [field: LayerMaskIsNothingOrEverythingWarning]
-    public LayerMask WhatIsGround { get; private set; } = new LayerMask();
+    public LayerMask GroundLayerMask { get; private set; } = new LayerMask();
 
-    public bool IsGroundDetected => Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.WhatIsGround);
+    public bool IsGroundDetected => Physics2D.Raycast(this.GroundCheck.position, Vector2.down, this.GroundCheckDistance, this.GroundLayerMask);
 
     [field: SerializeReference]
     [field: ResolveComponentInChildren("WallCheck")]
@@ -49,11 +61,11 @@ public abstract class EntityController : MonoBehaviour
 
     [field: SerializeField]
     [field: LayerMaskIsNothingOrEverythingWarning]
-    public LayerMask WhatIsWall { get; private set; } = new LayerMask();
+    public LayerMask WallLayerMask { get; private set; } = new LayerMask();
 
-    public bool IsWallDetected => Physics2D.Raycast(this.WallCheck.position, Vector2.right * this.FacingDirection, this.WallCheckDistance, this.WhatIsWall);
+    public bool IsWallDetected => Physics2D.Raycast(this.WallCheck.position, Vector2.right * this.FacingDirection, this.WallCheckDistance, this.WallLayerMask);
 
-    [field: Header("Move info")]
+    [field: Header("Entity Move info")]
 
     [field: SerializeField]
     [field: Range(0.5F, 30.0F)]
@@ -66,6 +78,8 @@ public abstract class EntityController : MonoBehaviour
     public int FacingDirection => this.FacingRight ? 1 : -1;
 
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
+
+    public abstract EntityStats EntityStats { get; }
 
     public void AnimationFinishTrigger() => this.EntityGeneralStateMachine.AnimationFinishTrigger();
 
@@ -179,6 +193,7 @@ public abstract class EntityController : MonoBehaviour
 
     protected void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(this.AttackCheck.position, this.AttackCheckRadius);
         Gizmos.DrawLine(this.GroundCheck.position, new Vector2(this.GroundCheck.position.x, this.GroundCheck.position.y - this.GroundCheckDistance));
         Gizmos.DrawLine(this.WallCheck.position, new Vector2(this.WallCheck.position.x + (this.WallCheckDistance * this.FacingDirection), this.WallCheck.position.y));
 

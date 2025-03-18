@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 130571044}
   - component: {fileID: 130571045}
   - component: {fileID: 130571046}
+  - component: {fileID: 130571047}
   m_Layer: 7
   m_Name: Animator
   m_TagString: Untagged
@@ -316,6 +317,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &130571047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130571043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f931599bc8ac6c444a10dbc82b32e89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!1 &398080283
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +969,7 @@ GameObject:
   - component: {fileID: 508366255}
   - component: {fileID: 508366257}
   - component: {fileID: 508366258}
+  - component: {fileID: 508366259}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -978,6 +993,7 @@ Transform:
   - {fileID: 130571044}
   - {fileID: 1492418257}
   - {fileID: 764356831}
+  - {fileID: 1573597354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &508366255
@@ -1059,18 +1075,24 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 508366256}
   <SpriteRenderer>k__BackingField: {fileID: 130571045}
   <Animator>k__BackingField: {fileID: 130571046}
+  <AttackCheck>k__BackingField: {fileID: 1573597354}
+  <AttackCheckRadius>k__BackingField: 0.8
+  <AttackTargetLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
   <GroundCheck>k__BackingField: {fileID: 1492418257}
   <GroundCheckDistance>k__BackingField: 1
-  <WhatIsGround>k__BackingField:
+  <GroundLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <WallCheck>k__BackingField: {fileID: 764356831}
   <WallCheckDistance>k__BackingField: 0.7
-  <WhatIsWall>k__BackingField:
+  <WallLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <InitMoveSpeed>k__BackingField: 1.5
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 508366258}
+  <SkeletonStats>k__BackingField: {fileID: 508366259}
 --- !u!114 &508366258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1106,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IdleTime>k__BackingField: 2
+  <SkeletonController>k__BackingField: {fileID: 508366257}
+--- !u!114 &508366259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508366253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52863e21fd8749f4e98b4e263caa7530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!1 &519420028
 GameObject:
@@ -1353,7 +1388,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &764356831
 Transform:
@@ -1384,7 +1419,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &873623090
 Transform:
@@ -1768,6 +1803,68 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 508366254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1573597353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573597354}
+  m_Layer: 6
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1573597354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573597353}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.17, y: -0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 508366254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1694391844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694391845}
+  m_Layer: 6
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1694391845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694391844}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.17, y: -0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2026100015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778880113
 GameObject:
@@ -2170,6 +2267,7 @@ GameObject:
   - component: {fileID: 2026100016}
   - component: {fileID: 2026100018}
   - component: {fileID: 2026100020}
+  - component: {fileID: 2026100021}
   - component: {fileID: 2026100019}
   m_Layer: 6
   m_Name: Player
@@ -2194,6 +2292,7 @@ Transform:
   - {fileID: 398080284}
   - {fileID: 1325340505}
   - {fileID: 873623090}
+  - {fileID: 1694391845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2026100016
@@ -2275,19 +2374,25 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
   <Animator>k__BackingField: {fileID: 398080285}
+  <AttackCheck>k__BackingField: {fileID: 1694391845}
+  <AttackCheckRadius>k__BackingField: 0.8
+  <AttackTargetLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
   <GroundCheck>k__BackingField: {fileID: 1325340505}
   <GroundCheckDistance>k__BackingField: 0.15
-  <WhatIsGround>k__BackingField:
+  <GroundLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <WallCheck>k__BackingField: {fileID: 873623090}
   <WallCheckDistance>k__BackingField: 0.2
-  <WhatIsWall>k__BackingField:
+  <WallLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 8
   <InitMoveSpeed>k__BackingField: 8
   <JumpForce>k__BackingField: 15
   <PlayerGeneralStateMachine>k__BackingField: {fileID: 2026100020}
+  <PlayerStats>k__BackingField: {fileID: 2026100021}
   <InputHandler>k__BackingField: {fileID: 2026100019}
 --- !u!114 &2026100019
 MonoBehaviour:
@@ -2314,6 +2419,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PrimaryAttackComboWindow>k__BackingField: 2
+  <PlayerController>k__BackingField: {fileID: 2026100018}
+--- !u!114 &2026100021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fbb5c586aeb3840842b2a8de0c8ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   <PlayerController>k__BackingField: {fileID: 2026100018}
 --- !u!1 &2079006584
 GameObject:

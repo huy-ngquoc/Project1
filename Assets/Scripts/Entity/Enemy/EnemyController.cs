@@ -8,6 +8,10 @@ public abstract class EnemyController : EntityController
 
     public sealed override EntityGeneralStateMachine EntityGeneralStateMachine => this.EnemyGeneralStateMachine;
 
+    public abstract EnemyStats EnemyStats { get; }
+
+    public sealed override EntityStats EntityStats => this.EnemyStats;
+
     protected sealed override void OnEntityControllerAwake()
     {
         this.OnEnemyControllerAwake();

@@ -3,16 +3,14 @@
 namespace Game
 {
     using UnityEngine;
-    using MonoBehaviour = UnityEngine.MonoBehaviour;
-    using SerializeField = UnityEngine.SerializeField;
 
-    public sealed class PlayerAnimationTriggers : MonoBehaviour
+    public sealed class PlayerAnimationTriggers : EntityAnimationTriggers
     {
-        [field: Header("Controller")]
+        [field: Header("Player controller")]
         [field: SerializeField]
-        [field: ResolveComponentInParent]
+        [field: ResolveComponentInParent("Player")]
         public PlayerController PlayerController { get; private set; } = null!;
 
-        private void AnimationFinishTrigger() => this.PlayerController.AnimationFinishTrigger();
+        public override EntityController EntityController => this.PlayerController;
     }
 }
