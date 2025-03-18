@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 #nullable enable
 
 namespace Game;
@@ -15,3 +17,5 @@ public sealed class ReadOnlyInInspectorDrawer : PropertyDrawer
         GUI.enabled = true;
     }
 }
+
+#endif
