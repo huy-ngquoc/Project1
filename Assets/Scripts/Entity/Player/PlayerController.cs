@@ -30,5 +30,12 @@ namespace Game
         [field: SerializeReference]
         [field: ResolveComponent]
         public PlayerInputHandler InputHandler { get; private set; } = null!;
+
+        [field: Header("Player FX")]
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        public PlayerFx PlayerFx { get; private set; } = null!;
+
+        public override EntityFx EntityFx => this.PlayerFx;
     }
 }

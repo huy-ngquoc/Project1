@@ -3,6 +3,7 @@
 namespace Game;
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -22,6 +23,17 @@ public abstract class EntityController : MonoBehaviour
     [field: SerializeReference]
     [field: ResolveComponentInChildren("Animator")]
     public Animator Animator { get; private set; } = null!;
+
+    [field: Header("Entity Knockback info")]
+
+    [field: SerializeField]
+    public Vector2 KnockbackDirection { get; private set; } = Vector2.zero;
+
+    [field: SerializeField]
+    [field: Range(0.01F, 0.2F)]
+    public float KnockbackDuration { get; private set; } = 0.07F;
+
+    public bool IsKnocked { get; private set; } = false;
 
     [field: Header("Entity Collision info")]
 
@@ -81,7 +93,15 @@ public abstract class EntityController : MonoBehaviour
 
     public abstract EntityStats EntityStats { get; }
 
+    public abstract EntityFx EntityFx { get; }
+
     public void AnimationFinishTrigger() => this.EntityGeneralStateMachine.AnimationFinishTrigger();
+
+    public void DoTakeDamageEffect()
+    {
+        this.EntityFx.FlashFx();
+        this.HitKnockback();
+    }
 
     public void FlipController(float x)
     {
@@ -105,28 +125,53 @@ public abstract class EntityController : MonoBehaviour
 
     public void SetLinearVelocity(Vector2 newLinearVelocity)
     {
+        if (this.IsKnocked)
+        {
+            return;
+        }
+
         this.Rigidbody2D.linearVelocity = newLinearVelocity;
         this.FlipController(newLinearVelocity.x);
     }
 
     public void SetZeroLinearVelocity()
     {
+        if (this.IsKnocked)
+        {
+            return;
+        }
+
         this.Rigidbody2D.linearVelocity = Vector2.zero;
     }
 
     public void SetLinearVelocityX(float newLinearVelocityX)
     {
+        if (this.IsKnocked)
+        {
+            return;
+        }
+
         this.Rigidbody2D.linearVelocityX = newLinearVelocityX;
         this.FlipController(newLinearVelocityX);
     }
 
     public void SetZeroLinearVelocityX()
     {
+        if (this.IsKnocked)
+        {
+            return;
+        }
+
         this.Rigidbody2D.linearVelocityX = 0;
     }
 
     public void SetLinearVelocityY(float newLinearVelocityY)
     {
+        if (this.IsKnocked)
+        {
+            return;
+        }
+
         this.Rigidbody2D.linearVelocityY = newLinearVelocityY;
     }
 
@@ -204,5 +249,18 @@ public abstract class EntityController : MonoBehaviour
     {
         // Leave this method blank
         // The derived classes can decide if they override this method
+    }
+
+    private void HitKnockback()
+    {
+        this.StartCoroutine(this.HitKnockbackLogic());
+    }
+
+    private IEnumerator HitKnockbackLogic()
+    {
+        this.IsKnocked = true;
+        this.Rigidbody2D.linearVelocity = new Vector2(this.KnockbackDirection.x * (-this.FacingDirection), this.KnockbackDirection.y);
+        yield return new WaitForSeconds(this.KnockbackDuration);
+        this.IsKnocked = false;
     }
 }

@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 508366257}
   - component: {fileID: 508366258}
   - component: {fileID: 508366259}
+  - component: {fileID: 508366260}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1075,6 +1076,8 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 508366256}
   <SpriteRenderer>k__BackingField: {fileID: 130571045}
   <Animator>k__BackingField: {fileID: 130571046}
+  <KnockbackDirection>k__BackingField: {x: 7, y: 12}
+  <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 1573597354}
   <AttackCheckRadius>k__BackingField: 0.8
   <AttackTargetLayerMask>k__BackingField:
@@ -1093,6 +1096,7 @@ MonoBehaviour:
   <InitMoveSpeed>k__BackingField: 1.5
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 508366258}
   <SkeletonStats>k__BackingField: {fileID: 508366259}
+  <SkeletonFx>k__BackingField: {fileID: 508366260}
 --- !u!114 &508366258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,6 +1123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52863e21fd8749f4e98b4e263caa7530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SkeletonController>k__BackingField: {fileID: 508366257}
+--- !u!114 &508366260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508366253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa26b0187bc034428a52343b4f46e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <FlashDuration>k__BackingField: 0.2
+  <HitMaterial>k__BackingField: {fileID: 2100000, guid: 79b9149a294d1f94185574269bd42e05, type: 2}
   <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!1 &519420028
 GameObject:
@@ -2269,6 +2288,7 @@ GameObject:
   - component: {fileID: 2026100020}
   - component: {fileID: 2026100021}
   - component: {fileID: 2026100019}
+  - component: {fileID: 2026100022}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2374,6 +2394,8 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
   <Animator>k__BackingField: {fileID: 398080285}
+  <KnockbackDirection>k__BackingField: {x: 0, y: 0}
+  <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 1694391845}
   <AttackCheckRadius>k__BackingField: 0.8
   <AttackTargetLayerMask>k__BackingField:
@@ -2394,6 +2416,7 @@ MonoBehaviour:
   <PlayerGeneralStateMachine>k__BackingField: {fileID: 2026100020}
   <PlayerStats>k__BackingField: {fileID: 2026100021}
   <InputHandler>k__BackingField: {fileID: 2026100019}
+  <PlayerFx>k__BackingField: {fileID: 2026100022}
 --- !u!114 &2026100019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,6 +2455,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fbb5c586aeb3840842b2a8de0c8ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerController>k__BackingField: {fileID: 2026100018}
+--- !u!114 &2026100022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91b474496f91c74b98e78ce7b8dda8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <FlashDuration>k__BackingField: 0.2
+  <HitMaterial>k__BackingField: {fileID: 2100000, guid: 79b9149a294d1f94185574269bd42e05, type: 2}
   <PlayerController>k__BackingField: {fileID: 2026100018}
 --- !u!1 &2079006584
 GameObject:

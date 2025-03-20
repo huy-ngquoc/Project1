@@ -9,6 +9,8 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
     public void TakeDamage()
     {
         this.OnEntityTakeDamage();
+
+        this.EntityController.DoTakeDamageEffect();
     }
 
     protected virtual void OnEntityTakeDamage()

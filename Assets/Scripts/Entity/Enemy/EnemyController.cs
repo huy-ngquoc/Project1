@@ -12,6 +12,10 @@ public abstract class EnemyController : EntityController
 
     public sealed override EntityStats EntityStats => this.EnemyStats;
 
+    public abstract EnemyFx EnemyFx { get; }
+
+    public sealed override EntityFx EntityFx => this.EnemyFx;
+
     protected sealed override void OnEntityControllerAwake()
     {
         this.OnEnemyControllerAwake();

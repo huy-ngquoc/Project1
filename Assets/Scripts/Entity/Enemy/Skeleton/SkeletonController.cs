@@ -20,5 +20,12 @@ namespace Game
         public SkeletonStats SkeletonStats { get; private set; } = null!;
 
         public override EnemyStats EnemyStats => this.SkeletonStats;
+
+        [field: Header("Skeleton FX")]
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        public SkeletonFx SkeletonFx { get; private set; } = null!;
+
+        public override EnemyFx EnemyFx => this.SkeletonFx;
     }
 }
