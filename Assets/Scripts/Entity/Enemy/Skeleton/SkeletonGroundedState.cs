@@ -21,6 +21,12 @@ public abstract class SkeletonGroundedState : SkeletonState
 
     protected sealed override void OnSkeletonStateUpdate()
     {
+        if (this.SkeletonController.IsPlayerDetected)
+        {
+            this.SkeletonGeneralStateMachine.SetStateToChangeTo(this.SkeletonGeneralStateMachine.BattleState);
+            return;
+        }
+
         this.OnSkeletonGroundedStateUpdate();
     }
 

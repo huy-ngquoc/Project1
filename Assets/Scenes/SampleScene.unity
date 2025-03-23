@@ -1094,6 +1094,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   <InitMoveSpeed>k__BackingField: 1.5
+  <DetectionRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 2
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 508366258}
   <SkeletonStats>k__BackingField: {fileID: 508366259}
   <SkeletonFx>k__BackingField: {fileID: 508366260}
@@ -1110,6 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IdleTime>k__BackingField: 2
+  <AttackCooldown>k__BackingField: 0.4
   <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!114 &508366259
 MonoBehaviour:

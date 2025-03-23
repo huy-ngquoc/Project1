@@ -10,6 +10,7 @@ namespace Game
         public SkeletonGeneralStateMachine()
         {
             this.GroundedState = new SkeletonGroundedStateMachine(this);
+            this.BattleState = new SkeletonBattleStateMachine(this);
         }
 
         [field: Header("Controller")]
@@ -22,5 +23,7 @@ namespace Game
         public sealed override IEntityState InitialState => this.GroundedState;
 
         public SkeletonGroundedStateMachine GroundedState { get; }
+
+        public SkeletonBattleStateMachine BattleState { get; }
     }
 }
