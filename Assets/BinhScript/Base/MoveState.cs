@@ -20,6 +20,7 @@ namespace Game
             this.borderLeft=enemyStateManager.getBorderLeft();
             this.borderRight=enemyStateManager.getBorederRight();
             this.direction=enemyStateManager.getDirection();
+            this.enemyStateManager.getAnimator().SetTrigger("Move");
         } 
         public void Execute() {
             

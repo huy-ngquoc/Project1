@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] protected float borderRight;
         [SerializeField] protected float direction;
         [SerializeField] protected Transform playerTransform;
+        [SerializeField] protected Animator animator;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
@@ -62,6 +63,15 @@ namespace Game
         public void setPlayerTransform(Transform playerTransform) { 
             this.playerTransform=playerTransform;
 
+        }
+        public Animator getAnimator() {
+            return this.animator;
+        }
+        public void BackToPreviousState() {
+            ChangeState(previousState);
+        }
+        public IState getPreviousState() {
+            return this.previousState;
         }
     }
 }

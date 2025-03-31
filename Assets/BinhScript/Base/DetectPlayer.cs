@@ -13,7 +13,12 @@ namespace Game
         // Update is called once per frame
         void Update()
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position,Vector2.left,detectRange,layer); 
+            Vector2 rayCastDir = new Vector2(1,0);
+            if(enemyStateManager.getDirection()==0) 
+            {
+                rayCastDir= new Vector2(-1,0);
+            }
+            RaycastHit2D hit = Physics2D.Raycast(transform.position,rayCastDir,detectRange,layer); 
             if(hit.collider) {
                 if(hit.point.x<=enemyStateManager.getBorederRight()&&hit.point.x>=enemyStateManager.getBorderLeft()) {
                     if(!(enemyStateManager.getCurrentState() is ChaseState)) {
@@ -22,9 +27,10 @@ namespace Game
                     }
                 }
             }
+           
         }
         void OnDrawGizmos() {
-            Gizmos.DrawLine(transform.position, transform.position+Vector3.left*detectRange);
+             Gizmos.DrawLine(transform.position, transform.position+Vector3.left*detectRange);
         }
     }
 }
