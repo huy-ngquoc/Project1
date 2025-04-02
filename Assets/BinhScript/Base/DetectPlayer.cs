@@ -7,8 +7,10 @@ namespace Game
         [SerializeField] protected EnemyStateManager enemyStateManager;
         [SerializeField] protected float detectRange;
         [SerializeField] protected LayerMask layer;
+        [SerializeField] protected bool isCallChase;
         private void Awake() {
             this.enemyStateManager=GetComponent<EnemyStateManager>();
+            this.isCallChase=false;
         }
         // Update is called once per frame
         void Update()
@@ -21,11 +23,16 @@ namespace Game
             RaycastHit2D hit = Physics2D.Raycast(transform.position,rayCastDir,detectRange,layer); 
             if(hit.collider) {
                 if(hit.point.x<=enemyStateManager.getBorederRight()&&hit.point.x>=enemyStateManager.getBorderLeft()) {
-                    if(!(enemyStateManager.getCurrentState() is ChaseState)) {
+                    if(!isCallChase) {
                         enemyStateManager.setPlayerTransform(hit.collider.gameObject.transform);
                         enemyStateManager.ChangeState(new ChaseState(enemyStateManager));
+                        isCallChase=true;
                     }
                 }
+
+            }
+            else {
+                isCallChase=false;
             }
            
         }

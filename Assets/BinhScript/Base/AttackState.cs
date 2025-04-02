@@ -7,10 +7,11 @@ namespace Game
        public EnemyStateManager enemyStateManager {get;set;}
        public AttackState(EnemyStateManager enemyStateManager) {
             this.enemyStateManager=enemyStateManager;
+            
        }
        public void Enter() {
             enemyStateManager.getAnimator().SetTrigger("Attack");
-           
+         
           
        }        
        public void Execute() {

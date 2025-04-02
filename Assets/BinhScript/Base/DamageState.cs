@@ -10,6 +10,7 @@ namespace Game
         } 
         public void Enter() {
             this.enemyStateManager.getAnimator().SetTrigger("Damage");
+            
         }
         public void Execute() {
 

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 namespace Game
 {
     public class EnemyStateManager : MonoBehaviour
@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] protected float direction;
         [SerializeField] protected Transform playerTransform;
         [SerializeField] protected Animator animator;
+        [SerializeField] protected Rigidbody2D rg2D;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
@@ -73,5 +74,27 @@ namespace Game
         public IState getPreviousState() {
             return this.previousState;
         }
+        public Rigidbody2D getRigidBody2D() {
+            return this.rg2D;
+        }
+        public void TakeDamage() {
+            float distance = System.Math.Abs(playerTransform.position.x-transform.position.x);
+            if(distance<2) {
+                if(!(this.currentState is DamageState)) {
+                    ChangeState(new DamageState(this));
+                }
+            }
+        }
+        public void setZ(float z) {
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y,z);
+
+        }
+        public void flipLeft() {
+            this.transform.position+=new Vector3(-1,0,0);
+        }
+        public void flipRight() {
+            this.transform.position+=new Vector3(1,0,0);
+        }
+        
     }
 }
