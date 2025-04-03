@@ -24,6 +24,10 @@ namespace Game
             Collider2D[] col = Physics2D.OverlapCircleAll(attackPosition,attackRange,layer);
             foreach(Collider2D i in col) {
                 if(i.gameObject.TryGetComponent<EntityStats>(out var entityStats)) {
+                    if(!(enemyStateManager.getCurrentState() is AttackState)) 
+                    {
+                        return;
+                    }
                     entityStats.TakeDamage();
                 }
             }
