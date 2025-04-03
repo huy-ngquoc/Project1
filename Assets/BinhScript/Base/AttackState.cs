@@ -11,14 +11,13 @@ namespace Game
        }
        public void Enter() {
             enemyStateManager.getAnimator().SetTrigger("Attack");
-         
-          
+            
        }        
        public void Execute() {
 
        } 
        public void Exit() {
-        
+     
        }
 
     }

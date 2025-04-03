@@ -95,6 +95,9 @@ namespace Game
         public void flipRight() {
             this.transform.position+=new Vector3(1,0,0);
         }
+        public void Teleport(Vector3 newPosition) {
+            this.transform.position= newPosition;
+        }
         
     }
 }

@@ -120,6 +120,7 @@ MonoBehaviour:
   attackRange: 1
   enemyStateManager: {fileID: 0}
   isChangeToAttackState: 0
+  usingLeftOrRight: 0
 --- !u!58 &2927713743738056227
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackOffset: {x: -0.5, y: 0, z: 0}
-  attackRange: 1
+  attackRange: 2
   enemyStateManager: {fileID: 1604389654692857459}
   forceDirection: {x: 15, y: 15}
 --- !u!4 &7848676658496999045 stripped

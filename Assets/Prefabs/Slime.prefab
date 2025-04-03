@@ -156,6 +156,7 @@ MonoBehaviour:
   attackRange: 1
   enemyStateManager: {fileID: 2451506190708482484}
   isChangeToAttackState: 0
+  usingLeftOrRight: 0
 --- !u!1 &3828916712376992277
 GameObject:
   m_ObjectHideFlags: 0

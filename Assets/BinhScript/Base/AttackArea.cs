@@ -14,11 +14,15 @@ namespace Game
             this.isChangeToAttackState=false;
         }
         public void Update() {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position+new Vector3(Vector2.left.x*0.5f,0,0), Vector2.right,attackRange,layer);
+            Vector2 rayCastDir = new Vector2(1,0);
+            if(enemyStateManager.getDirection()==0) {
+                rayCastDir= new Vector2(-1,0);
+            }
+            RaycastHit2D hit = Physics2D.Raycast(transform.position+new Vector3(Vector2.left.x*0.5f,0,0), rayCastDir,attackRange,layer);
             
 
             if(hit.collider) {
-               
+                
                 if(enemyStateManager.getCurrentState() is ChaseState &&!isChangeToAttackState) { 
                     
                     
@@ -31,6 +35,10 @@ namespace Game
             }
             
 
+        }
+        void OnDrawGizmos() {
+            Gizmos.color=Color.red;
+             Gizmos.DrawLine(transform.position+new Vector3(Vector2.left.x*0.5f,0,0), transform.position+Vector3.left*attackRange);
         }
     }
 }
