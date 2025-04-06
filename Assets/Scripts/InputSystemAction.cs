@@ -119,6 +119,15 @@ namespace Game
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""f300fa6a-4284-4222-bfa8-0727d154e300"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,17 @@ namespace Game
                     ""action"": ""PrimaryAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a95b759-4eb7-4b29-a2c1-3889541b0348"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -209,6 +229,7 @@ namespace Game
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_PrimaryAttack = m_Player.FindAction("PrimaryAttack", throwIfNotFound: true);
+            m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         }
 
         ~@InputSystemAction()
@@ -292,6 +313,7 @@ namespace Game
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_PrimaryAttack;
+        private readonly InputAction m_Player_Dash;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -315,6 +337,10 @@ namespace Game
             /// Provides access to the underlying input action "Player/PrimaryAttack".
             /// </summary>
             public InputAction @PrimaryAttack => m_Wrapper.m_Player_PrimaryAttack;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Dash".
+            /// </summary>
+            public InputAction @Dash => m_Wrapper.m_Player_Dash;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -350,6 +376,9 @@ namespace Game
                 @PrimaryAttack.started += instance.OnPrimaryAttack;
                 @PrimaryAttack.performed += instance.OnPrimaryAttack;
                 @PrimaryAttack.canceled += instance.OnPrimaryAttack;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
 
             /// <summary>
@@ -370,6 +399,9 @@ namespace Game
                 @PrimaryAttack.started -= instance.OnPrimaryAttack;
                 @PrimaryAttack.performed -= instance.OnPrimaryAttack;
                 @PrimaryAttack.canceled -= instance.OnPrimaryAttack;
+                @Dash.started -= instance.OnDash;
+                @Dash.performed -= instance.OnDash;
+                @Dash.canceled -= instance.OnDash;
             }
 
             /// <summary>
@@ -431,6 +463,13 @@ namespace Game
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPrimaryAttack(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnDash(InputAction.CallbackContext context);
         }
     }
 }

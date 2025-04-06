@@ -26,6 +26,10 @@ public abstract class EnemyController : EntityController
 
     public sealed override EntityFx EntityFx => this.EnemyFx;
 
+    public abstract EnemySkillManager EnemySkillManager { get; }
+
+    public sealed override EntitySkillManager EntitySkillManager => this.EnemySkillManager;
+
     public RaycastHit2D IsPlayerDetected
     {
         get

@@ -18,9 +18,9 @@ namespace Game
 
             foreach (var collider in colliders)
             {
-                if (collider.TryGetComponent<EntityController>(out var targetEntityController))
+                if (collider.TryGetComponent<EntityStats>(out var targetStats))
                 {
-                    targetEntityController.EntityStats.TakeDamage();
+                    this.EntityController.EntityStats.DoDamage(targetStats);
                 }
             }
         }

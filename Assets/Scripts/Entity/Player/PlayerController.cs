@@ -37,5 +37,12 @@ namespace Game
         public PlayerFx PlayerFx { get; private set; } = null!;
 
         public override EntityFx EntityFx => this.PlayerFx;
+
+        [field: Header("Skill manager")]
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        public PlayerSkillManager PlayerSkillManager { get; private set; } = null!;
+
+        public override EntitySkillManager EntitySkillManager => this.PlayerSkillManager;
     }
 }

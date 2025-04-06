@@ -27,5 +27,12 @@ namespace Game
         public SkeletonFx SkeletonFx { get; private set; } = null!;
 
         public override EnemyFx EnemyFx => this.SkeletonFx;
+
+        [field: Header("Skeleton skill manager")]
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        public SkeletonSkillManager SkeletonSkillManager { get; private set; } = null!;
+
+        public override EnemySkillManager EnemySkillManager => this.SkeletonSkillManager;
     }
 }

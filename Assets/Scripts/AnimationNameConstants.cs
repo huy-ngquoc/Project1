@@ -14,6 +14,8 @@ public static class AnimationNameConstants
 
         public static string Fall { get; } = Jump;
 
+        public static string Dash { get; } = nameof(Dash);
+
         public static string Attack { get; } = nameof(Attack);
 
         public static string PrimaryAttack1 { get; } = nameof(PrimaryAttack1);

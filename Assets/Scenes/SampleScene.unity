@@ -971,6 +971,8 @@ GameObject:
   - component: {fileID: 508366258}
   - component: {fileID: 508366259}
   - component: {fileID: 508366260}
+  - component: {fileID: 508366262}
+  - component: {fileID: 508366261}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1076,7 +1078,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 508366256}
   <SpriteRenderer>k__BackingField: {fileID: 130571045}
   <Animator>k__BackingField: {fileID: 130571046}
-  <KnockbackDirection>k__BackingField: {x: 7, y: 12}
+  <KnockbackDirection>k__BackingField: {x: 3, y: 5}
   <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 1573597354}
   <AttackCheckRadius>k__BackingField: 0.8
@@ -1099,6 +1101,7 @@ MonoBehaviour:
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 508366258}
   <SkeletonStats>k__BackingField: {fileID: 508366259}
   <SkeletonFx>k__BackingField: {fileID: 508366260}
+  <SkeletonSkillManager>k__BackingField: {fileID: 508366262}
 --- !u!114 &508366258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52863e21fd8749f4e98b4e263caa7530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <Damage>k__BackingField: 5
   <SkeletonController>k__BackingField: {fileID: 508366257}
 --- !u!114 &508366260
 MonoBehaviour:
@@ -1142,6 +1147,34 @@ MonoBehaviour:
   <FlashDuration>k__BackingField: 0.2
   <HitMaterial>k__BackingField: {fileID: 2100000, guid: 79b9149a294d1f94185574269bd42e05, type: 2}
   <SkeletonController>k__BackingField: {fileID: 508366257}
+--- !u!114 &508366261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508366253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d552968e4c422e6478ec7eba7c653d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 2
+  <SkeletonSkillManager>k__BackingField: {fileID: 508366262}
+--- !u!114 &508366262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508366253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8f6abe573a74d4caf13eac2be3b788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SkeletonController>k__BackingField: {fileID: 508366257}
+  <AttackSkill>k__BackingField: {fileID: 508366261}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,6 +2325,9 @@ GameObject:
   - component: {fileID: 2026100021}
   - component: {fileID: 2026100019}
   - component: {fileID: 2026100022}
+  - component: {fileID: 2026100024}
+  - component: {fileID: 2026100025}
+  - component: {fileID: 2026100026}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2397,7 +2433,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 2026100017}
   <SpriteRenderer>k__BackingField: {fileID: 398080286}
   <Animator>k__BackingField: {fileID: 398080285}
-  <KnockbackDirection>k__BackingField: {x: 0, y: 0}
+  <KnockbackDirection>k__BackingField: {x: 5, y: 12}
   <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 1694391845}
   <AttackCheckRadius>k__BackingField: 0.8
@@ -2420,6 +2456,7 @@ MonoBehaviour:
   <PlayerStats>k__BackingField: {fileID: 2026100021}
   <InputHandler>k__BackingField: {fileID: 2026100019}
   <PlayerFx>k__BackingField: {fileID: 2026100022}
+  <PlayerSkillManager>k__BackingField: {fileID: 2026100024}
 --- !u!114 &2026100019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,11 +2478,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026100014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed89547f170571459271e114cbb38d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 73574bbfa241a8d4e9a32a7771e43330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PrimaryAttackComboWindow>k__BackingField: 2
   <PlayerController>k__BackingField: {fileID: 2026100018}
+  <PrimaryAttackComboWindow>k__BackingField: 2
 --- !u!114 &2026100021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2458,6 +2495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fbb5c586aeb3840842b2a8de0c8ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <Damage>k__BackingField: 5
   <PlayerController>k__BackingField: {fileID: 2026100018}
 --- !u!114 &2026100022
 MonoBehaviour:
@@ -2474,6 +2513,51 @@ MonoBehaviour:
   <FlashDuration>k__BackingField: 0.2
   <HitMaterial>k__BackingField: {fileID: 2100000, guid: 79b9149a294d1f94185574269bd42e05, type: 2}
   <PlayerController>k__BackingField: {fileID: 2026100018}
+--- !u!114 &2026100024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfcd244e7b3ca948ad3c1844e91b265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerController>k__BackingField: {fileID: 2026100018}
+  <PrimaryAttackSkill>k__BackingField: {fileID: 2026100025}
+  <DashSkill>k__BackingField: {fileID: 2026100026}
+--- !u!114 &2026100025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7b24a41294bf84d94a5facf061beed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0.2
+  <PlayerSkillManager>k__BackingField: {fileID: 2026100024}
+--- !u!114 &2026100026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9849084959cb28e42839ff2cb61a2f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 1
+  <PlayerSkillManager>k__BackingField: {fileID: 2026100024}
+  <DashSpeed>k__BackingField: 25
+  <DashDuration>k__BackingField: 0.2
 --- !u!1 &2079006584
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,6 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
     private IEntityState currentState = null!;
     private IEntityState? stateToChangeTo = null;
 
-    public float StateMachineTimer { get; protected set; } = 0;
-
     public abstract EntityController EntityController { get; }
 
     public abstract IEntityState InitialState { get; }
@@ -41,17 +39,10 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
 
     protected void Update()
     {
-        var deltaTime = UnityEngine.Time.deltaTime;
-        if (this.StateMachineTimer > deltaTime)
+        if (this.stateToChangeTo == null)
         {
-            this.StateMachineTimer -= this.StateMachineTimer;
+            this.currentState.Update();
         }
-        else
-        {
-            this.StateMachineTimer = 0;
-        }
-
-        this.currentState.Update();
 
         while (this.stateToChangeTo != null)
         {
