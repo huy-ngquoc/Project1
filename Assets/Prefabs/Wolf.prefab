@@ -120,7 +120,6 @@ MonoBehaviour:
   attackRange: 1
   enemyStateManager: {fileID: 0}
   isChangeToAttackState: 0
-  usingLeftOrRight: 0
 --- !u!58 &2927713743738056227
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -279,6 +278,7 @@ MonoBehaviour:
   attackRange: 2
   enemyStateManager: {fileID: 1604389654692857459}
   forceDirection: {x: 15, y: 15}
+  teleportOffSet: 0
 --- !u!4 &7848676658496999045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1718820313281118063, guid: 2fad0ec419ab0b546a490f8d31499f05, type: 3}
