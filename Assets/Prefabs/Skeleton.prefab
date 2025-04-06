@@ -306,7 +306,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 7081713945939154375}
   <SpriteRenderer>k__BackingField: {fileID: 6921090673991812696}
   <Animator>k__BackingField: {fileID: 3217235752272608557}
-  <KnockbackDirection>k__BackingField: {x: 7, y: 12}
+  <KnockbackDirection>k__BackingField: {x: 2, y: 2}
   <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 9040480363654116992}
   <AttackCheckRadius>k__BackingField: 0.8
@@ -329,6 +329,7 @@ MonoBehaviour:
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 3253891435111814081}
   <SkeletonStats>k__BackingField: {fileID: 6515895796685027427}
   <SkeletonFx>k__BackingField: {fileID: 4481995532728314796}
+  <SkeletonSkillManager>k__BackingField: {fileID: 0}
 --- !u!114 &3253891435111814081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52863e21fd8749f4e98b4e263caa7530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CurrentHealth>k__BackingField: 100
+  <Damage>k__BackingField: 5
   <SkeletonController>k__BackingField: {fileID: 2017294918222282143}
 --- !u!114 &4481995532728314796
 MonoBehaviour:

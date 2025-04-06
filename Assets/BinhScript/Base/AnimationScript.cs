@@ -23,12 +23,15 @@ namespace Game
             Vector2 attackPosition = new Vector2(currentTransform.position.x+attackOffset.x, currentTransform.position.y+attackOffset.y);
             Collider2D[] col = Physics2D.OverlapCircleAll(attackPosition,attackRange,layer);
             foreach(Collider2D i in col) {
-                if(i.gameObject.TryGetComponent<EntityStats>(out var entityStats)) {
-                    if(!(enemyStateManager.getCurrentState() is AttackState)) 
-                    {
-                        return;
+                if(i.gameObject.TryGetComponent<EntityStats>(out var enemyStats)) {
+                    if(i.gameObject.TryGetComponent<EntityStats>(out var playerStats)) {
+                        enemyStats.DoDamage(playerStats);
                     }
-                    entityStats.TakeDamage();
+                }
+                if(!(enemyStateManager.getCurrentState() is AttackState)) 
+                {
+                    enemyStateManager.ChangeState(new AttackState(enemyStateManager));
+                    return;
                 }
             }
         }
