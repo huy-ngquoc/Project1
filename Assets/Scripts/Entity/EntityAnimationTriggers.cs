@@ -22,6 +22,9 @@ namespace Game
                 {
                     this.EntityController.EntityStats.DoDamage(targetStats);
                 }
+                if(collider.TryGetComponent<EnemyStateManager>(out var enemyStateManager)) {
+                    enemyStateManager.TakeDamage();
+                }
             }
         }
     }
