@@ -62,9 +62,13 @@ namespace Game
 
         public bool PrimaryAttackPressed { get; private set; } = false;
 
+        public bool DashPressed { get; private set; } = false;
+
         public void CancelJumpInputAction() => this.JumpPressed = false;
 
         public void CancelPrimaryAttackInputAction() => this.PrimaryAttackPressed = false;
+
+        public void CancelDashAction() => this.DashPressed = false;
 
         public void Dispose()
         {
@@ -84,6 +88,9 @@ namespace Game
 
             playerActions.PrimaryAttack.performed += context => this.PrimaryAttackPressed = true;
             playerActions.PrimaryAttack.canceled += context => this.PrimaryAttackPressed = false;
+
+            playerActions.Dash.performed += context => this.DashPressed = true;
+            playerActions.Dash.canceled += context => this.DashPressed = false;
 
             this.inputSystemAction.Enable();
         }

@@ -95,12 +95,14 @@ public abstract class EntityController : MonoBehaviour
 
     public abstract EntityFx EntityFx { get; }
 
+    public abstract EntitySkillManager EntitySkillManager { get; }
+
     public void AnimationFinishTrigger() => this.EntityGeneralStateMachine.AnimationFinishTrigger();
 
-    public void DoTakeDamageEffect()
+    public void DoTakeDamageEffect(EntityController attackerController)
     {
         this.EntityFx.FlashFx();
-        this.HitKnockback();
+        this.HitKnockback(attackerController);
     }
 
     public void FlipController(float x)
@@ -251,15 +253,17 @@ public abstract class EntityController : MonoBehaviour
         // The derived classes can decide if they override this method
     }
 
-    private void HitKnockback()
+    private void HitKnockback(EntityController attackerController)
     {
-        this.StartCoroutine(this.HitKnockbackLogic());
+        this.StartCoroutine(this.HitKnockbackLogic(attackerController));
     }
 
-    private IEnumerator HitKnockbackLogic()
+    private IEnumerator HitKnockbackLogic(EntityController attackerController)
     {
         this.IsKnocked = true;
-        this.Rigidbody2D.linearVelocity = new Vector2(this.KnockbackDirection.x * (-this.FacingDirection), this.KnockbackDirection.y);
+        var attackerFacingDirection = attackerController.FacingDirection;
+        var attackerKnockbackDirection = attackerController.KnockbackDirection;
+        this.Rigidbody2D.linearVelocity = new Vector2(attackerKnockbackDirection.x * attackerFacingDirection, attackerKnockbackDirection.y);
         yield return new WaitForSeconds(this.KnockbackDuration);
         this.IsKnocked = false;
     }
