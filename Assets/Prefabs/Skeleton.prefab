@@ -201,6 +201,8 @@ GameObject:
   - component: {fileID: 3253891435111814081}
   - component: {fileID: 6515895796685027427}
   - component: {fileID: 4481995532728314796}
+  - component: {fileID: 3516655791842007701}
+  - component: {fileID: 7976864862860082019}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -306,7 +308,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 7081713945939154375}
   <SpriteRenderer>k__BackingField: {fileID: 6921090673991812696}
   <Animator>k__BackingField: {fileID: 3217235752272608557}
-  <KnockbackDirection>k__BackingField: {x: 2, y: 2}
+  <KnockbackDirection>k__BackingField: {x: 5, y: 5}
   <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 9040480363654116992}
   <AttackCheckRadius>k__BackingField: 0.8
@@ -329,7 +331,7 @@ MonoBehaviour:
   <SkeletonGeneralStateMachine>k__BackingField: {fileID: 3253891435111814081}
   <SkeletonStats>k__BackingField: {fileID: 6515895796685027427}
   <SkeletonFx>k__BackingField: {fileID: 4481995532728314796}
-  <SkeletonSkillManager>k__BackingField: {fileID: 0}
+  <SkeletonSkillManager>k__BackingField: {fileID: 3516655791842007701}
 --- !u!114 &3253891435111814081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +377,34 @@ MonoBehaviour:
   <FlashDuration>k__BackingField: 0.2
   <HitMaterial>k__BackingField: {fileID: 2100000, guid: 79b9149a294d1f94185574269bd42e05, type: 2}
   <SkeletonController>k__BackingField: {fileID: 2017294918222282143}
+--- !u!114 &3516655791842007701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245615566431074216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8f6abe573a74d4caf13eac2be3b788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SkeletonController>k__BackingField: {fileID: 2017294918222282143}
+  <AttackSkill>k__BackingField: {fileID: 7976864862860082019}
+--- !u!114 &7976864862860082019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245615566431074216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d552968e4c422e6478ec7eba7c653d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 2
+  <SkeletonSkillManager>k__BackingField: {fileID: 3516655791842007701}
 --- !u!1 &8905942304842384732
 GameObject:
   m_ObjectHideFlags: 0

@@ -260,11 +260,16 @@ public abstract class EntityController : MonoBehaviour
 
     private IEnumerator HitKnockbackLogic(EntityController attackerController)
     {
-        this.IsKnocked = true;
         var attackerFacingDirection = attackerController.FacingDirection;
         var attackerKnockbackDirection = attackerController.KnockbackDirection;
+        var attackerKnockbackDuration = attackerController.KnockbackDuration;
+
+        this.IsKnocked = true;
+
         this.Rigidbody2D.linearVelocity = new Vector2(attackerKnockbackDirection.x * attackerFacingDirection, attackerKnockbackDirection.y);
-        yield return new WaitForSeconds(this.KnockbackDuration);
+        yield return new WaitForSeconds(attackerKnockbackDuration);
+
         this.IsKnocked = false;
+        this.SetZeroLinearVelocity();
     }
 }

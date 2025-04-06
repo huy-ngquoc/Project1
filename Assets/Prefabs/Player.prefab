@@ -155,7 +155,7 @@ MonoBehaviour:
   <Rigidbody2D>k__BackingField: {fileID: 7508464899211513799}
   <SpriteRenderer>k__BackingField: {fileID: 977604290948213387}
   <Animator>k__BackingField: {fileID: 348843332214418429}
-  <KnockbackDirection>k__BackingField: {x: 2, y: 2}
+  <KnockbackDirection>k__BackingField: {x: 5, y: 7}
   <KnockbackDuration>k__BackingField: 0.07
   <AttackCheck>k__BackingField: {fileID: 210601902630438282}
   <AttackCheckRadius>k__BackingField: 0.8
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7b24a41294bf84d94a5facf061beed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Cooldown>k__BackingField: 1
+  <Cooldown>k__BackingField: 0.2
   <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
 --- !u!114 &826495841360038840
 MonoBehaviour:
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9849084959cb28e42839ff2cb61a2f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Cooldown>k__BackingField: 10
+  <Cooldown>k__BackingField: 2
   <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
   <DashSpeed>k__BackingField: 25
   <DashDuration>k__BackingField: 0.2

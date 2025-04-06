@@ -17,7 +17,7 @@ namespace Game
         protected override void CastLogic()
         {
             var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
-            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.PrimaryAttackState);
+            playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.DashState);
         }
     }
 }
