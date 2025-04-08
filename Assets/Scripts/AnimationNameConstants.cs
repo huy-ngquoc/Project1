@@ -16,7 +16,13 @@ public static class AnimationNameConstants
 
         public static string Dash { get; } = nameof(Dash);
 
+        public static string AimSword { get; } = nameof(AimSword);
+
+        public static string CatchSword { get; } = nameof(CatchSword);
+
         public static string Attack { get; } = nameof(Attack);
+
+        public static string Rotation { get; } = nameof(Rotation);
 
         public static string PrimaryAttack1 { get; } = nameof(PrimaryAttack1);
 

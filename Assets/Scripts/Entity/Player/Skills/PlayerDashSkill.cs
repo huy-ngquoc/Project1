@@ -6,6 +6,12 @@ namespace Game
 
     public sealed class PlayerDashSkill : PlayerSkill
     {
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        private PlayerSkillManager playerSkillManager = null!;
+
+        public override PlayerSkillManager PlayerSkillManager => this.playerSkillManager;
+
         [field: SerializeField]
         [field: Range(5, 200)]
         public float DashSpeed { get; private set; } = 25;

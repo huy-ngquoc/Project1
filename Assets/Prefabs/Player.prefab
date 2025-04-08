@@ -50,6 +50,11 @@ GameObject:
   - component: {fileID: 5701722363094232599}
   - component: {fileID: 1779899046993947003}
   - component: {fileID: 826495841360038840}
+  - component: {fileID: 4294106871834072372}
+  - component: {fileID: 6110364652873557088}
+  - component: {fileID: 284017774883303172}
+  - component: {fileID: 3474591882465507}
+  - component: {fileID: 1053697138889516961}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -74,6 +79,7 @@ Transform:
   - {fileID: 6522265544298800549}
   - {fileID: 2700864115764556445}
   - {fileID: 210601902630438282}
+  - {fileID: 3199199438307110261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &7508464899211513799
@@ -250,6 +256,7 @@ MonoBehaviour:
   <PlayerController>k__BackingField: {fileID: 5205683079033008154}
   <PrimaryAttackSkill>k__BackingField: {fileID: 1779899046993947003}
   <DashSkill>k__BackingField: {fileID: 826495841360038840}
+  <ThrowSwordSkill>k__BackingField: {fileID: 4294106871834072372}
 --- !u!114 &1779899046993947003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0.2
-  <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
+  playerSkillManager: {fileID: 5701722363094232599}
 --- !u!114 &826495841360038840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,9 +284,136 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 2
-  <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
+  playerSkillManager: {fileID: 5701722363094232599}
   <DashSpeed>k__BackingField: 25
   <DashDuration>k__BackingField: 0.2
+--- !u!114 &4294106871834072372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d040feda69e7b44bc15b5dfebe4d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
+  aimDotParentTransform: {fileID: 3199199438307110261}
+  throwRegularSwordSkill: {fileID: 6110364652873557088}
+  throwBounceSwordSkill: {fileID: 284017774883303172}
+  throwPeirceSwordSkill: {fileID: 3474591882465507}
+  throwSpinSwordSkill: {fileID: 1053697138889516961}
+  <CurrentSwordType>k__BackingField: 0
+  <LaunchForce>k__BackingField: {x: 35, y: 25}
+  <FreezeTimeDuration>k__BackingField: 1.5
+  <ReturnSpeed>k__BackingField: 15
+  <ReturnImpact>k__BackingField: 7
+  <DotPrefab>k__BackingField: {fileID: 2911003466002344103, guid: 9d926d00d3b53904f857126d77614884, type: 3}
+  <NumberOfDots>k__BackingField: 20
+  <SpaceBetweenDots>k__BackingField: 0.07
+--- !u!114 &6110364652873557088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9d29d82c5bf7a4596496b247e23919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: a0db8dab6fa4ec541994a2103e94d5d9, type: 3}
+  throwSwordSkillManager: {fileID: 4294106871834072372}
+  <RegularGravity>k__BackingField: 4
+--- !u!114 &284017774883303172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508fd46224e9bca458293b6e0cf02821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: f507c7a87f762ce49a5cc84ca3215661, type: 3}
+  throwSwordSkillManager: {fileID: 4294106871834072372}
+  <BounceAmount>k__BackingField: 4
+  <BounceGravity>k__BackingField: 1
+  <BounceSpeed>k__BackingField: 20
+--- !u!114 &3474591882465507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bc6b8c583a05342802add8719f282f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: cbd5ae2c4c2a7054096d801e8672cb83, type: 3}
+  throwSwordSkillManager: {fileID: 4294106871834072372}
+  <PeirceAmount>k__BackingField: 2
+  <PeirceGravity>k__BackingField: 0.5
+--- !u!114 &1053697138889516961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb682168634d1f4479533d9c322787af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: 26e0e8243711c8f44968f1748a68c0c3, type: 3}
+  throwSwordSkillManager: {fileID: 4294106871834072372}
+  <MaxTravelDistance>k__BackingField: 7
+  <SpinDuration>k__BackingField: 2
+  <SpinGravity>k__BackingField: 1
+  <HitCooldown>k__BackingField: 0.35
+--- !u!1 &2167395354166541149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3199199438307110261}
+  m_Layer: 6
+  m_Name: AimDotParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3199199438307110261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167395354166541149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1622310859902184626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2212967575485532407
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,11 @@ public abstract class EntitySpecificStateMachine : IEntityState
     private IEntityState currentState = null!;
     private IEntityState? stateToChangeTo = null;
 
-    public float StateMachineTimer { get; protected set; } = 0;
-
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
     public EntityController EntityController => this.EntityGeneralStateMachine.EntityController;
 
-    public abstract IEntityState InitialState { get; }
+    protected abstract IEntityState InitialState { get; }
 
     public bool HasStateToChangeTo()
     {
@@ -40,16 +38,6 @@ public abstract class EntitySpecificStateMachine : IEntityState
 
     public void Update()
     {
-        var deltaTime = UnityEngine.Time.deltaTime;
-        if (this.StateMachineTimer > deltaTime)
-        {
-            this.StateMachineTimer -= this.StateMachineTimer;
-        }
-        else
-        {
-            this.StateMachineTimer = 0;
-        }
-
         this.currentState.Update();
 
         while (this.stateToChangeTo != null)

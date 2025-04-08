@@ -128,6 +128,15 @@ namespace Game
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimSword"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0f5e346-cca3-46ed-90c8-7339c0a21123"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ namespace Game
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc19232a-43f1-430f-9da0-fa0e8394a12f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimSword"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +250,7 @@ namespace Game
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_PrimaryAttack = m_Player.FindAction("PrimaryAttack", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+            m_Player_AimSword = m_Player.FindAction("AimSword", throwIfNotFound: true);
         }
 
         ~@InputSystemAction()
@@ -314,6 +335,7 @@ namespace Game
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_PrimaryAttack;
         private readonly InputAction m_Player_Dash;
+        private readonly InputAction m_Player_AimSword;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -341,6 +363,10 @@ namespace Game
             /// Provides access to the underlying input action "Player/Dash".
             /// </summary>
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/AimSword".
+            /// </summary>
+            public InputAction @AimSword => m_Wrapper.m_Player_AimSword;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -379,6 +405,9 @@ namespace Game
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @AimSword.started += instance.OnAimSword;
+                @AimSword.performed += instance.OnAimSword;
+                @AimSword.canceled += instance.OnAimSword;
             }
 
             /// <summary>
@@ -402,6 +431,9 @@ namespace Game
                 @Dash.started -= instance.OnDash;
                 @Dash.performed -= instance.OnDash;
                 @Dash.canceled -= instance.OnDash;
+                @AimSword.started -= instance.OnAimSword;
+                @AimSword.performed -= instance.OnAimSword;
+                @AimSword.canceled -= instance.OnAimSword;
             }
 
             /// <summary>
@@ -470,6 +502,13 @@ namespace Game
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnDash(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "AimSword" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAimSword(InputAction.CallbackContext context);
         }
     }
 }

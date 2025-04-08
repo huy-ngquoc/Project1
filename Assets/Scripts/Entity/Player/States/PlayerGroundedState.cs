@@ -42,6 +42,24 @@ public abstract class PlayerGroundedState : PlayerState
             return;
         }
 
+        if (playerInputHandler.AimSwordPressed)
+        {
+            if (this.PlayerSkillManager.ThrowSwordSkill.IsUsable())
+            {
+                playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.AimSwordState);
+                return;
+            }
+            else if (this.PlayerSkillManager.ThrowSwordSkill.HasSword())
+            {
+                this.PlayerSkillManager.ThrowSwordSkill.ReturnTheSword();
+                return;
+            }
+            else
+            {
+                // Do nothing...
+            }
+        }
+
         this.OnPlayerGroundedStateUpdate();
     }
 

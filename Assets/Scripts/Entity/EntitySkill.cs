@@ -4,7 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class EntitySkill : MonoBehaviour
+public abstract class EntitySkill : MonoBehaviour, IEntitySkill
 {
     public abstract EntitySkillManager EntitySkillManager { get; }
 
@@ -16,7 +16,12 @@ public abstract class EntitySkill : MonoBehaviour
 
     public float CooldownTimer { get; protected set; } = 0;
 
-    public bool IsUsable() => this.CooldownTimer <= 0;
+    public bool IsUsable() => (this.CooldownTimer <= 0) && this.IsUsableEntitySkill();
+
+    protected virtual bool IsUsableEntitySkill()
+    {
+        return true;
+    }
 
     public bool Cast()
     {

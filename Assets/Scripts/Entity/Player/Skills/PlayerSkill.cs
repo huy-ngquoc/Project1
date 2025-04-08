@@ -7,15 +7,23 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerSkillManager))]
 public abstract class PlayerSkill : EntitySkill
 {
-    [field: SerializeReference]
-    [field: ResolveComponent]
-    public PlayerSkillManager PlayerSkillManager { get; private set; } = null!;
+    public abstract PlayerSkillManager PlayerSkillManager { get; }
 
     public PlayerController PlayerController => this.PlayerSkillManager.PlayerController;
 
     public PlayerGeneralStateMachine PlayerGeneralStateMachine => this.PlayerController.PlayerGeneralStateMachine;
 
     public sealed override EntitySkillManager EntitySkillManager => this.PlayerSkillManager;
+
+    protected sealed override bool IsUsableEntitySkill()
+    {
+        return this.IsUsablePlayerSkill();
+    }
+
+    protected virtual bool IsUsablePlayerSkill()
+    {
+        return true;
+    }
 
     protected sealed override void OnEntitySkillAwake()
     {

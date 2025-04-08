@@ -5,7 +5,7 @@ namespace Game
     public sealed class SkeletonFx : EnemyFx
     {
         [field: UnityEngine.SerializeReference]
-        [field: ResolveComponentInParent("Skeleton")]
+        [field: ResolveComponentInParent]
         public SkeletonController SkeletonController { get; private set; } = null!;
 
         public override EnemyController EnemyController => this.SkeletonController;

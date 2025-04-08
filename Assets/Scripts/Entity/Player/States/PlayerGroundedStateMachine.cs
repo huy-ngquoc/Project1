@@ -14,7 +14,7 @@ public sealed class PlayerGroundedStateMachine : PlayerSpecificStateMachine
 
     public override PlayerGeneralStateMachine PlayerGeneralStateMachine { get; }
 
-    public override IEntityState InitialState
+    protected override IEntityState InitialState
     {
         get
         {

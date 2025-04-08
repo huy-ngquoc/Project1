@@ -8,7 +8,7 @@ namespace Game
     {
         [field: Header("Player controller")]
         [field: SerializeField]
-        [field: ResolveComponentInParent("Player")]
+        [field: ResolveComponentInParent]
         public PlayerController PlayerController { get; private set; } = null!;
 
         public override EntityController EntityController => this.PlayerController;

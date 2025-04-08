@@ -260,10 +260,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.89
@@ -321,10 +317,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.4
@@ -689,10 +681,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67
@@ -755,10 +743,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.5
@@ -1178,10 +1162,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.09
@@ -1326,10 +1306,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -1387,10 +1363,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.1
@@ -10248,10 +10220,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2004297315}
     m_Modifications:
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.1
