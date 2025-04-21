@@ -12,16 +12,11 @@ public abstract class EntitySkill : MonoBehaviour, IEntitySkill
 
     [field: SerializeField]
     [field: Range(0, 60)]
-    public float Cooldown { get; protected set; } = 0;
+    public float Cooldown { get; private set; } = 0;
 
-    public float CooldownTimer { get; protected set; } = 0;
+    public float CooldownTimer { get; private set; } = 0;
 
-    public bool IsUsable() => (this.CooldownTimer <= 0) && this.IsUsableEntitySkill();
-
-    protected virtual bool IsUsableEntitySkill()
-    {
-        return true;
-    }
+    public virtual bool IsUsable() => this.CooldownTimer <= 0;
 
     public bool Cast()
     {

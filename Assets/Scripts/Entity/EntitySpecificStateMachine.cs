@@ -9,6 +9,8 @@ public abstract class EntitySpecificStateMachine : IEntityState
 
     public abstract EntityGeneralStateMachine EntityGeneralStateMachine { get; }
 
+    public string AnimationBoolName => this.currentState.AnimationBoolName;
+
     public EntityController EntityController => this.EntityGeneralStateMachine.EntityController;
 
     protected abstract IEntityState InitialState { get; }

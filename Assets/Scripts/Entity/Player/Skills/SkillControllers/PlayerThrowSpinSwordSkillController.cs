@@ -22,7 +22,7 @@ namespace Game
 
         public float HitCooldown { get; private set; } = 0;
 
-        public float SpinDirection { get; private set; } = 0;
+        public Vector2 SpinDirection { get; private set; } = Vector2.zero;
 
         public void SetupSpin(float maxTravelDistance, float spinDuration, float hitCooldown)
         {
@@ -31,7 +31,7 @@ namespace Game
             this.SpinDuration = spinDuration;
             this.HitCooldown = hitCooldown;
 
-            this.SpinDirection = System.Math.Clamp(this.Rigidbody2D.linearVelocityX, -1, 1);
+            this.SpinDirection = this.Rigidbody2D.linearVelocity.normalized;
         }
 
         protected override void OnPlayerThrowSwordSkillControllerUpdate()
@@ -42,18 +42,17 @@ namespace Game
                 return;
             }
 
-            if ((!this.WasStoppedSpinning)
-                && (Vector2.Distance(this.PlayerController.transform.position, this.transform.position) > this.MaxTravelDistance))
-            {
-                this.StopWhenSpinning();
-            }
-
             if (!this.WasStoppedSpinning)
             {
+                if (Vector2.Distance(this.PlayerController.transform.position, this.transform.position) > this.MaxTravelDistance)
+                {
+                    this.StopWhenSpinning();
+                }
+
                 return;
             }
 
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(this.transform.position.x + this.SpinDirection, this.transform.position.y), 1.5F * Time.deltaTime);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(this.transform.position.x + this.SpinDirection.x, this.transform.position.y + this.SpinDirection.y), 1.5F * Time.deltaTime);
 
             if (this.SpinTimmer > Time.deltaTime)
             {

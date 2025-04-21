@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 284017774883303172}
   - component: {fileID: 3474591882465507}
   - component: {fileID: 1053697138889516961}
+  - component: {fileID: 8861442589975940163}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -257,6 +258,7 @@ MonoBehaviour:
   <PrimaryAttackSkill>k__BackingField: {fileID: 1779899046993947003}
   <DashSkill>k__BackingField: {fileID: 826495841360038840}
   <ThrowSwordSkill>k__BackingField: {fileID: 4294106871834072372}
+  <CloneSkill>k__BackingField: {fileID: 8861442589975940163}
 --- !u!114 &1779899046993947003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +385,23 @@ MonoBehaviour:
   <SpinDuration>k__BackingField: 2
   <SpinGravity>k__BackingField: 1
   <HitCooldown>k__BackingField: 0.35
+--- !u!114 &8861442589975940163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24c814b9b6f19a418b51c02885e6249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  playerSkillManager: {fileID: 5701722363094232599}
+  clonePrefab: {fileID: 3864650055876776002, guid: 2ccd7f1aaf1f1d24d9b5bc537655e703, type: 3}
+  cloneDuration: 1
+  cloneCanAttack: 1
 --- !u!1 &2167395354166541149
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
     {
         if (this.CanRotate)
         {
-            this.transform.right = this.Rigidbody2D.linearVelocity;
+            this.transform.right = this.Rigidbody2D.linearVelocity.normalized;
         }
 
         if (!this.IsReturning)
@@ -126,8 +126,9 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
 
     protected void SwordSkillDamage(EnemyController enemyController)
     {
-        enemyController.DoTakeDamageEffect(this.PlayerController);
-        // TODO: enemyController.StartCoroutine(enemyController.FreezeTimerFor(this.FreezeTimeDuration));
+        enemyController.DoTakeDamageEffect(
+            this.PlayerController.FacingDirection, this.PlayerController.KnockbackDirection, this.PlayerController.KnockbackDuration);
+        enemyController.EnemyGeneralStateMachine.FreezeForSeconds(this.FreezeTimeDuration);
     }
 
     protected void StopRotating()

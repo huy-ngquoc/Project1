@@ -15,16 +15,6 @@ public abstract class PlayerSkill : EntitySkill
 
     public sealed override EntitySkillManager EntitySkillManager => this.PlayerSkillManager;
 
-    protected sealed override bool IsUsableEntitySkill()
-    {
-        return this.IsUsablePlayerSkill();
-    }
-
-    protected virtual bool IsUsablePlayerSkill()
-    {
-        return true;
-    }
-
     protected sealed override void OnEntitySkillAwake()
     {
         this.OnPlayerSkillAwake();

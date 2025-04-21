@@ -1,9 +1,9 @@
 #nullable enable
 
-using UnityEngine;
-
 namespace Game
 {
+    using UnityEngine;
+
     public sealed class PlayerPrimaryAttackSkill : PlayerSkill
     {
         [field: SerializeReference]

@@ -12,6 +12,7 @@ namespace Game
             this.IdleState = new SkeletonIdleState(this);
             this.MoveState = new SkeletonMoveState(this);
             this.AttackState = new SkeletonAttackState(this);
+            this.FreezeState = new SkeletonFreezeState(this);
         }
 
         [field: Header("Controller")]
@@ -28,5 +29,9 @@ namespace Game
         public SkeletonMoveState MoveState { get; }
 
         public SkeletonAttackState AttackState { get; }
+
+        public SkeletonFreezeState FreezeState { get; }
+
+        protected override EnemyState? EnemyFreezeState => this.FreezeState;
     }
 }

@@ -9,10 +9,13 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
 {
     private IEntityState currentState = null!;
     private IEntityState? stateToChangeTo = null;
+    private IEntityState lastState = null!;
 
     public abstract EntityController EntityController { get; }
 
     public abstract IEntityState InitialState { get; }
+
+    public string LastAnimationBoolName => this.lastState.AnimationBoolName;
 
     public bool HasStateToChangeTo()
     {
@@ -24,6 +27,11 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
         this.stateToChangeTo = newState;
     }
 
+    public void SetStateToLastState()
+    {
+        this.stateToChangeTo = this.lastState;
+    }
+
     public void CancelChangingState()
     {
         this.stateToChangeTo = null;
@@ -33,6 +41,7 @@ public abstract class EntityGeneralStateMachine : MonoBehaviour
 
     protected void Awake()
     {
+        this.lastState = this.InitialState;
         this.currentState = this.InitialState;
         this.currentState.Enter();
     }

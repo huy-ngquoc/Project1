@@ -15,14 +15,9 @@ namespace Game
 
         public abstract float SwordGravity { get; }
 
-        protected sealed override bool IsUsablePlayerSkill()
+        public sealed override bool IsUsable()
         {
-            return (!this.ThrowSwordSkillManager.HasSword()) && this.IsUsablePlayerThrowSwordSkill();
-        }
-
-        protected virtual bool IsUsablePlayerThrowSwordSkill()
-        {
-            return true;
+            return base.IsUsable() && (!this.ThrowSwordSkillManager.HasSword());
         }
 
         protected sealed override void OnPlayerSkillAwake()

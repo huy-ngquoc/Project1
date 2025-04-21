@@ -24,6 +24,7 @@ namespace Game
         {
             var playerGeneralStateMachine = this.PlayerGeneralStateMachine;
             playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.DashState);
+            this.PlayerSkillManager.CloneSkill.CreateClone(this.PlayerController.transform.position);
         }
     }
 }
