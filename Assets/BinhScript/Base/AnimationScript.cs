@@ -9,8 +9,13 @@ namespace Game
         [SerializeField] protected Vector3 attackOffset;
         [SerializeField] protected float attackRange;
         [SerializeField] protected EnemyStateManager enemyStateManager;
+        
         [SerializeField] protected Vector2 forceDirection;
         [SerializeField] protected float teleportOffSet;
+        [SerializeField] protected HealthController healthController;
+        public void Awake() {
+            
+        }
         public void Attack() {
             Transform currentTransform = enemyStateManager.getTransform();
             
@@ -23,20 +28,21 @@ namespace Game
             Vector2 attackPosition = new Vector2(currentTransform.position.x+attackOffset.x, currentTransform.position.y+attackOffset.y);
             Collider2D[] col = Physics2D.OverlapCircleAll(attackPosition,attackRange,layer);
             foreach(Collider2D i in col) {
-                if(i.gameObject.TryGetComponent<EntityStats>(out var enemyStats)) {
-                    if(i.gameObject.TryGetComponent<EntityStats>(out var playerStats)) {
-                        enemyStats.DoDamage(playerStats);
-                    }
+                Vector2 fDir = enemyStateManager.GetForceDirection();
+                if(i.gameObject.TryGetComponent<HandlePlayerTakeDamage> ( out var playerHandleTakeDamage)) {
+                    playerHandleTakeDamage.TakeDamage(fDir, enemyStateManager.getTransform());
                 }
-                if(!(enemyStateManager.getCurrentState() is AttackState)) 
+                /*if(!(enemyStateManager.getCurrentState() is AttackState)) 
                 {
                     enemyStateManager.ChangeState(new AttackState(enemyStateManager));
                     return;
-                }
+                }*/
             }
         }
         public void EndDamageAnimation() {
-            
+            if(enemyStateManager.getCurrentState() is DeathState) {
+                return;
+            }
             enemyStateManager.ChangeState(new ChaseState(enemyStateManager));
 
         }
@@ -49,9 +55,13 @@ namespace Game
             else {
                 forceDirection.x=Math.Abs(forceDirection.x);
             }
+
             enemyStateManager.getRigidBody2D().AddForce(forceDirection, ForceMode2D.Impulse);
         }
         public void HandleEndAttack() {
+            if(enemyStateManager.getCurrentState() is DeathState) {
+                return;
+            }
              if(enemyStateManager.getDirection()==1) {
                 attackOffset.x=+Math.Abs(attackOffset.x);
             } 
@@ -71,6 +81,11 @@ namespace Game
 
         public void StartAttack() {
            
+        }
+        public void TakeDamage() {
+            if(enemyStateManager.gameObject.TryGetComponent<HealthController>(out var enemyHealthController)){
+                
+            }
         }
         public void TeleportToPlayer() {
             Transform playerTransform = enemyStateManager.getPlayerTransform();

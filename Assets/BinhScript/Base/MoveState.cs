@@ -37,6 +37,7 @@ namespace Game
                 enemyStateManager.setDirection(0);
                 this.enemyTransform.rotation=Quaternion.Euler(0,0,0);
             }
+            
         } 
         public void Exit() {
 

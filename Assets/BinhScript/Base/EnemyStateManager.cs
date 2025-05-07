@@ -14,21 +14,32 @@ namespace Game
         [SerializeField] protected Transform playerTransform;
         [SerializeField] protected Animator animator;
         [SerializeField] protected Rigidbody2D rg2D;
-        
+        [SerializeField] protected Vector2 forceDirection;
+        [SerializeField] protected HealthController healthController;
+        [SerializeField] protected float timeToDestroyAfterDeath;
+        [SerializeField] protected Transform sprite;
+        [SerializeField] protected float deathPosY;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
             this.currentState= new MoveState(this);
             this.previousState= new MoveState(this);
             this.currentState.Enter();
+            this.healthController=GetComponent<HealthController>();
         }
 
         // Update is called once per frame
         protected void Update()
         {
+            if(this.currentState is DeathState) {
+                return;
+            }
             this.currentState.Execute();
         } 
         public void ChangeState(IState newState) {
+            if(this.currentState is DeathState||this.previousState is DeathState) {
+                return;
+            }
             this.currentState.Exit();
             this.previousState=this.currentState;
             this.currentState=newState;
@@ -78,12 +89,14 @@ namespace Game
             return this.rg2D;
         }
         public void TakeDamage() {
-            float distance = System.Math.Abs(playerTransform.position.x-transform.position.x);
-            if(distance<2) {
+            if(this.currentState is DeathState||this.previousState is DeathState) {
+                return;
+            }
+            
                 if(!(this.currentState is DamageState)) {
                     ChangeState(new DamageState(this));
                 }
-            }
+            
         }
         public void setZ(float z) {
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y,z);
@@ -97,6 +110,27 @@ namespace Game
         }
         public void Teleport(Vector3 newPosition) {
             this.transform.position= newPosition;
+        }
+        public Vector2 GetForceDirection() {
+            return this.forceDirection;
+        }
+        public HealthController GetHealthController() {
+            return this.healthController;
+        }
+        public void DestroyGameObject() {
+            Destroy(this.gameObject);
+        }
+        public float GetTimeToDestroyAfterDeath() {
+            return this.timeToDestroyAfterDeath;
+        }
+        public Transform GetSprite() {
+            return this.sprite;
+        }
+        public void DestroyCanvas() {
+            Destroy(this.GetHealthController().GetCanvas());
+        }
+        public float GetDeathPosY() {
+            return this.deathPosY;
         }
         
     }

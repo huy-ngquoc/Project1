@@ -104,7 +104,9 @@ public abstract class EntityController : MonoBehaviour
         this.EntityFx.FlashFx();
         this.HitKnockback(attackerController);
     }
-
+    public void DoTakeDamageEffect() {
+        this.EntityFx.FlashFx();
+    }
     public void FlipController(float x)
     {
         bool flip = this.FacingRight ? (x < 0) : (x > 0);

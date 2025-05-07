@@ -14,6 +14,10 @@ namespace Game
             this.isChangeToAttackState=false;
         }
         public void Update() {
+            if(this.enemyStateManager.getCurrentState() is DeathState) {
+               
+                return;
+            }
             Vector2 rayCastDir = new Vector2(1,0);
             if(enemyStateManager.getDirection()==0) {
                 rayCastDir= new Vector2(-1,0);
