@@ -8,17 +8,9 @@ public abstract class EntitySpecificSkillManager : MonoBehaviour, IEntitySkill
 {
     public abstract EntitySkillManager EntitySkillManager { get; }
 
-    protected abstract IEntitySkill CurrentSkill { get; }
+    public abstract bool IsUsable();
 
-    public bool IsUsable()
-    {
-        return this.CurrentSkill.IsUsable();
-    }
-
-    public bool Cast()
-    {
-        return this.CurrentSkill.Cast();
-    }
+    public abstract bool Cast();
 
     protected void Awake()
     {

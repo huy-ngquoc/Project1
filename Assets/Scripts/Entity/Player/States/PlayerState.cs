@@ -29,6 +29,11 @@ public abstract class PlayerState : EntityState
         var velocityY = this.PlayerController.Rigidbody2D.linearVelocityY;
         animator.SetFloat(AnimationNameConstants.Float.VelocityY, velocityY);
 
+        if (this.PlayerInputHandler.CrystalPressed)
+        {
+            this.PlayerSkillManager.CrystalSkill.Cast();
+        }
+
         if (this.PlayerInputHandler.DashPressed && this.PlayerSkillManager.DashSkill.Cast())
         {
             return;

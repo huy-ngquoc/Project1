@@ -111,8 +111,6 @@ namespace Game
         [field: Range(0.01F, 0.2F)]
         public float SpaceBetweenDots { get; private set; } = 0.07F;
 
-        protected override IEntitySkill CurrentSkill => this.CurrentThrowSwordSkill;
-
         private PlayerThrowSwordSkill CurrentThrowSwordSkill
             => this.CurrentSwordType switch
             {
@@ -171,6 +169,16 @@ namespace Game
             {
                 this.swordController.ReturnSword();
             }
+        }
+
+        public override bool IsUsable()
+        {
+            return this.CurrentThrowSwordSkill.IsUsable();
+        }
+
+        public override bool Cast()
+        {
+            return this.CurrentThrowSwordSkill.Cast();
         }
 
         protected override void OnPlayerSpecificSkillManagerAwake()

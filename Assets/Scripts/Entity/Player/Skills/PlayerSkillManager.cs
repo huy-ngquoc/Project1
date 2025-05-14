@@ -29,6 +29,10 @@ namespace Game
         [field: ResolveComponent]
         public PlayerCloneSkill CloneSkill { get; private set; } = null!;
 
+        [field: SerializeReference]
+        [field: ResolveComponent]
+        public PlayerCrystalSkill CrystalSkill { get; private set; } = null!;
+
         public Transform? FindClosestEnemyTransform(Vector2 positionToCheck)
         {
             var collider = Physics2D.OverlapCircleAll(positionToCheck, 25, this.PlayerController.AttackTargetLayerMask);
