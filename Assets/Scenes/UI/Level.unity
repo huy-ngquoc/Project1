@@ -1247,6 +1247,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 869764040}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectLevel1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.MySceneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053421113365151200, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8078323018671105883, guid: c58c704e2b629e24bbeb1d884f144dde, type: 3}
       propertyPath: m_text
       value: 'LEVEL 1

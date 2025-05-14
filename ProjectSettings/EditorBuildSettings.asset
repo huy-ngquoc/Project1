@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI/Level.unity
     guid: cf1d5d8c44ddab44ebf4e4c2431098e7
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: d96f882735821d64494e02600316e0f0
+  - enabled: 1
+    path: Assets/Scenes/Mountain.unity
+    guid: d7712fac5e15e4f48a3db9f4cc7d75f9
+  - enabled: 1
+    path: Assets/Scenes/Desert.unity
+    guid: f5f4ce50aaf288a40b8eee4321d00dc8
+  - enabled: 1
+    path: Assets/Scenes/Volcano.unity
+    guid: d97613dea59e27845a9785d8d79ce843
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 5e76c7565f6ca7545b7ca9177d9f3a21, type: 3}
   m_UseUCBPForAssetBundles: 0
