@@ -34,7 +34,7 @@ namespace Game
             this.SpinDirection = this.Rigidbody2D.linearVelocity.normalized;
         }
 
-        protected override void OnPlayerThrowSwordSkillControllerUpdate()
+        protected override void OnUpdate()
         {
             if (!this.IsSpinning || !this.CanRotate)
             {

@@ -1877,39 +1877,20 @@ PrefabInstance:
     - target: {fileID: 5701722363094232599, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: <CrystalSkill>k__BackingField
       value: 
-      objectReference: {fileID: 6529611645200702768}
+      objectReference: {fileID: 6529611645200702785}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 728098314185341958, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6529611645200702768}
+      addedObject: {fileID: 6529611645200702785}
   m_SourcePrefab: {fileID: 100100000, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
 --- !u!1 &6529611645200702767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 728098314185341958, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
   m_PrefabInstance: {fileID: 6529611645200702766}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6529611645200702768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6529611645200702767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d98c4dff7a76d4b992338594d7f6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Cooldown>k__BackingField: 0
-  playerSkillManager: {fileID: 6529611645200702769}
-  crystalPrefab: {fileID: 6732469931052163263, guid: fadc578fdc4252d4aa04ed44ca4a8fe1, type: 3}
-  <CrystalDuration>k__BackingField: 1.5
-  <CanExplode>k__BackingField: 1
-  <CanMoveToEnemy>k__BackingField: 1
-  <MoveSpeed>k__BackingField: 4
 --- !u!114 &6529611645200702769 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5701722363094232599, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
@@ -1921,6 +1902,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfcd244e7b3ca948ad3c1844e91b265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6529611645200702785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529611645200702767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6daa6eb85f3231d4cbc13421e186c276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0
+  playerSkillManager: {fileID: 6529611645200702769}
+  <CrystalPrefab>k__BackingField: {fileID: 6732469931052163263, guid: fadc578fdc4252d4aa04ed44ca4a8fe1, type: 3}
+  <CrystalDuration>k__BackingField: 1.5
+  <MoveSpeed>k__BackingField: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

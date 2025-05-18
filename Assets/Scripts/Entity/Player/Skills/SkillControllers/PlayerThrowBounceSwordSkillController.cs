@@ -31,11 +31,11 @@ namespace Game
             this.targetTransforms.Clear();
         }
 
-        protected override void OnPlayerThrowSwordSkillControllerAwake()
+        protected override void OnAwake()
         {
         }
 
-        protected override void OnPlayerThrowSwordSkillControllerUpdate()
+        protected override void OnUpdate()
         {
             if (this.IsReturning || (this.targetTransforms.Count <= 0))
             {

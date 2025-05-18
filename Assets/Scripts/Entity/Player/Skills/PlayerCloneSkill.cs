@@ -36,8 +36,15 @@ namespace Game
                 return;
             }
 
-            var closestEnemyPosition = this.PlayerSkillManager.FindClosestEnemyTransform(clonePosition).UnityAccessVal(t => t.position);
-            cloneSkillController.SetUpClone(this.PlayerController, clonePosition, this.cloneDuration, this.cloneCanAttack, closestEnemyPosition);
+            var closestEnemyTransform = this.PlayerSkillManager.FindClosestEnemyTransform(clonePosition);
+            if (closestEnemyTransform == null)
+            {
+                cloneSkillController.SetUpClone(this.PlayerController, clonePosition, this.cloneDuration, this.cloneCanAttack, null);
+            }
+            else
+            {
+                cloneSkillController.SetUpClone(this.PlayerController, clonePosition, this.cloneDuration, this.cloneCanAttack, closestEnemyTransform.position);
+            }
         }
 
         protected override void CastLogic()

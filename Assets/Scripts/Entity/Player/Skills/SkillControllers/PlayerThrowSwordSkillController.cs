@@ -4,7 +4,7 @@ namespace Game;
 
 using UnityEngine;
 
-public abstract class PlayerThrowSwordSkillController : PlayerSkillController
+public abstract class PlayerThrowSwordSkillController : MonoBehaviour
 {
     public float GravityScale { get; private set; } = 0;
 
@@ -15,6 +15,8 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
     public bool CanRotate { get; private set; } = true;
 
     public bool IsReturning { get; protected set; } = false;
+
+    public PlayerController PlayerController { get; private set; } = null!;
 
     [field: SerializeField]
     [field: Range(3, 20)]
@@ -62,16 +64,16 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
     {
     }
 
-    protected sealed override void OnPlayerSkillControllerAwake()
+    protected void Awake()
     {
-        this.OnPlayerThrowSwordSkillControllerAwake();
+        this.OnAwake();
     }
 
-    protected virtual void OnPlayerThrowSwordSkillControllerAwake()
+    protected virtual void OnAwake()
     {
     }
 
-    protected sealed override void OnPlayerSkillControllerUpdate()
+    protected void Update()
     {
         if (this.CanRotate)
         {
@@ -80,7 +82,7 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
 
         if (!this.IsReturning)
         {
-            this.OnPlayerThrowSwordSkillControllerUpdate();
+            this.OnUpdate();
             return;
         }
 
@@ -95,21 +97,21 @@ public abstract class PlayerThrowSwordSkillController : PlayerSkillController
             playerGeneralStateMachine.SetStateToChangeTo(playerGeneralStateMachine.CatchSwordState);
         }
 
-        this.OnPlayerThrowSwordSkillControllerUpdate();
+        this.OnUpdate();
     }
 
-    protected virtual void OnPlayerThrowSwordSkillControllerUpdate()
+    protected virtual void OnUpdate()
     {
     }
 
-    protected sealed override void OnPlayerSkillControllerTriggerEnter2D(Collider2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (this.IsReturning)
         {
             return;
         }
 
-        if (collision.TryGetComponent<EnemyController>(out var enemyController))
+        if (collision.gameObject.TryGetComponent<EnemyController>(out var enemyController))
         {
             this.SwordSkillDamage(enemyController);
             this.OnSwordHitEnemy(enemyController);

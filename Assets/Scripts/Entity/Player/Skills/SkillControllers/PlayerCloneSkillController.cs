@@ -4,9 +4,9 @@ namespace Game
 {
     using UnityEngine;
 
-    public sealed class PlayerCloneSkillController : PlayerSkillController
+    public sealed class PlayerCloneSkillController : MonoBehaviour
     {
-        private string[] animationBoolNames = new string[]
+        private readonly string[] animationBoolNames = new string[]
         {
             AnimationNameConstants.Bool.PlayerClone.Attack1,
             AnimationNameConstants.Bool.PlayerClone.Attack2,
@@ -24,6 +24,8 @@ namespace Game
         [field: SerializeField]
         [field: ResolveComponentInChildren("AttackCheck")]
         private Transform attackCheck = null!;
+
+        public PlayerController PlayerController { get; private set; } = null!;
 
         [field: SerializeField]
         [field: Range(0.5F, 5)]
@@ -53,7 +55,7 @@ namespace Game
             }
         }
 
-        protected override void OnPlayerSkillControllerUpdate()
+        private void Update()
         {
             float deltaTime = Time.deltaTime;
 
@@ -88,11 +90,6 @@ namespace Game
 
         private bool CloneAttackTrigger()
         {
-            if (QuickLog.WarnIfAccessNull(this.attackCheck))
-            {
-                return false;
-            }
-
             var colliders = Physics2D.OverlapCircleAll(this.attackCheck.position, this.AttackCheckRadius);
             foreach (var hit in colliders)
             {
