@@ -4,13 +4,9 @@ namespace Game
 {
     using UnityEngine;
 
-    public sealed class PlayerNormalCrystalSkill : PlayerCrystalSkill
+    public sealed class PlayerSwappingCrystalSkill : PlayerCrystalSkill
     {
         private GameObject? currentCrystal = null;
-
-        [field: SerializeField]
-        [field: Range(0.5F, 10)]
-        public float MoveSpeed { get; private set; } = 4;
 
         protected override void CastLogic()
         {
@@ -22,7 +18,7 @@ namespace Game
                 return;
             }
 
-            if (!this.currentCrystal.TryGetComponent<PlayerNormalCrystalSkillController>(out var crystalSkillController))
+            if (!this.currentCrystal.TryGetComponent<PlayerSwappingCrystalSkillController>(out var crystalSkillController))
             {
                 Object.Destroy(this.currentCrystal);
                 this.currentCrystal = null;
@@ -32,21 +28,25 @@ namespace Game
             if (crystalSkillController.IsFinishing)
             {
                 this.currentCrystal = null;
+                return;
             }
+
+            (this.currentCrystal.transform.position, this.PlayerController.transform.position) = (this.PlayerController.transform.position, this.currentCrystal.transform.position);
+            crystalSkillController.CrystalFinishing();
+            this.currentCrystal = null;
         }
 
-        private void CreateCrystal()
+        public void CreateCrystal()
         {
             this.currentCrystal = Object.Instantiate(this.CrystalPrefab, this.transform.position, Quaternion.identity);
-            if (!this.currentCrystal.TryGetComponent<PlayerNormalCrystalSkillController>(out var crystalSkillController))
+            if (!this.currentCrystal.TryGetComponent<PlayerSwappingCrystalSkillController>(out var crystalSkillController))
             {
                 Object.Destroy(this.currentCrystal);
                 this.currentCrystal = null;
                 return;
             }
 
-            var closestEnemyTransform = this.PlayerSkillManager.FindClosestEnemyTransform(this.currentCrystal.transform.position);
-            crystalSkillController.SetupCrystal(this.PlayerController, this.CrystalDuration, this.MoveSpeed, closestEnemyTransform);
+            crystalSkillController.SetupCrystal(this.PlayerController, this.CrystalDuration);
         }
     }
 }
