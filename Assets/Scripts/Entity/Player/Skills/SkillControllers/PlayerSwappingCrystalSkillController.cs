@@ -4,7 +4,7 @@ namespace Game
 {
     using UnityEngine;
 
-    public abstract class PlayerCrystalSkillController : MonoBehaviour
+    public sealed class PlayerSwappingCrystalSkillController : MonoBehaviour
     {
         [field: SerializeField]
         [field: ResolveComponent]
@@ -22,32 +22,28 @@ namespace Game
 
         public bool IsFinishing { get; private set; } = false;
 
-        public LayerMask WhatIsEnemy { get; private set; }
-
         public PlayerController PlayerController { get; private set; } = null!;
 
         public void SetupCrystal(PlayerController playerController, float crystalDuration)
         {
             this.PlayerController = playerController;
-            this.WhatIsEnemy = this.PlayerController.AttackTargetLayerMask;
             this.CrystalExistTimer = crystalDuration;
         }
 
-        public virtual void CrystalFinishing()
+        public void CrystalFinishing()
         {
             this.IsFinishing = true;
-            if (this.animator != null)
-            {
-                this.CanGrow = true;
-                this.animator.SetTrigger("Explode");
-            }
-            else
+            if (this.animator == null)
             {
                 this.SelfDestroy();
+                return;
             }
+
+            this.CanGrow = true;
+            this.animator.SetTrigger("Explode");
         }
 
-        protected void Update()
+        private void Update()
         {
             if (this.CrystalExistTimer > Time.deltaTime)
             {
@@ -64,31 +60,25 @@ namespace Game
             {
                 this.transform.localScale = Vector2.Lerp(this.transform.localScale, new Vector2(3, 3), this.GrowSpeed * Time.deltaTime);
             }
-
-            this.OnPlayerCrystalSkillControllerUpdate();
-        }
-
-        protected virtual void OnPlayerCrystalSkillControllerUpdate()
-        {
-            // Leave this method blank
-            // The derived classes can decide if they override this method
         }
 
         private void AnimationExplodeEvent()
         {
-            if (this.circileCollider2D != null)
+            if ((this.circileCollider2D == null) || (this.PlayerController == null))
             {
-                var colliders = Physics2D.OverlapCircleAll(this.transform.position, this.circileCollider2D.radius);
+                return;
+            }
 
-                foreach (var hit in colliders)
+            var colliders = Physics2D.OverlapCircleAll(this.transform.position, this.circileCollider2D.radius);
+
+            foreach (var hit in colliders)
+            {
+                if (hit.TryGetComponent<EntityStats>(out var targetStats))
                 {
-                    if (hit.TryGetComponent<EntityStats>(out var targetStats))
-                    {
-                        targetStats.EntityController.DoTakeDamageEffect(
-                            (this.transform.position.x > hit.transform.position.x) ? -1 : 1,
-                            this.PlayerController.KnockbackDirection,
-                            this.PlayerController.KnockbackDuration);
-                    }
+                    targetStats.EntityController.DoTakeDamageEffect(
+                        (this.transform.position.x > hit.transform.position.x) ? -1 : 1,
+                        this.PlayerController.KnockbackDirection,
+                        this.PlayerController.KnockbackDuration);
                 }
             }
         }

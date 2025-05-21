@@ -31,7 +31,7 @@ namespace Game
 
         [field: SerializeReference]
         [field: ResolveComponent]
-        public PlayerCrystalSkill CrystalSkill { get; private set; } = null!;
+        public PlayerCrystalSkillManager CrystalSkill { get; private set; } = null!;
 
         public Transform? FindClosestEnemyTransform(Vector2 positionToCheck)
         {

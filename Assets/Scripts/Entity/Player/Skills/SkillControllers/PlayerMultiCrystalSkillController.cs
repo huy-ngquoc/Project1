@@ -4,7 +4,7 @@ namespace Game
 {
     using UnityEngine;
 
-    public sealed class PlayerNormalCrystalSkillController : MonoBehaviour
+    public sealed class PlayerMultiCrystalSkillController : MonoBehaviour
     {
         [field: SerializeField]
         [field: ResolveComponent]
