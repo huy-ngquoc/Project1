@@ -49,10 +49,10 @@ public static class QuickLog
     }
 
     public static bool ErrorIfAccessNull<T>(
-    [NotNullWhen(false)] T? obj,
-    [CallerMemberName] string callerName = "",
-    [CallerFilePath] string callerFilePath = "")
-    where T : class
+        [NotNullWhen(false)] T? obj,
+        [CallerMemberName] string callerName = "",
+        [CallerFilePath] string callerFilePath = "")
+        where T : class
     {
         if (obj == null)
         {
@@ -88,9 +88,9 @@ public static class QuickLog
     }
 
     public static bool AssertIfAccessNull<T>(
-    [NotNullWhen(false)] T? obj,
-    [CallerMemberName] string callerName = "",
-    [CallerFilePath] string callerFilePath = "")
+        [NotNullWhen(false)] T? obj,
+        [CallerMemberName] string callerName = "",
+        [CallerFilePath] string callerFilePath = "")
     where T : class
     {
         if (obj == null)

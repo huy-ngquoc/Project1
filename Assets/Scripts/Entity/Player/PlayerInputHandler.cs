@@ -64,11 +64,17 @@ namespace Game
 
         public bool DashPressed { get; private set; } = false;
 
+        public bool AimSwordPressed { get; private set; } = false;
+
+        public bool CrystalPressed { get; private set; } = false;
+
         public void CancelJumpInputAction() => this.JumpPressed = false;
 
         public void CancelPrimaryAttackInputAction() => this.PrimaryAttackPressed = false;
 
         public void CancelDashAction() => this.DashPressed = false;
+
+        public void CancelCrystalAction() => this.CrystalPressed = false;
 
         public void Dispose()
         {
@@ -91,6 +97,12 @@ namespace Game
 
             playerActions.Dash.performed += context => this.DashPressed = true;
             playerActions.Dash.canceled += context => this.DashPressed = false;
+
+            playerActions.AimSword.performed += context => this.AimSwordPressed = true;
+            playerActions.AimSword.canceled += context => this.AimSwordPressed = false;
+
+            playerActions.Crystal.performed += context => this.CrystalPressed = true;
+            playerActions.Crystal.canceled += context => this.CrystalPressed = false;
 
             this.inputSystemAction.Enable();
         }

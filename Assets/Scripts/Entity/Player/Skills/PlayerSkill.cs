@@ -7,9 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerSkillManager))]
 public abstract class PlayerSkill : EntitySkill
 {
-    [field: SerializeReference]
-    [field: ResolveComponent]
-    public PlayerSkillManager PlayerSkillManager { get; private set; } = null!;
+    public abstract PlayerSkillManager PlayerSkillManager { get; }
 
     public PlayerController PlayerController => this.PlayerSkillManager.PlayerController;
 

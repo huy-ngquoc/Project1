@@ -4,6 +4,10 @@ namespace Game;
 
 public interface IEntityState
 {
+    EntityGeneralStateMachine EntityGeneralStateMachine { get; }
+
+    string AnimationBoolName { get; }
+
     void Enter();
 
     void Update();

@@ -8,7 +8,7 @@ namespace Game
     {
         [field: Header("Skeleton controller")]
         [field: SerializeField]
-        [field: ResolveComponentInParent("Skeleton")]
+        [field: ResolveComponentInParent]
         public SkeletonController SkeletonController { get; private set; } = null!;
 
         public override EnemyController EnemyController => this.SkeletonController;

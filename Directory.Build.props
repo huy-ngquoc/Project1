@@ -5,6 +5,7 @@
     <Deterministic>true</Deterministic>
     <Features>strict</Features>
     <SignAssembly>false</SignAssembly>
+	<TargetFrameworks>net8.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\csc.rsp" />

@@ -25,10 +25,13 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
     {
     }
 
-    private void TakeDamage(EntityStats targetStats)
+    private void TakeDamage(EntityStats attackerStats)
     {
-        this.DecreaseHealthBy(targetStats.Damage);
-        this.EntityController.DoTakeDamageEffect(targetStats.EntityController);
+        this.DecreaseHealthBy(attackerStats.Damage);
+
+        var attackerController = attackerStats.EntityController;
+        this.EntityController.DoTakeDamageEffect(
+           attackerController.FacingDirection, attackerController.KnockbackDirection, attackerController.KnockbackDuration);
 
         this.OnEntityTakeDamage();
     }
