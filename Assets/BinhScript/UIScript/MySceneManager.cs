@@ -6,6 +6,7 @@ namespace Game
 {
     public class MySceneManager : MonoBehaviour
     {
+     [SerializeField] protected int playerScore;
        public void PressPlayButton() {
           AudioManager.instance.PlayPressButtonSound();
           SceneManager.LoadScene(2);
@@ -41,6 +42,10 @@ namespace Game
        } 
        public void SelectLevel4() {
 
+       }
+       public void SetPlayerScore() {
+          int currentScore = PlayerPrefs.GetInt("Player_Score",-1);
+          playerScore = currentScore==-1?0:currentScore;
        }
 
     }

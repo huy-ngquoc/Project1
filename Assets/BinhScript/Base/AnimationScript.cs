@@ -28,15 +28,17 @@ namespace Game
             Vector2 attackPosition = new Vector2(currentTransform.position.x+attackOffset.x, currentTransform.position.y+attackOffset.y);
             Collider2D[] col = Physics2D.OverlapCircleAll(attackPosition,attackRange,layer);
             foreach(Collider2D i in col) {
+                
                 Vector2 fDir = enemyStateManager.GetForceDirection();
                 if(i.gameObject.TryGetComponent<HandlePlayerTakeDamage> ( out var playerHandleTakeDamage)) {
+                    Debug.Log("Col Hanlder Player Take Damage");
                     playerHandleTakeDamage.TakeDamage(fDir, enemyStateManager.getTransform());
                 }
-                /*if(!(enemyStateManager.getCurrentState() is AttackState)) 
+                if(!(enemyStateManager.getCurrentState() is AttackState)) 
                 {
                     enemyStateManager.ChangeState(new AttackState(enemyStateManager));
                     return;
-                }*/
+                }
             }
         }
         public void EndDamageAnimation() {

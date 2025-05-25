@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 5701722363094232599}
   - component: {fileID: 1779899046993947003}
   - component: {fileID: 826495841360038840}
+  - component: {fileID: 8898722308887977915}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -280,6 +281,19 @@ MonoBehaviour:
   <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
   <DashSpeed>k__BackingField: 25
   <DashDuration>k__BackingField: 0.2
+--- !u!114 &8898722308887977915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a026ffe93f1abb84f9b4ad1ce5a6cd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 7508464899211513799}
 --- !u!1 &2212967575485532407
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40611587ec9d5a40bf9369c504b5cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthController: {fileID: 0}
   <PlayerController>k__BackingField: {fileID: 5205683079033008154}
 --- !u!1 &7444721891774826537
 GameObject:

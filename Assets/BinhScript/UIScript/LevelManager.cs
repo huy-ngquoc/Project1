@@ -8,7 +8,7 @@ namespace Game
             int currentLevelEasy = PlayerPrefs.GetInt("level-easy",-1);
             int currentLevelHard = PlayerPrefs.GetInt("level-hard",-1);
             currentLevelEasy= currentLevelEasy==-1?1:currentLevelEasy;
-            currentLevelHard =currentLevelHard==1?2:currentLevelHard;
+            currentLevelHard =currentLevelHard==-1?2:currentLevelHard;
             PlayerPrefs.SetInt("level-easy",currentLevelEasy);
             PlayerPrefs.SetInt("level-hard", currentLevelHard);
             PlayerPrefs.Save();
