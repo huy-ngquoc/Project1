@@ -792,28 +792,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &661295549 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7976864862860082019, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1690915538}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d552968e4c422e6478ec7eba7c653d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &661295550 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1690915538}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8f6abe573a74d4caf13eac2be3b788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &803894844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1622310859902184626, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
@@ -827,26 +805,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonSkillManager>k__BackingField
-      value: 
-      objectReference: {fileID: 1201042721}
-    - target: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <AttackSkill>k__BackingField
-      value: 
-      objectReference: {fileID: 1201042720}
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 1201042722}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.54
@@ -891,48 +849,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 8245615566431074216, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
---- !u!114 &1201042720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7976864862860082019, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1201042719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d552968e4c422e6478ec7eba7c653d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1201042721 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1201042719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8f6abe573a74d4caf13eac2be3b788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1201042722 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1201042719}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270ae4f17d09e7e47a01ac1a6d4fe8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1240465219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,26 +1028,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonSkillManager>k__BackingField
-      value: 
-      objectReference: {fileID: 661295550}
-    - target: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <AttackSkill>k__BackingField
-      value: 
-      objectReference: {fileID: 661295549}
-    - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonController>k__BackingField
-      value: 
-      objectReference: {fileID: 1690915539}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.54
@@ -1171,26 +1072,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 8245615566431074216, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
---- !u!114 &1690915539 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 1690915538}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270ae4f17d09e7e47a01ac1a6d4fe8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1778880113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,22 +1560,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <KnockbackDirection>k__BackingField.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017294918222282143, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <SkeletonSkillManager>k__BackingField
-      value: 
-      objectReference: {fileID: 2632915249481842406}
-    - target: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-      propertyPath: <AttackSkill>k__BackingField
-      value: 
-      objectReference: {fileID: 2632915249481842405}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.73
@@ -1739,28 +1609,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
---- !u!114 &2632915249481842405 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7976864862860082019, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 2632915249481842404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d552968e4c422e6478ec7eba7c653d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2632915249481842406 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3516655791842007701, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
-  m_PrefabInstance: {fileID: 2632915249481842404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8f6abe573a74d4caf13eac2be3b788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2703772628838374614
 PrefabInstance:
   m_ObjectHideFlags: 0

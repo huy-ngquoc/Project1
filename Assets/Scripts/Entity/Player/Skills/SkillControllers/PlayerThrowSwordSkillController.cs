@@ -104,7 +104,7 @@ public abstract class PlayerThrowSwordSkillController : MonoBehaviour
     {
     }
 
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (this.IsReturning)
         {
