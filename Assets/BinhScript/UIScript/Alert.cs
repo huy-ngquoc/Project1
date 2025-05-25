@@ -32,6 +32,7 @@ namespace Game
             this.currentSkill.SetUnlock(true);
             this.currentSkill.LoadImage();
             SkillManager.getInstance().LoadScoreText();
+            PlayerPrefs.Save();
         }
     }
 }

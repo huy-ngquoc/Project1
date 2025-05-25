@@ -29,6 +29,7 @@ namespace Game
         public void OnPress() {
             if(isChoose) {
                 PlayerPrefs.SetInt("Chosen_Skill",currentSkill.getSkillId());
+                PlayerPrefs.Save();
                 Destroy(this.gameObject);
             } 
             else {

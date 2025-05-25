@@ -17,8 +17,10 @@ namespace Game
             LoadImage();
         }
         public void LoadImage() {
-            Image image = GetComponent<Image>();
-            if(this.isUnlock) {
+            Image image = GetComponent<Image>(); 
+            int chosenSkillId = PlayerPrefs.GetInt("Chosen_Skill",-1);
+
+            if(this.isUnlock||chosenSkillId == this.skillId) {
                 image.sprite = skillImage; 
             } 
             else {
