@@ -25,8 +25,10 @@ namespace Game
                     this.EntityController.EntityStats.DoDamage(targetStats);
                 }
                 if(collider.TryGetComponent<EnemyStateManager>(out var enemyStateManager)) {
-                    enemyStateManager.GetHealthController().TakeDamage(healthController.TakeDamageAt(0));
+                    HealthController healthController = enemyStateManager.GetHealthController();
+                    healthController.TakeDamage(healthController.TakeDamageAt(0));
                     enemyStateManager.TakeDamage();
+                    
                 }
             }
         }

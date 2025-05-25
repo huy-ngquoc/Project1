@@ -692,7 +692,8 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 1000
   enemyStateManager: {fileID: 691565447}
-  attackDamage: []
+  attackDamage:
+  - 500
   canvas: {fileID: 1818703356}
 --- !u!1 &701163990
 GameObject:
