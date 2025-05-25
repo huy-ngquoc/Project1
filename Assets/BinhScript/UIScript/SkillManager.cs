@@ -55,5 +55,8 @@ namespace Game
                 }
             }
         }
+        public SkillNode getSkillAt(int i) {
+            return this.listSkill[i];
+        }
     }
 }
