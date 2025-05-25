@@ -29,6 +29,7 @@ namespace Game
         public void OnPress() {
             if(isChoose) {
                 PlayerPrefs.SetInt("Chosen_Skill",currentSkill.getSkillId());
+                Destroy(this.gameObject);
             } 
             else {
                 Alert newAlert = Instantiate(alert,SkillManager.getInstance().getBackGroundTransform(),false); 
