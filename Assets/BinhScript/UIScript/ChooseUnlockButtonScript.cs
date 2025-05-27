@@ -29,6 +29,8 @@ namespace Game
         public void OnPress() {
             if(isChoose) {
                 PlayerPrefs.SetInt("Chosen_Skill",currentSkill.getSkillId());
+                PlayerPrefs.Save();
+                CurrentSkillImage.getInstance().LoadImage();
                 Destroy(this.gameObject);
             } 
             else {

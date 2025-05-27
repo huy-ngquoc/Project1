@@ -11,6 +11,9 @@ namespace Game
           AudioManager.instance.PlayPressButtonSound();
           SceneManager.LoadScene(2);
        }
+       public void BackToLevel() {
+          SceneManager.LoadScene(2);
+       }
        public void SetEasy() {
             AudioManager.instance.PlayPressButtonSound();
             PlayerPrefs.SetInt("Difficulty",0); //0:easy
@@ -31,21 +34,30 @@ namespace Game
             SceneManager.LoadScene(2);
        } 
        public void SelectLevel1() {
-          Debug.Log("Load level1");
-          SceneManager.LoadScene(4);
+          PlayerPrefs.SetInt("Select_Level",1);
+          PlayerPrefs.Save();
        }
-       public void SelectLevel2() {
+       public void SelectLevel2() { 
+          PlayerPrefs.SetInt("Select_Level",2);
+          PlayerPrefs.Save();
 
        } 
-       public void SelectLevel3() {
-
+       public void SelectLevel3() { 
+          PlayerPrefs.SetInt("Select_Level",3);
+          PlayerPrefs.Save();
        } 
-       public void SelectLevel4() {
+       public void SelectLevel4() { 
+          PlayerPrefs.SetInt("Select_Level",4);
+          PlayerPrefs.Save();
 
        }
        public void SetPlayerScore() {
           int currentScore = PlayerPrefs.GetInt("Player_Score",-1);
           playerScore = currentScore==-1?0:currentScore;
+       }
+       public void OnPlay() {
+          int selectLevel = PlayerPrefs.GetInt("Select_Level",1);
+          SceneManager.LoadScene(selectLevel+3);
        }
 
     }

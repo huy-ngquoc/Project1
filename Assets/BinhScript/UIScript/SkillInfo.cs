@@ -29,6 +29,7 @@ namespace Game
         private void DisplayUnlockButton() {
             int chosenSkillId = PlayerPrefs.GetInt("Chosen_Skill",-1);
             if(chosenSkillId==this.currentSelectedSkill.getSkillId()) {
+                Debug.Log(this.currentSelectedSkill.getSkillId());
                 unlockButton.gameObject.SetActive(false);
             }
             if(this.currentSelectedSkill.getUnlock()) {
