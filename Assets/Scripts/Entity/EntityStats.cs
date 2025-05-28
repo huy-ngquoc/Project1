@@ -2,6 +2,7 @@
 
 namespace Game;
 
+using System;
 using UnityEngine;
 
 public abstract class EntityStats : UnityEngine.MonoBehaviour
@@ -10,11 +11,15 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
 
     [field: SerializeField]
     [field: Range(0, 1000)]
+    public int MaxHealth { get; private set; } = 100;
+
     public int CurrentHealth { get; private set; } = 100;
 
     [field: SerializeField]
     [field: Range(0, 100)]
     public int Damage { get; private set; } = 5;
+
+    public Action? OnHealthChanged { get; set; } = null;
 
     public void DoDamage(EntityStats targetStats)
     {

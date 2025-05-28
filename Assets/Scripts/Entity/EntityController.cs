@@ -97,6 +97,8 @@ public abstract class EntityController : MonoBehaviour
 
     public abstract EntitySkillManager EntitySkillManager { get; }
 
+    public Action? OnFlipped { get; set; } = null;
+
     public void AnimationFinishTrigger() => this.EntityGeneralStateMachine.AnimationFinishTrigger();
 
     public void DoTakeDamageEffect(int attackerFacingDirection, Vector2 attackerKnockbackDirection, float attackerKnockbackDuration)
@@ -104,7 +106,8 @@ public abstract class EntityController : MonoBehaviour
         this.EntityFx.FlashFx();
         this.HitKnockback(attackerFacingDirection, attackerKnockbackDirection, attackerKnockbackDuration);
     }
-    public void DoTakeDamageEffect() {
+    public void DoTakeDamageEffect()
+    {
         this.EntityFx.FlashFx();
     }
     public void FlipController(float x)
