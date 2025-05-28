@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] protected Vector2 forceDirection;
         [SerializeField] protected float teleportOffSet;
         [SerializeField] protected HealthController healthController;
+        [SerializeField] protected int[] clipIndex; //clipIndex[0]: attack, clipIndex[1]: death, clipIndex[2]: cast (bringer of death)
         public void Awake() {
             
         }
@@ -109,6 +110,16 @@ namespace Game
             Transform currentTransform = enemyStateManager.getTransform();
             Vector2 attackPosition = new Vector2(currentTransform.position.x+attackOffset.x, currentTransform.position.y+attackOffset.y);
             Gizmos.DrawWireSphere(attackPosition,attackRange);
+        }
+        public void playAttackSound() {
+
+            AudioManager.instance.PlayClipAt(clipIndex[0]);
+        } 
+        public void playDeathSound() {
+            AudioManager.instance.PlayClipAt(clipIndex[1]);
+        } 
+        public void playCastSound() {
+            AudioManager.instance.PlayClipAt(clipIndex[2]);
         }
 
 

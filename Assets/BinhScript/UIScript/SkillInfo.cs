@@ -16,6 +16,7 @@ namespace Game
         [SerializeField] protected ChooseUnlockButtonScript unlockButton;
         [SerializeField] protected Button closeButton;
         [SerializeField] protected Alert alert;
+        [SerializeField] protected TextMeshProUGUI requireScoreText;
         
         public void setCurrentSelectedSkill(SkillNode currentSelectedSkill) { 
             this.currentSelectedSkill = currentSelectedSkill; 
@@ -23,11 +24,16 @@ namespace Game
             skillName.text = this.currentSelectedSkill.getSkillName();
             skillDescription.text = this.currentSelectedSkill.getDescription();
             skillImage.sprite = this.currentSelectedSkill.getSkillImage();
+            requireScoreText.text="Require: "+this.currentSelectedSkill.getScoreRequire();
             DisplayUnlockButton();
 
         }
         private void DisplayUnlockButton() {
             int chosenSkillId = PlayerPrefs.GetInt("Chosen_Skill",-1);
+            if(this.currentSelectedSkill.getSkillId()==1) {
+                unlockButton.gameObject.SetActive(false);
+                return;
+            }
             if(chosenSkillId==this.currentSelectedSkill.getSkillId()) {
                 Debug.Log(this.currentSelectedSkill.getSkillId());
                 unlockButton.gameObject.SetActive(false);

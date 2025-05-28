@@ -36,19 +36,23 @@ namespace Game
        public void SelectLevel1() {
           PlayerPrefs.SetInt("Select_Level",1);
           PlayerPrefs.Save();
+          SceneManager.LoadScene(8);
        }
        public void SelectLevel2() { 
           PlayerPrefs.SetInt("Select_Level",2);
-          PlayerPrefs.Save();
+          PlayerPrefs.Save(); 
+          SceneManager.LoadScene(8);
 
        } 
        public void SelectLevel3() { 
           PlayerPrefs.SetInt("Select_Level",3);
-          PlayerPrefs.Save();
+          PlayerPrefs.Save(); 
+          SceneManager.LoadScene(8);
        } 
        public void SelectLevel4() { 
           PlayerPrefs.SetInt("Select_Level",4);
-          PlayerPrefs.Save();
+          PlayerPrefs.Save(); 
+          SceneManager.LoadScene(8);
 
        }
        public void SetPlayerScore() {

@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Volcano.unity
     guid: d97613dea59e27845a9785d8d79ce843
+  - enabled: 1
+    path: Assets/Scenes/UI/SkillScreen.unity
+    guid: d2790acd732f14b40ac97e8837b27b06
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 5e76c7565f6ca7545b7ca9177d9f3a21, type: 3}
   m_UseUCBPForAssetBundles: 0

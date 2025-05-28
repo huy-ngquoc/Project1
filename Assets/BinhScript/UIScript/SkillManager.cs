@@ -15,11 +15,11 @@ namespace Game
             if(instance==null) {
                 instance=this;
             } 
-           PlayerPrefs.SetInt("Player_Score",500);
-           PlayerPrefs.Save();
+           //PlayerPrefs.SetInt("Player_Score",500);
+           //PlayerPrefs.Save();
         LoadScoreText();
            LoadSkills();  
-          // PlayerPrefs.DeleteAll();
+           //PlayerPrefs.DeleteAll();
 //PlayerPrefs.Save();
             
             
@@ -44,14 +44,17 @@ namespace Game
         public void LoadScoreText() {
             scoreText.text = ""+PlayerPrefs.GetInt("Player_Score",0);
         }
+       
         public void LoadSkills() {
             for(int i=1;i<=10;i++) {
                 int skillStatus = PlayerPrefs.GetInt("Skill "+i,0);
                 if(skillStatus ==0&&i>1) {
                     listSkill[i-1].SetUnlock(false);
+                    listSkill[i-1].LoadImage();
                 }
                 else {
                     listSkill[i-1].SetUnlock(true);
+                    listSkill[i-1].LoadImage();
                 }
             }
         }

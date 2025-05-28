@@ -12,11 +12,12 @@ namespace Game
         public static CurrentSkillImage getInstance() {
             return instance;
         } 
-        private void Awake() {
+        private void Start() {
             if(instance==null) {
                 instance=this;
             } 
             image=GetComponent<Image>();
+            LoadImage();
         }
         public void LoadImage() {
             int currentChoosenSkill = PlayerPrefs.GetInt("Chosen_Skill",-1);
