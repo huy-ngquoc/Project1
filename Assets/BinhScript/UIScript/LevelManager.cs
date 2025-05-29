@@ -4,6 +4,7 @@ namespace Game
 {
     public class LevelManager : MonoBehaviour
     {
+        
         public void Awake() {
             int currentLevelEasy = PlayerPrefs.GetInt("level-easy",-1);
             int currentLevelHard = PlayerPrefs.GetInt("level-hard",-1);

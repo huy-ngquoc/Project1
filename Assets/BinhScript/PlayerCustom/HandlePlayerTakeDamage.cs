@@ -17,6 +17,7 @@ namespace Game
             if(this.gameObject.TryGetComponent<EntityController>(out var entityController)) {
                 entityController.DoTakeDamageEffect();
             }
+            Debug.Log("Player get hit by Binh's enemies");
         }
     }
 }

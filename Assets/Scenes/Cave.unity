@@ -10833,6 +10833,10 @@ PrefabInstance:
       propertyPath: <JumpForce>k__BackingField
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 5205683079033008154, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <CapsuleCollider2D>k__BackingField
+      value: 
+      objectReference: {fileID: 1829920988}
     - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11554,6 +11558,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+--- !u!70 &1829920988 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6894180667288331377, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+  m_PrefabInstance: {fileID: 235275365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1947496676
 GameObject:
   m_ObjectHideFlags: 0
@@ -11722,6 +11731,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPause
       objectReference: {fileID: 0}
+    - target: {fileID: 810588068498731749, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1224178663380732325, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
       propertyPath: m_Name
       value: CanvasInGame
@@ -11804,6 +11817,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058752211685579328, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267900071662942901, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
