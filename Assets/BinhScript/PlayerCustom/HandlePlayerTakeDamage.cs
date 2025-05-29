@@ -18,6 +18,7 @@ namespace Game
             this.rigidBody.AddForce(forceDirection,ForceMode2D.Impulse);  
             if(attacker.gameObject.TryGetComponent<EnemyStateManager>(out var enemyStateManager)) {
                 this.entityStats.DecreaseHealthBy(enemyStateManager.GetAttackDamage());
+                Debug.Log("Slime Attack");
                 if(this.entityStats.GetCurrentHealth()<=0) {
                     this.entityStats.Die();
                 }

@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rigidbody2D>k__BackingField: {fileID: 7508464899211513799}
+  <CapsuleCollider2D>k__BackingField: {fileID: 6894180667288331377}
   <SpriteRenderer>k__BackingField: {fileID: 977604290948213387}
   <Animator>k__BackingField: {fileID: 348843332214418429}
   <KnockbackDirection>k__BackingField: {x: 5, y: 7}
@@ -493,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
+  entityStats: {fileID: 0}
 --- !u!1 &1169820105662510846
 GameObject:
   m_ObjectHideFlags: 0

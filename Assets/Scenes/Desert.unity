@@ -1404,6 +1404,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8406042845133945601, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <MaxHealth>k__BackingField
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10880,6 +10884,26 @@ PrefabInstance:
       propertyPath: foreGround
       value: 
       objectReference: {fileID: 668202863}
+    - target: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: attackDamage.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: 'attackDamage.Array.data[0]'
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: 'attackDamage.Array.data[1]'
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: 'attackDamage.Array.data[2]'
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: 'attackDamage.Array.data[3]'
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 1603891212708756125, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.8990364
@@ -10924,6 +10948,18 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 2135905590}
+    - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: attackDamage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: forceDirection.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: forceDirection.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
       propertyPath: timeToDestroyAfterDeath
       value: 1
