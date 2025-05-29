@@ -8,7 +8,7 @@ namespace Game
     public abstract class EntityAnimationTriggers : MonoBehaviour
     {
         [SerializeField] protected HealthController healthController;
-        
+
         public abstract EntityController EntityController { get; }
 
         private void AnimationFinishTrigger() => this.EntityController.AnimationFinishTrigger();
@@ -24,11 +24,11 @@ namespace Game
                 {
                     this.EntityController.EntityStats.DoDamage(targetStats);
                 }
-                if(collider.TryGetComponent<EnemyStateManager>(out var enemyStateManager)) {
+                if (collider.TryGetComponent<EnemyStateManager>(out var enemyStateManager))
+                {
                     HealthController healthController = enemyStateManager.GetHealthController();
                     healthController.TakeDamage(healthController.TakeDamageAt(0));
                     enemyStateManager.TakeDamage();
-                    
                 }
             }
         }

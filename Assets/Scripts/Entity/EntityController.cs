@@ -14,6 +14,10 @@ public abstract class EntityController : MonoBehaviour
     [field: ResolveComponent]
     public Rigidbody2D Rigidbody2D { get; private set; } = null!;
 
+    [field: SerializeField]
+    [field: ResolveComponent]
+    public CapsuleCollider2D CapsuleCollider2D { get; private set; } = null!;
+
     [field: Header("Entity Animation info")]
 
     [field: SerializeReference]
@@ -106,10 +110,12 @@ public abstract class EntityController : MonoBehaviour
         this.EntityFx.FlashFx();
         this.HitKnockback(attackerFacingDirection, attackerKnockbackDirection, attackerKnockbackDuration);
     }
+
     public void DoTakeDamageEffect()
     {
         this.EntityFx.FlashFx();
     }
+
     public void FlipController(float x)
     {
         bool flip = this.FacingRight ? (x < 0) : (x > 0);
@@ -185,6 +191,8 @@ public abstract class EntityController : MonoBehaviour
     public void SetZeroLinearVelocityY() => this.SetLinearVelocityY(0);
 
     public Vector2 GetLinearVelocity() => this.Rigidbody2D.linearVelocity;
+
+    public abstract void Die();
 
     protected void Awake()
     {

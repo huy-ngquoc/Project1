@@ -75,6 +75,7 @@ namespace Game
             {
                 if (hit.TryGetComponent<EntityStats>(out var targetStats))
                 {
+                    this.PlayerController.PlayerStats.DoDamage(targetStats);
                     targetStats.EntityController.DoTakeDamageEffect(
                         (this.transform.position.x > hit.transform.position.x) ? -1 : 1,
                         this.PlayerController.KnockbackDirection,

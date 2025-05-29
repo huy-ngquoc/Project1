@@ -16,6 +16,7 @@ namespace Game
             this.DashState = new PlayerDashState(this);
             this.AimSwordState = new PlayerAimSwordState(this);
             this.CatchSwordState = new PlayerCatchSwordState(this);
+            this.DeadState = new PlayerDeadState(this);
         }
 
         [field: Header("Controller")]
@@ -45,5 +46,7 @@ namespace Game
         public PlayerAimSwordState AimSwordState { get; }
 
         public PlayerCatchSwordState CatchSwordState { get; }
+
+        public PlayerDeadState DeadState { get; }
     }
 }

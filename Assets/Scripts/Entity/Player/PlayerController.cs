@@ -44,5 +44,10 @@ namespace Game
         public PlayerSkillManager PlayerSkillManager { get; private set; } = null!;
 
         public override EntitySkillManager EntitySkillManager => this.PlayerSkillManager;
+
+        public override void Die()
+        {
+            this.PlayerGeneralStateMachine.SetStateToChangeTo(this.PlayerGeneralStateMachine.DeadState);
+        }
     }
 }

@@ -10,13 +10,13 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
     public abstract EntityController EntityController { get; }
 
     [field: SerializeField]
-    [field: Range(0, 1000)]
-    public int MaxHealth { get; private set; } = 100;
+    [field: Range(0, 10000)]
+    public int MaxHealth { get; private set; } = 1000;
 
-    public int CurrentHealth { get; private set; } = 100;
+    public int CurrentHealth { get; private set; } = 1000;
 
     [field: SerializeField]
-    [field: Range(0, 100)]
+    [field: Range(1, 100)]
     public int Damage { get; private set; } = 5;
 
     public Action? OnHealthChanged { get; set; } = null;
@@ -38,11 +38,23 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
         this.EntityController.DoTakeDamageEffect(
            attackerController.FacingDirection, attackerController.KnockbackDirection, attackerController.KnockbackDuration);
 
+        if (this.CurrentHealth <= 0)
+        {
+            this.EntityController.Die();
+        }
+
         this.OnEntityTakeDamage();
     }
 
     private void DecreaseHealthBy(int damage)
     {
         this.CurrentHealth -= damage;
+        this.OnHealthChanged?.Invoke();
+    }
+
+    private void Awake()
+    {
+        this.CurrentHealth = this.MaxHealth;
+        this.OnHealthChanged?.Invoke();
     }
 }

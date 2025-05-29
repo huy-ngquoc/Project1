@@ -797,6 +797,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1622310859902184626, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
   m_PrefabInstance: {fileID: 6529611645200702766}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &803894863 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6894180667288331377, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+  m_PrefabInstance: {fileID: 6529611645200702766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &997533767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2703772628838374615}
+    - target: {fileID: 5205683079033008154, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <CapsuleCollider2D>k__BackingField
+      value: 
+      objectReference: {fileID: 803894863}
     - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1845,6 +1854,14 @@ PrefabInstance:
     - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406042845133945601, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <Damage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406042845133945601, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <MaxHealth>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

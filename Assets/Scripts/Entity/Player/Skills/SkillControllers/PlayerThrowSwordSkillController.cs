@@ -128,8 +128,7 @@ public abstract class PlayerThrowSwordSkillController : MonoBehaviour
 
     protected void SwordSkillDamage(EnemyController enemyController)
     {
-        enemyController.DoTakeDamageEffect(
-            this.PlayerController.FacingDirection, this.PlayerController.KnockbackDirection, this.PlayerController.KnockbackDuration);
+        this.PlayerController.PlayerStats.DoDamage(enemyController.EntityStats);
         enemyController.EnemyGeneralStateMachine.FreezeForSeconds(this.FreezeTimeDuration);
     }
 

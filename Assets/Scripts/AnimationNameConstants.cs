@@ -30,6 +30,8 @@ public static class AnimationNameConstants
 
         public static string PrimaryAttack3 { get; } = nameof(PrimaryAttack3);
 
+        public static string Dead { get; } = nameof(Dead);
+
         public static class PlayerClone
         {
             public static string Attack1 { get; } = nameof(Attack1);

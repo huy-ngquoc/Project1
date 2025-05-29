@@ -95,10 +95,7 @@ namespace Game
             {
                 if (hit.TryGetComponent<EntityStats>(out var targetStats))
                 {
-                    targetStats.EntityController.DoTakeDamageEffect(
-                        (this.transform.position.x > hit.transform.position.x) ? -1 : 1,
-                        this.PlayerController.KnockbackDirection,
-                        this.PlayerController.KnockbackDuration);
+                    this.PlayerController.PlayerStats.DoDamage(targetStats);
                 }
             }
         }

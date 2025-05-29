@@ -95,7 +95,7 @@ namespace Game
             {
                 if (hit.TryGetComponent<EnemyController>(out var enemyController))
                 {
-                    enemyController.DoTakeDamageEffect(this.FacingDirection, this.PlayerController.KnockbackDirection, this.PlayerController.KnockbackDuration);
+                    this.PlayerController.PlayerStats.DoDamage(enemyController.EntityStats);
                 }
             }
 
