@@ -21,6 +21,14 @@ namespace Game
         [SerializeField] protected float deathPosY;
         [SerializeField] protected int attackDamage;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
+        protected void Awake() {
+            int difficulty =PlayerPrefs.GetInt("Difficulty",-1);
+            if(difficulty==1) {
+                this.moveSpeed+=3.0f;
+                this.chaseSpeed+=3.0f;
+                this.healthController.SetMaxHealth(this.healthController.GetMaxHealth()+300.0f);
+            }
+        }
         protected void Start()
         {
             this.currentState= new MoveState(this);

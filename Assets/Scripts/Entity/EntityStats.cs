@@ -11,9 +11,10 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
 
     [field: SerializeField]
     [field: Range(0, 10000)]
-    public int MaxHealth { get; private set; } = 1000;
+    public int MaxHealth { get; protected set; } = 1000;
 
-    public int CurrentHealth { get; private set; } = 1000;
+    public int CurrentHealth { get; protected set; } = 1000;
+    
 
     [field: SerializeField]
     [field: Range(1, 100)]

@@ -38,6 +38,13 @@ namespace Game
         public override void Die()
         {
             this.SkeletonGeneralStateMachine.SetStateToChangeTo(this.SkeletonGeneralStateMachine.DeadState);
+            MenuManagerScript.GetInstance().IncreaseDestroyedMonster();
+        }
+        public void Awake() {
+            int difficulty =PlayerPrefs.GetInt("Difficulty",-1);
+            if(difficulty==1) {
+                this.MoveSpeed=10.0f;
+            }
         }
     }
 }

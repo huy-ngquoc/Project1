@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52863e21fd8749f4e98b4e263caa7530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
+  <MaxHealth>k__BackingField: 200
   <Damage>k__BackingField: 5
   <SkeletonController>k__BackingField: {fileID: 2017294918222282143}
 --- !u!114 &4481995532728314796

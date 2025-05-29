@@ -48,6 +48,7 @@ namespace Game
         public override void Die()
         {
             this.PlayerGeneralStateMachine.SetStateToChangeTo(this.PlayerGeneralStateMachine.DeadState);
+            MenuManagerScript.GetInstance().DelayLose();
         }
     }
 }

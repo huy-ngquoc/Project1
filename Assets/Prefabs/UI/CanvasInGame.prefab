@@ -430,6 +430,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 3145325465799084871}
   currentLevel: 1
+  loseMenu: {fileID: 4252848103171380531}
+  winMenu: {fileID: 2654906427393282147}
+  numberOfMonster: 0
+  destroyedMonster: 0
 --- !u!1 &1424052161159086563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,8 +1093,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4896066912714388923}
-        m_TargetAssemblyTypeName: Game.PauseMenuManagerScript, Assembly-CSharp
-        m_MethodName: OnContinue
+        m_TargetAssemblyTypeName: Game.MenuManagerScript, Assembly-CSharp
+        m_MethodName: OnNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -42,5 +42,11 @@ namespace Game
         public Canvas GetCanvas() {
             return this.canvas;
         }
+        public void SetMaxHealth(float maxHealth) {
+            this.maxHealth=maxHealth;
+        }
+        public float GetMaxHealth() {
+            return this.maxHealth;
+        }
     }
 }

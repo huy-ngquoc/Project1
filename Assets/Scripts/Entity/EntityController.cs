@@ -87,7 +87,7 @@ public abstract class EntityController : MonoBehaviour
     [field: Range(0.5F, 30.0F)]
     public float InitMoveSpeed { get; private set; } = 8.0F;
 
-    public float MoveSpeed { get; private set; } = 8.0F;
+    public float MoveSpeed { get; protected set; } = 8.0F;
 
     public bool FacingRight { get; private set; } = true;
 
