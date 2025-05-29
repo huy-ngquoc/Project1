@@ -46,12 +46,17 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
         this.OnEntityTakeDamage();
     }
 
-    private void DecreaseHealthBy(int damage)
+    public void DecreaseHealthBy(int damage)
     {
         this.CurrentHealth -= damage;
         this.OnHealthChanged?.Invoke();
     }
-
+    public void Die() {
+        this.EntityController.Die();
+    }
+    public int GetCurrentHealth() {
+        return this.CurrentHealth;
+    }
     private void Awake()
     {
         this.CurrentHealth = this.MaxHealth;

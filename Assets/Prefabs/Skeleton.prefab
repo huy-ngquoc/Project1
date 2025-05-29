@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rigidbody2D>k__BackingField: {fileID: 7081713945939154375}
+  <CapsuleCollider2D>k__BackingField: {fileID: 230294719459698678}
   <SpriteRenderer>k__BackingField: {fileID: 6921090673991812696}
   <Animator>k__BackingField: {fileID: 3217235752272608557}
   <KnockbackDirection>k__BackingField: {x: 5, y: 5}

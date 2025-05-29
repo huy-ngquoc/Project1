@@ -116,6 +116,10 @@ public abstract class PlayerThrowSwordSkillController : MonoBehaviour
             this.SwordSkillDamage(enemyController);
             this.OnSwordHitEnemy(enemyController);
         }
+        if(collision.gameObject.TryGetComponent<HealthController>(out var healthController)) {
+            healthController.TakeDamage(healthController.TakeDamageAt(2));
+            this.StuckIntoObject(healthController.gameObject.transform);
+        }
         else
         {
             this.StuckIntoObject(collision.transform);

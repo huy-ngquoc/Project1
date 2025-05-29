@@ -97,6 +97,9 @@ namespace Game
                 {
                     this.PlayerController.PlayerStats.DoDamage(enemyController.EntityStats);
                 }
+                if(hit.TryGetComponent<HealthController>(out var healthController)) {
+                    healthController.TakeDamage(healthController.TakeDamageAt(1));
+                }
             }
 
             return true;

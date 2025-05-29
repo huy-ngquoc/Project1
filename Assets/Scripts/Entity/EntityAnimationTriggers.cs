@@ -28,7 +28,7 @@ namespace Game
                 {
                     HealthController healthController = enemyStateManager.GetHealthController();
                     healthController.TakeDamage(healthController.TakeDamageAt(0));
-                    enemyStateManager.TakeDamage();
+                    
                 }
             }
         }

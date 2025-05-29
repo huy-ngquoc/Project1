@@ -37,6 +37,7 @@ namespace Game
             } 
             
             UpdateHealthBar();
+            enemyStateManager.TakeDamage();
         }
         public Canvas GetCanvas() {
             return this.canvas;

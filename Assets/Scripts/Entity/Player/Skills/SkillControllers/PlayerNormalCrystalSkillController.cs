@@ -101,6 +101,9 @@ namespace Game
                         this.PlayerController.KnockbackDirection,
                         this.PlayerController.KnockbackDuration);
                 }
+                if(hit.TryGetComponent<HealthController>(out var healthController)) {
+                    healthController.TakeDamage(healthController.TakeDamageAt(3));
+                }
             }
         }
 

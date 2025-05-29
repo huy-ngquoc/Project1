@@ -91,6 +91,7 @@ MonoBehaviour:
   timeToDestroyAfterDeath: 2
   sprite: {fileID: 7848676658496999045}
   deathPosY: -0.5
+  attackDamage: 10
 --- !u!114 &1905560084277578904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +181,10 @@ MonoBehaviour:
   currentHealth: 1000
   enemyStateManager: {fileID: 1604389654692857459}
   attackDamage:
-  - 500
+  - 200
+  - 200
+  - 250
+  - 300
   canvas: {fileID: 869850546183503377}
 --- !u!1001 &3571666598627659638
 PrefabInstance:
@@ -424,6 +428,7 @@ MonoBehaviour:
   forceDirection: {x: 15, y: 15}
   teleportOffSet: 0
   healthController: {fileID: 3881835263298214167}
+  clipIndex: 
 --- !u!4 &7848676658496999045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1718820313281118063, guid: 2fad0ec419ab0b546a490f8d31499f05, type: 3}

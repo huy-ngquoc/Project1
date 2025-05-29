@@ -32,7 +32,7 @@ namespace Game
                 
                 Vector2 fDir = enemyStateManager.GetForceDirection();
                 if(i.gameObject.TryGetComponent<HandlePlayerTakeDamage> ( out var playerHandleTakeDamage)) {
-                    Debug.Log("Col Hanlder Player Take Damage");
+                    
                     playerHandleTakeDamage.TakeDamage(fDir, enemyStateManager.getTransform());
                 }
                 if(!(enemyStateManager.getCurrentState() is AttackState)) 

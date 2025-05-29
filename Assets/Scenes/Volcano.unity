@@ -219,6 +219,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021532463}
     m_Modifications:
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: <SkeletonController>k__BackingField
       value: 
@@ -622,6 +630,7 @@ MonoBehaviour:
   timeToDestroyAfterDeath: 2
   sprite: {fileID: 701163991}
   deathPosY: 0.71
+  attackDamage: 20
 --- !u!114 &691565448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +702,10 @@ MonoBehaviour:
   currentHealth: 1000
   enemyStateManager: {fileID: 691565447}
   attackDamage:
-  - 500
+  - 200
+  - 200
+  - 250
+  - 300
   canvas: {fileID: 1818703356}
 --- !u!1 &701163990
 GameObject:
@@ -837,6 +849,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021532463}
     m_Modifications:
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.872566
@@ -1029,6 +1049,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021532463}
     m_Modifications:
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.021156
@@ -1285,6 +1313,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2021532463}
     m_Modifications:
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009136380704300698, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4481995532728314796, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
       propertyPath: <SkeletonController>k__BackingField
       value: 
@@ -1374,6 +1410,14 @@ PrefabInstance:
     - target: {fileID: 3512705642086165564, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
       propertyPath: forceDirection.y
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881835263298214167, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
+      propertyPath: attackDamage.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881835263298214167, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
+      propertyPath: 'attackDamage.Array.data[3]'
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8416554085815767112, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1476,6 +1520,14 @@ PrefabInstance:
       propertyPath: healthController
       value: 
       objectReference: {fileID: 2062273460}
+    - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17931,6 +17983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
+  entityStats: {fileID: 0}
 --- !u!114 &2062273460
 MonoBehaviour:
   m_ObjectHideFlags: 0

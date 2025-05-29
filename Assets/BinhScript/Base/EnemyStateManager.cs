@@ -19,6 +19,7 @@ namespace Game
         [SerializeField] protected float timeToDestroyAfterDeath;
         [SerializeField] protected Transform sprite;
         [SerializeField] protected float deathPosY;
+        [SerializeField] protected int attackDamage;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected void Start()
         {
@@ -131,6 +132,9 @@ namespace Game
         }
         public float GetDeathPosY() {
             return this.deathPosY;
+        }
+        public int GetAttackDamage() {
+            return this.attackDamage;
         }
         
     }
