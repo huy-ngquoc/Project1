@@ -34,6 +34,7 @@ namespace Game
                 Destroy(this.gameObject);
             } 
             else {
+                Debug.Log("Unlock");
                 Alert newAlert = Instantiate(alert,SkillManager.getInstance().getBackGroundTransform(),false); 
                 newAlert.FakeContructor(this.currentSkill, skillInfo);
             }

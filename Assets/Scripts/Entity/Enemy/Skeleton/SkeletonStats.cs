@@ -16,8 +16,9 @@ namespace Game
             int difficulty =PlayerPrefs.GetInt("Difficulty",-1);
             if(difficulty==1) { 
                 this.MaxHealth = 300;
-                
-            }
+            } 
+            this.CurrentHealth = this.MaxHealth;
+        this.OnHealthChanged?.Invoke();
         }
         protected override void OnEnemyTakeDamage()
         {

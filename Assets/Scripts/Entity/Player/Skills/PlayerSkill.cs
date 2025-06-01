@@ -8,12 +8,21 @@ using UnityEngine;
 public abstract class PlayerSkill : EntitySkill
 {
     public abstract PlayerSkillManager PlayerSkillManager { get; }
+    public int skillId;
 
     public PlayerController PlayerController => this.PlayerSkillManager.PlayerController;
 
     public PlayerGeneralStateMachine PlayerGeneralStateMachine => this.PlayerController.PlayerGeneralStateMachine;
 
     public sealed override EntitySkillManager EntitySkillManager => this.PlayerSkillManager;
+    public override bool IsUsable() {
+        bool coolDown = this.CooldownTimer<=0;
+        int isChose = PlayerPrefs.GetInt("Chosen_Skill",-1);
+        if(skillId==1) {
+            return coolDown;
+        }
+        return (coolDown&isChose==skillId);
+    }
 
     protected sealed override void OnEntitySkillAwake()
     {

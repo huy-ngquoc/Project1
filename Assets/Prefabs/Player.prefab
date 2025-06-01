@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0.2
+  skillId: 1
   playerSkillManager: {fileID: 5701722363094232599}
 --- !u!114 &826495841360038840
 MonoBehaviour:
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 2
+  skillId: 2
   playerSkillManager: {fileID: 5701722363094232599}
   <DashSpeed>k__BackingField: 25
   <DashDuration>k__BackingField: 0.2
@@ -336,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 3
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: a0db8dab6fa4ec541994a2103e94d5d9, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <RegularGravity>k__BackingField: 4
@@ -352,6 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 4
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: f507c7a87f762ce49a5cc84ca3215661, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <BounceAmount>k__BackingField: 4
@@ -370,6 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 5
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: cbd5ae2c4c2a7054096d801e8672cb83, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <PeirceAmount>k__BackingField: 2
@@ -387,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 6
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: 26e0e8243711c8f44968f1748a68c0c3, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <MaxTravelDistance>k__BackingField: 7
@@ -406,6 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 7
   playerSkillManager: {fileID: 5701722363094232599}
   clonePrefab: {fileID: 3864650055876776002, guid: 2ccd7f1aaf1f1d24d9b5bc537655e703, type: 3}
   cloneDuration: 1
@@ -440,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 8
   playerSkillManager: {fileID: 5701722363094232599}
   <CrystalPrefab>k__BackingField: {fileID: 6732469931052163263, guid: fadc578fdc4252d4aa04ed44ca4a8fe1, type: 3}
   <CrystalDuration>k__BackingField: 1.5
@@ -457,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 9
   playerSkillManager: {fileID: 5701722363094232599}
   <CrystalPrefab>k__BackingField: {fileID: 6732469931052163263, guid: 08ef634c78481784e93f1479554de279, type: 3}
   <CrystalDuration>k__BackingField: 1.5
@@ -473,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
+  skillId: 10
   playerSkillManager: {fileID: 5701722363094232599}
   <CrystalPrefab>k__BackingField: {fileID: 6732469931052163263, guid: ab6b30d526ff6ca479add27588f39b13, type: 3}
   <CrystalDuration>k__BackingField: 1.5

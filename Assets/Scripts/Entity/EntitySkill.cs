@@ -17,9 +17,11 @@ public abstract class EntitySkill : MonoBehaviour
     public float CooldownTimer { get; protected set; } = 0;
 
     public virtual bool IsUsable() => this.CooldownTimer <= 0;
+        
 
     public bool Cast()
     {
+
         if (!this.IsUsable())
         {
             Debug.Log("Skill is on cooldown.");

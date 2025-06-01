@@ -32,6 +32,7 @@ namespace Game
         [field: SerializeReference]
         [field: ResolveComponent]
         public PlayerCrystalSkillManager CrystalSkill { get; private set; } = null!;
+        
 
         public Transform? FindClosestEnemyTransform(Vector2 positionToCheck)
         {
@@ -48,6 +49,15 @@ namespace Game
                     if (closetDistance > distanceToEnemy)
                     {
                         closestEnemyTransform = enemyController.transform;
+                        closetDistance = distanceToEnemy;
+                    }
+                }
+                if(hit.TryGetComponent<EnemyStateManager>(out var enemyStateManager)) {
+                    var distanceToEnemy = Vector2.Distance(positionToCheck, enemyStateManager.transform.position);
+
+                    if (closetDistance > distanceToEnemy)
+                    {
+                        closestEnemyTransform = enemyStateManager.transform;
                         closetDistance = distanceToEnemy;
                     }
                 }
