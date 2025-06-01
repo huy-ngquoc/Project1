@@ -34,6 +34,7 @@ namespace Game
             if(this.currentHealth<=0) { 
                 currentHealth=0;
                 enemyStateManager.ChangeState(new DeathState(enemyStateManager));
+                MenuManagerScript.GetInstance().IncreaseDestroyedMonster();
             } 
             
             UpdateHealthBar();

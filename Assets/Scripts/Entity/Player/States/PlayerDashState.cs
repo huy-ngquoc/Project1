@@ -12,7 +12,7 @@ public sealed class PlayerDashState : PlayerState
 
     public override string AnimationBoolName => AnimationNameConstants.Bool.Dash;
 
-    public PlayerDashSkill DashSkill => this.PlayerSkillManager.DashSkill;
+    public PlayerDashSkill DashSkill => this.PlayerSkillManager.DashSkill.CurrentDashSkill;
 
     public float DashSpeed => this.DashSkill.DashSpeed;
 

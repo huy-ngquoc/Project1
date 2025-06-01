@@ -51,6 +51,11 @@ namespace Game
         public void OnWin() {
             Time.timeScale=0;
             winMenu.gameObject.SetActive(true);
+            if(winMenu.gameObject.TryGetComponent<WinMenuScript>(out var winMenuScript)) {
+                Debug.Log("Update current progress");
+                winMenuScript.UpdateCurrentProgress();
+                winMenuScript.UpdatePlayerScore();
+            }
         } 
         public void IncreaseDestroyedMonster() {
             this.destroyedMonster++;

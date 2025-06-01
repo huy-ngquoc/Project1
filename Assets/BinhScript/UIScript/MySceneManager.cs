@@ -61,6 +61,7 @@ namespace Game
        }
        public void OnPlay() {
           int selectLevel = PlayerPrefs.GetInt("Select_Level",1);
+          Debug.Log("Play at level" +selectLevel);
           SceneManager.LoadScene(selectLevel+3);
        }
 

@@ -19,7 +19,7 @@ namespace Game
 
         [field: SerializeReference]
         [field: ResolveComponent]
-        public PlayerDashSkill DashSkill { get; private set; } = null!;
+        public PlayerDashSkillManager DashSkill { get; private set; } = null!;
 
         [field: SerializeReference]
         [field: ResolveComponent]

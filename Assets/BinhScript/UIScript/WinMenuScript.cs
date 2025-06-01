@@ -16,6 +16,7 @@ namespace Game
             
         }
 
+
         // Update is called once per frame
         void Update()
         {
@@ -29,11 +30,13 @@ namespace Game
                 currentLevel++;
             } 
             PlayerPrefs.SetInt(lvSelect,currentLevel);
+            PlayerPrefs.Save();
         }
         public void UpdatePlayerScore() {
             int currentPlayerScore = PlayerPrefs.GetInt("Player_Score");
             currentPlayerScore+=levelScores[currentLevel];
             PlayerPrefs.SetInt("Player_Score",currentPlayerScore);
+            PlayerPrefs.Save();
         }
         public void OnContinue() {
             int difficulty =PlayerPrefs.GetInt("Difficulty",-1);

@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 1768369329338024549}
   - component: {fileID: 5701722363094232599}
   - component: {fileID: 1779899046993947003}
-  - component: {fileID: 826495841360038840}
   - component: {fileID: 4294106871834072372}
   - component: {fileID: 6110364652873557088}
   - component: {fileID: 284017774883303172}
@@ -61,6 +60,9 @@ GameObject:
   - component: {fileID: 2993366040332146969}
   - component: {fileID: 3463589393228784273}
   - component: {fileID: 3400113005858416911}
+  - component: {fileID: 3262526855612455864}
+  - component: {fileID: 1992767046844926588}
+  - component: {fileID: 5824574094548476414}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -263,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerController>k__BackingField: {fileID: 5205683079033008154}
   <PrimaryAttackSkill>k__BackingField: {fileID: 1779899046993947003}
-  <DashSkill>k__BackingField: {fileID: 826495841360038840}
+  <DashSkill>k__BackingField: {fileID: 3262526855612455864}
   <ThrowSwordSkill>k__BackingField: {fileID: 4294106871834072372}
   <CloneSkill>k__BackingField: {fileID: 8861442589975940163}
   <CrystalSkill>k__BackingField: {fileID: 463335195022151283}
@@ -282,23 +284,6 @@ MonoBehaviour:
   <Cooldown>k__BackingField: 0.2
   skillId: 1
   playerSkillManager: {fileID: 5701722363094232599}
---- !u!114 &826495841360038840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728098314185341958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9849084959cb28e42839ff2cb61a2f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Cooldown>k__BackingField: 2
-  skillId: 2
-  playerSkillManager: {fileID: 5701722363094232599}
-  <DashSpeed>k__BackingField: 25
-  <DashDuration>k__BackingField: 0.2
 --- !u!114 &4294106871834072372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
-  skillId: 7
+  skillId: 2147483647
   playerSkillManager: {fileID: 5701722363094232599}
   clonePrefab: {fileID: 3864650055876776002, guid: 2ccd7f1aaf1f1d24d9b5bc537655e703, type: 3}
   cloneDuration: 1
@@ -505,6 +490,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
   entityStats: {fileID: 0}
+--- !u!114 &3262526855612455864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f662bf80e0bac4143a2f727494a28382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerSkillManager>k__BackingField: {fileID: 5701722363094232599}
+  normalDashSkill: {fileID: 1992767046844926588}
+  cloneDashSkill: {fileID: 5824574094548476414}
+  <CurrentDashType>k__BackingField: 0
+--- !u!114 &1992767046844926588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d085f60d68bfbcd48948c9c3bfc9fc9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0.5
+  skillId: 2
+  <DaskSkillManager>k__BackingField: {fileID: 3262526855612455864}
+  <DashSpeed>k__BackingField: 25
+  <DashDuration>k__BackingField: 0.2
+--- !u!114 &5824574094548476414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728098314185341958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796f375d43071e48bfa10da62b03642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Cooldown>k__BackingField: 0.5
+  skillId: 5
+  <DaskSkillManager>k__BackingField: {fileID: 3262526855612455864}
+  <DashSpeed>k__BackingField: 25
+  <DashDuration>k__BackingField: 0.2
 --- !u!1 &1169820105662510846
 GameObject:
   m_ObjectHideFlags: 0

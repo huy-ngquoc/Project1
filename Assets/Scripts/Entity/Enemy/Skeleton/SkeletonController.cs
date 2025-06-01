@@ -38,6 +38,7 @@ namespace Game
         public override void Die()
         {
             this.SkeletonGeneralStateMachine.SetStateToChangeTo(this.SkeletonGeneralStateMachine.DeadState);
+            Debug.Log("Call die function");
             MenuManagerScript.GetInstance().IncreaseDestroyedMonster();
         }
         public void Awake() {
