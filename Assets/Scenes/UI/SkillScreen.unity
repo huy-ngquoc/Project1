@@ -410,10 +410,11 @@ PrefabInstance:
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: skillImage
       value: 
-      objectReference: {fileID: 1071341138, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+      objectReference: {fileID: 654608816, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Throw a sword as a boomerang, cause 250 damage when hit a target
+      value: Throw a sword as a boomerang, cause 250 damage when hit a target. Hold
+        right mouse button to aim, release to throw
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -608,6 +609,7 @@ GameObject:
   - component: {fileID: 386642001}
   - component: {fileID: 386642003}
   - component: {fileID: 386642002}
+  - component: {fileID: 386642004}
   m_Layer: 5
   m_Name: Line1
   m_TagString: Untagged
@@ -624,7 +626,7 @@ RectTransform:
   m_GameObject: {fileID: 386642000}
   m_LocalRotation: {x: -0, y: -0, z: 0.71110994, w: 0.7030809}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7082532, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -672,6 +674,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386642000}
   m_CullTransparentMesh: 1
+--- !u!114 &386642004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386642000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 622139793}
+  toNode: {fileID: 1379686411}
+  lineImage: {fileID: 386642001}
 --- !u!224 &423048401 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 425164990974564769, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
@@ -707,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: -547730515, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: After dash, spawn a clone cause 250 damage
+      value: After dash, spawn a clone cause 100 damage. Ctrl to use
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -907,7 +924,7 @@ PrefabInstance:
       objectReference: {fileID: -1523476312, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Throw a crystal forward, cause 250 damage when hit enemy
+      value: Throw a crystal forward, cause 250 damage.Press F to usewhen hit enemy
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -1029,11 +1046,11 @@ PrefabInstance:
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: skillImage
       value: 
-      objectReference: {fileID: -547730515, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+      objectReference: {fileID: -1331556987, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Move extremely fash forward, use to dogge enemy's attack and engage
-        them or
+      value: Move extremely fash forward, use to dogge enemy's attack. Ctrl to useand
+        engage them or
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -1139,6 +1156,7 @@ GameObject:
   - component: {fileID: 607523081}
   - component: {fileID: 607523083}
   - component: {fileID: 607523082}
+  - component: {fileID: 607523084}
   m_Layer: 5
   m_Name: Line1 (1)
   m_TagString: Untagged
@@ -1155,7 +1173,7 @@ RectTransform:
   m_GameObject: {fileID: 607523080}
   m_LocalRotation: {x: -0, y: -0, z: 0.1857773, w: 0.98259187}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9133744, y: 0.09397816, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -1203,6 +1221,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607523080}
   m_CullTransparentMesh: 1
+--- !u!114 &607523084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607523080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 622139793}
+  toNode: {fileID: 1198153344}
+  lineImage: {fileID: 0}
 --- !u!224 &622139793 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 425164990974564769, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
@@ -1231,10 +1264,11 @@ PrefabInstance:
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: skillImage
       value: 
-      objectReference: {fileID: 1724600912, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+      objectReference: {fileID: -1515822578, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Throw a sword fly throughour enemies, each hit cause 250 damage
+      value: Throw a sword fly throughour enemies, each hit cause 250 damage. Hold
+        right mouse button to aim, release to throw
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -1425,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: -2104931659, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Like Crystal, but can teleport to the crystal
+      value: Like Crystal, but can teleport to the crystal. Press F to use
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -1531,6 +1565,7 @@ GameObject:
   - component: {fileID: 1133390994}
   - component: {fileID: 1133390996}
   - component: {fileID: 1133390995}
+  - component: {fileID: 1133390997}
   m_Layer: 5
   m_Name: Line1 (7)
   m_TagString: Untagged
@@ -1547,7 +1582,7 @@ RectTransform:
   m_GameObject: {fileID: 1133390993}
   m_LocalRotation: {x: -0, y: -0, z: 0.8901315, w: 0.45570382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1768619, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -1595,6 +1630,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133390993}
   m_CullTransparentMesh: 1
+--- !u!114 &1133390997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133390993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 423048401}
+  toNode: {fileID: 643718716}
+  lineImage: {fileID: 0}
 --- !u!1 &1186171735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1656,7 @@ GameObject:
   - component: {fileID: 1186171736}
   - component: {fileID: 1186171738}
   - component: {fileID: 1186171737}
+  - component: {fileID: 1186171739}
   m_Layer: 5
   m_Name: Line1 (5)
   m_TagString: Untagged
@@ -1622,7 +1673,7 @@ RectTransform:
   m_GameObject: {fileID: 1186171735}
   m_LocalRotation: {x: -0, y: -0, z: 0.3977114, w: 0.9175106}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1768619, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -1670,6 +1721,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186171735}
   m_CullTransparentMesh: 1
+--- !u!114 &1186171739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186171735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 1379686411}
+  toNode: {fileID: 2128124692}
+  lineImage: {fileID: 0}
 --- !u!224 &1198153344 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 425164990974564769, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
@@ -1713,6 +1779,7 @@ GameObject:
   - component: {fileID: 1273842256}
   - component: {fileID: 1273842258}
   - component: {fileID: 1273842257}
+  - component: {fileID: 1273842259}
   m_Layer: 5
   m_Name: Line1 (8)
   m_TagString: Untagged
@@ -1729,7 +1796,7 @@ RectTransform:
   m_GameObject: {fileID: 1273842255}
   m_LocalRotation: {x: -0, y: -0, z: 0.54631543, w: 0.83757955}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1768619, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -1777,6 +1844,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273842255}
   m_CullTransparentMesh: 1
+--- !u!114 &1273842259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273842255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 423048401}
+  toNode: {fileID: 1896401925}
+  lineImage: {fileID: 0}
 --- !u!1 &1333543391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1914,7 @@ GameObject:
   - component: {fileID: 1373571945}
   - component: {fileID: 1373571947}
   - component: {fileID: 1373571946}
+  - component: {fileID: 1373571948}
   m_Layer: 5
   m_Name: Line1 (6)
   m_TagString: Untagged
@@ -1848,7 +1931,7 @@ RectTransform:
   m_GameObject: {fileID: 1373571944}
   m_LocalRotation: {x: -0, y: -0, z: 0.8901315, w: 0.45570382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1768619, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -1896,6 +1979,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373571944}
   m_CullTransparentMesh: 1
+--- !u!114 &1373571948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373571944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 1379686411}
+  toNode: {fileID: 684617806}
+  lineImage: {fileID: 0}
 --- !u!224 &1379686411 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 425164990974564769, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
@@ -2061,6 +2159,7 @@ GameObject:
   - component: {fileID: 1442139181}
   - component: {fileID: 1442139183}
   - component: {fileID: 1442139182}
+  - component: {fileID: 1442139184}
   m_Layer: 5
   m_Name: Line1 (3)
   m_TagString: Untagged
@@ -2077,7 +2176,7 @@ RectTransform:
   m_GameObject: {fileID: 1442139180}
   m_LocalRotation: {x: -0, y: -0, z: 0.71110994, w: 0.7030809}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8640689, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -2125,6 +2224,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442139180}
   m_CullTransparentMesh: 1
+--- !u!114 &1442139184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442139180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 1198153344}
+  toNode: {fileID: 1225203741}
+  lineImage: {fileID: 0}
 --- !u!1001 &1456213864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2151,7 +2265,7 @@ PrefabInstance:
       objectReference: {fileID: 919800537, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Slash forward, cause 500 damage
+      value: Slash forward, cause 100 damage. Left click to use
       objectReference: {fileID: 0}
     - target: {fileID: 425164990974564769, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: m_Pivot.x
@@ -2304,6 +2418,7 @@ GameObject:
   - component: {fileID: 1731006205}
   - component: {fileID: 1731006207}
   - component: {fileID: 1731006206}
+  - component: {fileID: 1731006208}
   m_Layer: 5
   m_Name: Line1 (4)
   m_TagString: Untagged
@@ -2320,7 +2435,7 @@ RectTransform:
   m_GameObject: {fileID: 1731006204}
   m_LocalRotation: {x: -0, y: -0, z: 0.71110994, w: 0.7030809}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8640689, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -2368,6 +2483,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731006204}
   m_CullTransparentMesh: 1
+--- !u!114 &1731006208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731006204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 1379686411}
+  toNode: {fileID: 715380623}
+  lineImage: {fileID: 0}
 --- !u!1001 &1887518892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2587,7 +2717,8 @@ PrefabInstance:
       objectReference: {fileID: 1815423734, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Trhow sword forward, cause 200 damage when hit enemy
+      value: 'Throw sword forward, cause 200 damage when hit enemy. Hold right mouse
+        button to aim, release to throw and '
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -2705,10 +2836,11 @@ PrefabInstance:
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: skillImage
       value: 
-      objectReference: {fileID: 998750072, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+      objectReference: {fileID: 733483707, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Trhow a sword that will attack nearby target, each hit cause 150 damage
+      value: Trhow a sword that will attack nearby target, each hit cause 200 damage.
+        Hold right mouse button to aim, release to throw
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
@@ -2814,6 +2946,7 @@ GameObject:
   - component: {fileID: 1991103755}
   - component: {fileID: 1991103757}
   - component: {fileID: 1991103756}
+  - component: {fileID: 1991103758}
   m_Layer: 5
   m_Name: Line1 (2)
   m_TagString: Untagged
@@ -2830,7 +2963,7 @@ RectTransform:
   m_GameObject: {fileID: 1991103754}
   m_LocalRotation: {x: -0, y: -0, z: 0.98552895, w: 0.16950731}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1661804, y: 0.106385104, z: 1}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333543392}
@@ -2878,6 +3011,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991103754}
   m_CullTransparentMesh: 1
+--- !u!114 &1991103758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991103754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90594a341e193c46b7d0a373fc3993a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromNode: {fileID: 622139793}
+  toNode: {fileID: 423048401}
+  lineImage: {fileID: 0}
 --- !u!1 &2115370845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,7 +3127,7 @@ PrefabInstance:
       objectReference: {fileID: 1392627519, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: description
-      value: Spawn many crystals each crystal cause 300 damage
+      value: Spawn many crystals each crystal cause 300 damage. Press F to use
       objectReference: {fileID: 0}
     - target: {fileID: 10969148593226805, guid: c20f43deb41ec104e85931c063b65e9c, type: 3}
       propertyPath: scoreRequire
