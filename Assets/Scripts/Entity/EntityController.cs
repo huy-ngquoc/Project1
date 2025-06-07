@@ -129,6 +129,7 @@ public abstract class EntityController : MonoBehaviour
     {
         this.FacingRight = !this.FacingRight;
         this.transform.Rotate(0F, 180F, 0F);
+        this.OnFlipped?.Invoke();
     }
 
     public void SetLinearVelocity(float x, float y)

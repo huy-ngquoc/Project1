@@ -10438,6 +10438,10 @@ PrefabInstance:
       propertyPath: <DaskSkillManager>k__BackingField
       value: 
       objectReference: {fileID: 1431163236}
+    - target: {fileID: 5113993075734073820, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2071613299}
     - target: {fileID: 5205683079033008154, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: <JumpForce>k__BackingField
       value: 19
@@ -10991,6 +10995,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bf89c22e9d9bf24789d7183f11e098f, type: 3}
+--- !u!20 &2071613299 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3888486655998191201, guid: 8bf89c22e9d9bf24789d7183f11e098f, type: 3}
+  m_PrefabInstance: {fileID: 2071613298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2100929792
 PrefabInstance:
   m_ObjectHideFlags: 0

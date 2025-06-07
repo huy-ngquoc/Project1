@@ -116,7 +116,8 @@ public abstract class PlayerThrowSwordSkillController : MonoBehaviour
             this.SwordSkillDamage(enemyController);
             this.OnSwordHitEnemy(enemyController);
         }
-        if(collision.gameObject.TryGetComponent<HealthController>(out var healthController)) {
+        else if (collision.gameObject.TryGetComponent<HealthController>(out var healthController))
+        {
             healthController.TakeDamage(healthController.TakeDamageAt(2));
             this.StuckIntoObject(healthController.gameObject.transform);
         }
@@ -132,8 +133,8 @@ public abstract class PlayerThrowSwordSkillController : MonoBehaviour
 
     protected void SwordSkillDamage(EnemyController enemyController)
     {
-        this.PlayerController.PlayerStats.DoDamage(enemyController.EntityStats);
         enemyController.EnemyGeneralStateMachine.FreezeForSeconds(this.FreezeTimeDuration);
+        this.PlayerController.PlayerStats.DoDamage(enemyController.EntityStats);
     }
 
     protected void StopRotating()

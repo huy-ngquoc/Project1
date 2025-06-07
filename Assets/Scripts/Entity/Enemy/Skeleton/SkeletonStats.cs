@@ -12,14 +12,18 @@ namespace Game
         public SkeletonController SkeletonController { get; private set; } = null!;
 
         public sealed override EnemyController EnemyController => this.SkeletonController;
-        public void Awake() {
-            int difficulty =PlayerPrefs.GetInt("Difficulty",-1);
-            if(difficulty==1) { 
+
+        protected override void OnEnemyStatsAwake()
+        {
+            int difficulty = PlayerPrefs.GetInt("Difficulty", -1);
+            if (difficulty == 1)
+            {
                 this.MaxHealth = 300;
-            } 
+            }
             this.CurrentHealth = this.MaxHealth;
-        this.OnHealthChanged?.Invoke();
+            this.OnHealthChanged?.Invoke();
         }
+
         protected override void OnEnemyTakeDamage()
         {
             Debug.Log("Skeleton is damaged!");

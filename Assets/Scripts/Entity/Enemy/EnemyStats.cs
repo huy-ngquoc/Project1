@@ -16,4 +16,13 @@ public abstract class EnemyStats : EntityStats
     protected virtual void OnEnemyTakeDamage()
     {
     }
+
+    protected sealed override void OnEntityStatsAwake()
+    {
+        this.OnEnemyStatsAwake();
+    }
+
+    protected virtual void OnEnemyStatsAwake()
+    {
+    }
 }

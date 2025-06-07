@@ -61,7 +61,7 @@ namespace Game
         [field: SerializeField]
         [field: Range(1, 20)]
         public float ReturnImpact { get; private set; } = 7;
-        
+
         public Vector2 AimDirection
         {
             get
@@ -182,29 +182,36 @@ namespace Game
         }
 
         protected override void OnPlayerSpecificSkillManagerAwake()
-        { 
-            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill",-1);
+        {
+            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill", -1);
 
-            if (currentSkill == throwRegularSwordSkill.skillId){
+            if (currentSkill == this.throwRegularSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Regular;
+                this.GenerateDots();
                 return;
             }
-            
-            if (currentSkill == throwBounceSwordSkill.skillId){
+
+            if (currentSkill == this.throwBounceSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Bounce;
+                this.GenerateDots();
                 return;
             }
 
-            if (currentSkill == throwPeirceSwordSkill.skillId){
+            if (currentSkill == this.throwPeirceSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Pierce;
+                this.GenerateDots();
                 return;
             }
 
-            if (currentSkill == throwSpinSwordSkill.skillId){
+            if (currentSkill == this.throwSpinSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Spin;
+                this.GenerateDots();
                 return;
             }
-            this.GenerateDots();
         }
 
         protected override void OnPlayerSpecificSkillManagerUpdate()
