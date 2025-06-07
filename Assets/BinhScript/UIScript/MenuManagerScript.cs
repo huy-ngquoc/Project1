@@ -20,7 +20,10 @@ namespace Game
             if(instance==null) {
                 instance=this;
             }
-            Time.timeScale=1;
+            Time.timeScale=1; 
+            pauseMenu.gameObject.SetActive(false);
+            winMenu.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
         }
         private void Start() {
             Time.timeScale=1;
@@ -35,10 +38,16 @@ namespace Game
         }
         public void OnGoBackHome() {
             Time.timeScale=1;
+            pauseMenu.gameObject.SetActive(false);
+            winMenu.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
             SceneManager.LoadScene(0);
         }
         public void OnPlayAgain() {
-            Time.timeScale=1;
+            Time.timeScale=1; 
+            pauseMenu.gameObject.SetActive(false);
+            winMenu.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
             SceneManager.LoadScene(currentLevel+3);
         }
         public void OnLose() {
@@ -72,7 +81,10 @@ namespace Game
                 currentPassLevel=currentLevel;
             } 
             PlayerPrefs.SetInt(lvSelect,currentPassLevel);
-            PlayerPrefs.SetInt("Select_Level",currentLevel+1);
+            PlayerPrefs.SetInt("Select_Level",currentLevel+1); 
+            pauseMenu.gameObject.SetActive(false);
+            winMenu.gameObject.SetActive(false);
+            pauseMenu.gameObject.SetActive(false);
             SceneManager.LoadScene(8);
         } 
         

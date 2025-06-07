@@ -61,36 +61,7 @@ namespace Game
         [field: SerializeField]
         [field: Range(1, 20)]
         public float ReturnImpact { get; private set; } = 7;
-
-        private void Awake()
-        {
-            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill", -1);
-
-            if (currentSkill == throwRegularSwordSkill.skillId)
-            {
-                this.CurrentSwordType = SwordType.Regular;
-                return;
-            }
-
-            if (currentSkill == throwBounceSwordSkill.skillId)
-            {
-                this.CurrentSwordType = SwordType.Bounce;
-                return;
-            }
-
-            if (currentSkill == throwPeirceSwordSkill.skillId)
-            {
-                this.CurrentSwordType = SwordType.Pierce;
-                return;
-            }
-
-            if (currentSkill == throwSpinSwordSkill.skillId)
-            {
-                this.CurrentSwordType = SwordType.Spin;
-                return;
-            }
-        }
-
+        
         public Vector2 AimDirection
         {
             get
@@ -211,7 +182,28 @@ namespace Game
         }
 
         protected override void OnPlayerSpecificSkillManagerAwake()
-        {
+        { 
+            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill",-1);
+
+            if (currentSkill == throwRegularSwordSkill.skillId){
+                this.CurrentSwordType = SwordType.Regular;
+                return;
+            }
+            
+            if (currentSkill == throwBounceSwordSkill.skillId){
+                this.CurrentSwordType = SwordType.Bounce;
+                return;
+            }
+
+            if (currentSkill == throwPeirceSwordSkill.skillId){
+                this.CurrentSwordType = SwordType.Pierce;
+                return;
+            }
+
+            if (currentSkill == throwSpinSwordSkill.skillId){
+                this.CurrentSwordType = SwordType.Spin;
+                return;
+            }
             this.GenerateDots();
         }
 
