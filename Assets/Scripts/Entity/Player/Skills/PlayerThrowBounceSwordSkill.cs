@@ -23,6 +23,10 @@ namespace Game
         [field: Range(1, 20)]
         public float BounceGravity { get; private set; } = 1;
 
+        [field: SerializeField]
+        [field: Range(10, 30)]
+        public float BounceDistance { get; private set; } = 16;
+
         public override float SwordGravity => this.BounceGravity;
 
         [field: SerializeField]
@@ -56,7 +60,7 @@ namespace Game
                 this.throwSwordSkillManager.FreezeTimeDuration,
                 this.throwSwordSkillManager.ReturnSpeed);
 
-            swordController.SetupBounce(this.BounceAmount, this.BounceSpeed);
+            swordController.SetupBounce(this.BounceAmount, this.BounceSpeed, this.BounceDistance);
 
             this.throwSwordSkillManager.AssignNewSwordController(swordController);
         }
