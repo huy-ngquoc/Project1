@@ -87,7 +87,7 @@ MonoBehaviour:
   animator: {fileID: 5734535319561425308}
   rg2D: {fileID: 7399621665003186736}
   forceDirection: {x: 2, y: 2}
-  healthController: {fileID: 0}
+  healthController: {fileID: 3881835263298214167}
   timeToDestroyAfterDeath: 2
   sprite: {fileID: 7848676658496999045}
   deathPosY: -0.5

@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 200
-  <Damage>k__BackingField: 5
+  <Damage>k__BackingField: 10
   <SkeletonController>k__BackingField: {fileID: 2017294918222282143}
 --- !u!114 &4481995532728314796
 MonoBehaviour:

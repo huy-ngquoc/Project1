@@ -402,6 +402,10 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1604389654692857459, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
+      propertyPath: healthController
+      value: 
+      objectReference: {fileID: 1355784688}
     - target: {fileID: 2092997576895940299, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
       propertyPath: m_Name
       value: Wolf
@@ -583,6 +587,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
   m_PrefabInstance: {fileID: 1804820988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &799765942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1556302385778644629, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+  m_PrefabInstance: {fileID: 113076609021057307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d2a5d093c86464e90470868a4975d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &808608807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -861,6 +876,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPause
       objectReference: {fileID: 0}
+    - target: {fileID: 810588068498731749, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1224178663380732325, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
       propertyPath: m_Name
       value: CanvasInGame
@@ -868,6 +887,10 @@ PrefabInstance:
     - target: {fileID: 4896066912714388923, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
       propertyPath: currentLevel
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896066912714388923, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
+      propertyPath: numberOfMonster
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5058752211685579328, guid: 2fbd6771556061940a9f6c9e8eaa830e, type: 3}
       propertyPath: m_Pivot.x
@@ -1257,6 +1280,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
   m_PrefabInstance: {fileID: 956300749}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1355784688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3881835263298214167, guid: 95f9ea6c304c319448d747a42697d567, type: 3}
+  m_PrefabInstance: {fileID: 456100892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d2a5d093c86464e90470868a4975d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1434654514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1437,10 @@ PrefabInstance:
     - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406042845133945601, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: <Damage>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8406042845133945601, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: <MaxHealth>k__BackingField
@@ -10953,6 +10991,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
       propertyPath: forceDirection.x
       value: 2
       objectReference: {fileID: 0}
@@ -10960,6 +11002,10 @@ PrefabInstance:
       propertyPath: forceDirection.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
+      propertyPath: healthController
+      value: 
+      objectReference: {fileID: 799765942}
     - target: {fileID: 2451506190708482484, guid: c964da22839e8ce4db217ed3e01b72cc, type: 3}
       propertyPath: timeToDestroyAfterDeath
       value: 1
