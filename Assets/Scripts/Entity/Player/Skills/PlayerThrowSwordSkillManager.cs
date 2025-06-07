@@ -61,25 +61,31 @@ namespace Game
         [field: SerializeField]
         [field: Range(1, 20)]
         public float ReturnImpact { get; private set; } = 7;
-        public void Awake() {
-            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill",-1);
 
-            if (currentSkill == throwRegularSwordSkill.skillId){
+        private void Awake()
+        {
+            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill", -1);
+
+            if (currentSkill == throwRegularSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Regular;
                 return;
             }
-            
-            if (currentSkill == throwBounceSwordSkill.skillId){
+
+            if (currentSkill == throwBounceSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Bounce;
                 return;
             }
 
-            if (currentSkill == throwPeirceSwordSkill.skillId){
+            if (currentSkill == throwPeirceSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Pierce;
                 return;
             }
 
-            if (currentSkill == throwSpinSwordSkill.skillId){
+            if (currentSkill == throwSpinSwordSkill.skillId)
+            {
                 this.CurrentSwordType = SwordType.Spin;
                 return;
             }

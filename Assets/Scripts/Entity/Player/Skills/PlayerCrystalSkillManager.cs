@@ -35,21 +35,7 @@ namespace Game
             CrystalType.Multi => this.multiCrystalSkill,
             _ => this.normalCrystalSkill,
         };
-        public void Awake() {
-            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill",-1); 
-            if(currentSkill == this.normalCrystalSkill.skillId) {
-                this.CurrentCrystalType = CrystalType.Normal;
-                return;
-            } 
-            if(currentSkill == this.swappingCrystalSkill.skillId) {
-                this.CurrentCrystalType = CrystalType.Swapping;
-                return;
-            } 
-            if(currentSkill == this.multiCrystalSkill.skillId) {
-                this.CurrentCrystalType = CrystalType.Multi;
-                return;
-            }
-        }
+
         public override bool Cast()
         {
             if (this.CurrentCrystalSkill.IsUsable())
@@ -63,6 +49,26 @@ namespace Game
         public override bool IsUsable()
         {
             return this.CurrentCrystalSkill.IsUsable();
+        }
+
+        protected override void OnPlayerSpecificSkillManagerAwake()
+        {
+            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill", -1);
+            if (currentSkill == this.normalCrystalSkill.skillId)
+            {
+                this.CurrentCrystalType = CrystalType.Normal;
+                return;
+            }
+            if (currentSkill == this.swappingCrystalSkill.skillId)
+            {
+                this.CurrentCrystalType = CrystalType.Swapping;
+                return;
+            }
+            if (currentSkill == this.multiCrystalSkill.skillId)
+            {
+                this.CurrentCrystalType = CrystalType.Multi;
+                return;
+            }
         }
     }
 }
