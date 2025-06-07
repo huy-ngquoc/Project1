@@ -12,7 +12,7 @@ namespace Game
           SceneManager.LoadScene(2);
        }
        public void BackToLevel() {
-          SceneManager.LoadScene(2);
+          SceneManager.LoadScene(3);
        }
        public void SetEasy() {
             AudioManager.instance.PlayPressButtonSound();

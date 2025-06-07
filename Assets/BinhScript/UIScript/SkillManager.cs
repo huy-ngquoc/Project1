@@ -15,7 +15,7 @@ namespace Game
             if(instance==null) {
                 instance=this;
             } 
-           PlayerPrefs.SetInt("Player_Score",1000);
+           //PlayerPrefs.SetInt("Player_Score",1000);
            //PlayerPrefs.Save();
         LoadScoreText();
            LoadSkills();  
