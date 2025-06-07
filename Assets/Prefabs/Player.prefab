@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
-  skillId: 4
+  skillId: 6
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: f507c7a87f762ce49a5cc84ca3215661, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <BounceAmount>k__BackingField: 4
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
-  skillId: 5
+  skillId: 7
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: cbd5ae2c4c2a7054096d801e8672cb83, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <PeirceAmount>k__BackingField: 2
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
-  skillId: 6
+  skillId: 8
   <SwordPrefab>k__BackingField: {fileID: 1337942225253496080, guid: 26e0e8243711c8f44968f1748a68c0c3, type: 3}
   throwSwordSkillManager: {fileID: 4294106871834072372}
   <MaxTravelDistance>k__BackingField: 7
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Cooldown>k__BackingField: 0
-  skillId: 8
+  skillId: 4
   playerSkillManager: {fileID: 5701722363094232599}
   <CrystalPrefab>k__BackingField: {fileID: 6732469931052163263, guid: fadc578fdc4252d4aa04ed44ca4a8fe1, type: 3}
   <CrystalDuration>k__BackingField: 1.5

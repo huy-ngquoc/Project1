@@ -497,6 +497,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bf89c22e9d9bf24789d7183f11e098f, type: 3}
+--- !u!20 &626575120 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3888486655998191201, guid: 8bf89c22e9d9bf24789d7183f11e098f, type: 3}
+  m_PrefabInstance: {fileID: 626575119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &678021906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5521245052679243190, guid: 5b5490c09a2682e4390a6a49607c6923, type: 3}
@@ -1520,6 +1525,10 @@ PrefabInstance:
       propertyPath: healthController
       value: 
       objectReference: {fileID: 2062273460}
+    - target: {fileID: 5113993075734073820, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 626575120}
     - target: {fileID: 7648257164508095287, guid: 05c5d5acd1dc83041969233be543bc9a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

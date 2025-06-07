@@ -16,12 +16,15 @@ namespace Game
 
         public int BounceAmount { get; private set; } = 4;
 
+        public float BounceDistance { get; private set; } = 16;
+
         public int BounceCounter { get; private set; } = 0;
 
-        public void SetupBounce(int amountOfBounces, float bounceSpeed)
+        public void SetupBounce(int amountOfBounces, float bounceSpeed, float bounceDistance)
         {
             this.BounceAmount = amountOfBounces;
             this.BounceSpeed = bounceSpeed;
+            this.BounceDistance = bounceDistance;
 
             this.targetTransforms.Capacity = this.BounceAmount;
         }
@@ -39,6 +42,12 @@ namespace Game
         {
             if (this.IsReturning || (this.targetTransforms.Count <= 0))
             {
+                return;
+            }
+
+            if (this.targetTransforms[this.targetIndex] == null)
+            {
+                this.IsReturning = true;
                 return;
             }
 

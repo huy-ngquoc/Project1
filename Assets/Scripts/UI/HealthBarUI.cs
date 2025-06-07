@@ -38,7 +38,7 @@ namespace Game
             this.EntityStats.OnHealthChanged -= this.UpdateHealthUI;
         }
 
-        private void FlipUI() => this.rectTransform.UnityAccess(r => r.Rotate(0, 180, 0));
+        private void FlipUI() => this.rectTransform.Rotate(0, 180, 0);
 
         private void UpdateHealthUI()
         {

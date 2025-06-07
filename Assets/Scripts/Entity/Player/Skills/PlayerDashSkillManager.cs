@@ -29,20 +29,6 @@ namespace Game
         [field: SerializeField]
         public DashType CurrentDashType { get; private set; } = DashType.Normal;
 
-        private void Awake() {
-            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill",-1);
-
-            if (currentSkill == this.normalDashSkill.skillId){
-                this.CurrentDashType = DashType.Normal;
-                return;
-            }
-            
-            if (currentSkill == this.cloneDashSkill.skillId){
-                this.CurrentDashType = DashType.Clone;
-                return;
-            }
-        }
-
         public override bool IsUsable()
         {
             return this.CurrentDashSkill.IsUsable();
@@ -51,6 +37,23 @@ namespace Game
         public override bool Cast()
         {
             return this.CurrentDashSkill.Cast();
+        }
+
+        protected override void OnPlayerSpecificSkillManagerAwake()
+        {
+            int currentSkill = PlayerPrefs.GetInt("Chosen_Skill", -1);
+
+            if (currentSkill == this.normalDashSkill.skillId)
+            {
+                this.CurrentDashType = DashType.Normal;
+                return;
+            }
+
+            if (currentSkill == this.cloneDashSkill.skillId)
+            {
+                this.CurrentDashType = DashType.Clone;
+                return;
+            }
         }
     }
 }

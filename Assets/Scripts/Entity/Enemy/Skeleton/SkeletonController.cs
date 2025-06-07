@@ -41,10 +41,13 @@ namespace Game
             Debug.Log("Call die function");
             MenuManagerScript.GetInstance().IncreaseDestroyedMonster();
         }
-        public void Awake() {
-            int difficulty =PlayerPrefs.GetInt("Difficulty",-1);
-            if(difficulty==1) {
-                this.MoveSpeed=10.0f;
+
+        protected override void OnEnemyControllerAwake()
+        {
+            int difficulty = PlayerPrefs.GetInt("Difficulty", -1);
+            if (difficulty == 1)
+            {
+                this.MoveSpeed = 10.0f;
             }
         }
     }

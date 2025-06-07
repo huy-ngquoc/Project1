@@ -14,7 +14,6 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
     public int MaxHealth { get; protected set; } = 1000;
 
     public int CurrentHealth { get; protected set; } = 1000;
-    
 
     [field: SerializeField]
     [field: Range(1, 100)]
@@ -52,15 +51,24 @@ public abstract class EntityStats : UnityEngine.MonoBehaviour
         this.CurrentHealth -= damage;
         this.OnHealthChanged?.Invoke();
     }
-    public void Die() {
+
+    public void Die()
+    {
         this.EntityController.Die();
     }
-    public int GetCurrentHealth() {
+
+    public int GetCurrentHealth()
+    {
         return this.CurrentHealth;
     }
-    private void Awake()
+
+    protected void Awake()
     {
         this.CurrentHealth = this.MaxHealth;
         this.OnHealthChanged?.Invoke();
+    }
+
+    protected virtual void OnEntityStatsAwake()
+    {
     }
 }
