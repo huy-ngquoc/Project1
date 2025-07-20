@@ -34,7 +34,7 @@ namespace Game
         }
         public void UpdatePlayerScore() {
             int currentPlayerScore = PlayerPrefs.GetInt("Player_Score");
-            currentPlayerScore+=levelScores[currentLevel];
+            currentPlayerScore+=100;
             PlayerPrefs.SetInt("Player_Score",currentPlayerScore);
             PlayerPrefs.Save();
         }

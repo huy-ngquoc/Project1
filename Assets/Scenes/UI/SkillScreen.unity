@@ -2525,10 +2525,22 @@ PrefabInstance:
     - target: {fileID: 3074183566079550830, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1523014094}
+      objectReference: {fileID: 1523014096}
     - target: {fileID: 3074183566079550830, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074183566079550830, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074183566079550830, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.MySceneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074183566079550830, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5606816648440665898, guid: 6114e126c55af56429b07f71c90c0168, type: 3}
       propertyPath: m_Pivot.x
