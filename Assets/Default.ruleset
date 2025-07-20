@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Custom StyleCop Rules" Description="Custom rules for StyleCop in Unity" ToolsVersion="17.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0003" Action="None" />
+  </Rules>
   <Rules AnalyzerId="Microsoft.Unity.Analyzers" RuleNamespace="Microsoft.Unity.Analyzers">
     <Rule Id="UNT0001" Action="Warning" />
     <Rule Id="UNT0002" Action="Warning" />
